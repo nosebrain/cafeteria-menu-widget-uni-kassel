@@ -1,5 +1,5 @@
 var UPDATER = new Updater();
-var MENSA = null;
+var WIDGET = new CafeteriaWidget();
 
 function getMensaIndex() {
   return getPref(PREF_MENSA);
@@ -12,14 +12,10 @@ function getMensaIndex() {
 function load() {
     dashcode.setupParts();
     
-    replaceScrollAreaContent("information", INFO);
-    setMensaChooser();
+    WIDGET.init();
     
-    var defMensa = getMensaIndex();
-    if (defMensa == null) {
-      defMensa = 0;
-      setPref(PREF_MENSA, defMensa);
-    }
+    // => init()
+    replaceScrollAreaContent("information", INFO);
     
     var defPrice = getPref(PREF_PRICE);
     if (defPrice == null) {
@@ -52,14 +48,14 @@ function hide() {
 //
 function show() {
     // check if an update is necessary ...    
-    if (MENSA.updateNecessary()) {
+    /*if (MENSA.updateNecessary()) {
        MENSA.update(true);
     }
     
     // ... and select the current day
     autosetMenuAreaContent();
     
-    UPDATER.checkForUpdate();
+    UPDATER.checkForUpdate();*/
 }
 
 //
@@ -174,7 +170,7 @@ function setWeek(newWeek) {
 }
 
 function changeMensa(index, autoUpdate) {
-  if (index < 0 || index > (MENSEN.length -1)) {
+  /*if (index < 0 || index > (MENSEN.length -1)) {
     throw "IllegalState ChangeMensa";
   }
   
@@ -188,25 +184,16 @@ function changeMensa(index, autoUpdate) {
   replaceInnerHTML(ELEMENT_ID_MENSA, MENSA.getName());
   MENSA.update(autoUpdate);
   
-  setPref(PREF_MENSA, index);
+  setPref(PREF_MENSA, index);*/
 }
 
 function manupdate(event) {
   MENSA.update(false);
 }
 
-function setMensaChooser() {
-  var mensen = new Array();
-  
-  for (i = 0; i < MENSEN.length; i++) {
-    mensen.push(MENSEN[i].getName());
-  }
-  
-  $(ELEMENT_ID_POPUP_MENSACHOOSER).object.setOptions(mensen);
-}
-
 function chooserChangeMensa(event) {
   var mensaIndex = popupGetSelected(ELEMENT_ID_POPUP_MENSACHOOSER);
+  
   changeMensa(mensaIndex, false);
 }
 

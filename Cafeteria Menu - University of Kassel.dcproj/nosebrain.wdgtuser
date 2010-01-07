@@ -9,15 +9,15 @@
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
-		<integer>8</integer>
+		<integer>24</integer>
 		<key>SplitViewConfig</key>
-		<integer>2</integer>
+		<integer>3</integer>
 		<key>_indexOfCollapsedView</key>
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1130, 303}}</string>
-			<string>{{0, 313}, {1130, 480}}</string>
+			<string>{{0, 0}, {1130, 284}}</string>
+			<string>{{0, 294}, {1130, 499}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -88,8 +88,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {246, 310}}</string>
-			<string>{{0, 320}, {246, 473}}</string>
+			<string>{{0, 0}, {246, 453}}</string>
+			<string>{{0, 463}, {246, 330}}</string>
 		</array>
 	</dict>
 	<key>Objects view expanded items</key>
@@ -231,10 +231,16 @@
 			</array>
 		</array>
 		<key>Objects view last selections</key>
-		<array/>
+		<array>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
+		</array>
 		<key>Visible StackLayout Views</key>
 		<array>
-			<string>front</string>
+			<string>back</string>
 		</array>
 	</dict>
 </dict>
