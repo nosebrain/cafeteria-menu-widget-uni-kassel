@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AllowNetworkAccess</key>
+	<true/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDisplayName</key>
+	<string>Versuch</string>
+	<key>CFBundleIdentifier</key>
+	<string>de.nosebrain.widget.UniKasselMensa</string>
+	<key>CFBundleName</key>
+	<string>Versuch</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.0.1.5</string>
+	<key>CFBundleVersion</key>
+	<string>2.0.1.5</string>
+	<key>CloseBoxInsetX</key>
+	<integer>15</integer>
+	<key>CloseBoxInsetY</key>
+	<integer>15</integer>
+	<key>Height</key>
+	<integer>290</integer>
+	<key>MainHTML</key>
+	<string>main.html</string>
+	<key>Width</key>
+	<integer>262</integer>
+  <key>CafeteriaBaseAddress</key>
+	<string>http://www.studentenwerk-kassel.de/</string>
+	<key>Cafeterias</key>
+	<array>
+		<dict>
+			<key>Address</key>
+			<string>Zentralmensa-br-A-Bode-Stra.188.0.html</string>
+			<key>Name</key>
+			<string>Zentralmensa</string>
+		</dict>
+		<dict>
+			<key>Address</key>
+			<string>Mensa-br-Wilhelmshoeher-Alle.189.0.html</string>
+			<key>Name</key>
+			<string>Wilhelmshöher Allee</string>
+		</dict>
+		<dict>
+			<key>Address</key>
+			<string>Cafeteria-br-Menzelstrasse.195.0.html</string>
+			<key>Name</key>
+			<string>Menzelstraße</string>
+		</dict>
+		<dict>
+			<key>Address</key>
+			<string>Mensa-br-Heinr-Plett-Strass.187.0.html</string>
+			<key>Name</key>
+			<string>Heinrich-Plett-Straße</string>
+		</dict>
+		<dict>
+			<key>Address</key>
+			<string>Mensa-Witzenhausen.415.0.html</string>
+			<key>Name</key>
+			<string>Witzenhausen</string>
+		</dict>
+	</array>
+	<key>oldUpdateSite</key>
+  <string>http://dev.nosebrain.de/cafeteria-widget/version/</string>
+  <key>wSparkleUpdateSite</key>
+  <string>http://dev.nosebrain.de/cafeteria-widget/?feed=wSparkle&amp;cat=-3</string>
+</dict>
+</plist>

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="Parts/parts.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleAnimator.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleInfoButton.js" charset="utf-8"></script>
+    
+    <script type="text/javascript" src="js/infoPlistReader/InfoPlistReader.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/Updater.js" charset="utf-8"></script>
+    
+    <script type="text/javascript" src="localizedStrings.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/Helper.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/Day.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/Menu.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/Mensa.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/Constants.js" charset="utf-8"></script>
+    
+    <script type="text/javascript" src="js/CafeteriaParser.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/Cafeteria.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/CafeteriaFactory.js" charset="utf-8"></script>
+    
+    <script type="text/javascript" src="main.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleScrollbar.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleScrollArea.js" charset="utf-8"></script>
+    <script type="text/javascript" src="AppleClassExtentions/AppleScrollArea.js" charset="utf-8"></script>
+</head>
+<body onload="load();" apple-part="com.apple.Dashcode.part.StackLayout">
+    <div id="front">
+        <div id="bgTopLeftCorner"></div>
+        <div id="bgTop"></div>
+        <div id="bgTopRightCorner"></div>
+        <div id="bgRight"></div>
+        <div id="bgBottomLeftCorner"></div>
+        <div id="bgBottom"></div>
+        <div id="bgBottomRightCorner"></div>
+        <div id="bgLeft"></div>
+        <div id="bgContent"></div>
+        <div class="apple-no-children" id="info" apple-part="com.apple.Dashcode.part.infobutton" apple-default-image-visibility="hidden"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="week" apple-group="text" apple-default-image-visibility="hidden"></div>
+        <div apple-part="com.apple.Dashcode.part.roundedpopupbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 3; image-button-type: 1; image-opacity: 1.00; image-top-color: 1,0.908590078,0.0986808538,1; image-bottom-color: 0.793478251,0.741562963,0.160287961,1; image-radius: 3,3,3,3; image-border: 1; image-border-color: 0.529399991,0.529399991,0.529399991,1; image-border-width: 1; shine-on: 0; shine-strength: 0.27; shine-alpha-level: 0.42; shine-height: 0.50; glass-arc-height: -0.12; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 0;" id="weekdayChooser"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="holiday"></div>
+        <div apple-part="com.apple.Dashcode.part.scrollarea" id="scrollArea" apple-group="scrollArea">
+            <div id="content" class="content" apple-group="scrollArea" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow-x: hidden; overflow-y: hidden; "></div></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="state" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
+        <div apple-part="com.apple.Dashcode.part.box" id="header">
+            <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="title" apple-group="text" apple-style="part-height-dependent: true;"></div>
+            <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="mensa" apple-group="text" apple-default-image-visibility="hidden" onclick="showMensaInBrowser(event)" apple-style="part-width-dependent: true;"></div>
+            <img src="Images/update.png" id="updateImg" style="display: none; " onclick="downloadLatestVersion(event)" apple-part="com.apple.Dashcode.part.image">
+            <div apple-part="com.apple.Dashcode.part.imageLayout" id="img" apple-group="image" onclick="toggleSize(event)"><img class="apple-hidden" src="Images/sw-logo.gif" id="inner_image" apple-group="image"></div>
+        </div>
+        <img id="resize" src="/System/Library/WidgetResources/resize.png" onmousedown="mouseDown(event);">
+    </div>
+    <div id="back">
+        <img id="backImg" src="Parts/Images/back.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.backimage" apple-style=" image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.1500,0.1500,0.1500; image-border-width: 3; shadow-include-shadow: 1; shadow-blur: 9.00; shadow-offset: -1.00,-6.00; shadow-color: 0.0000,0.0000,0.0000,0.3333;">
+        <div id="done" class="apple-no-children" apple-part="com.apple.Dashcode.part.glassbutton"></div>
+        <div apple-part="com.apple.Dashcode.part.lozengepopupbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 1; image-button-type: 1; image-opacity: 1.00; image-top-color: 0.639261484,0.639322519,0.64673841,1; image-bottom-color: 0,0,0,1; image-radius: 10,10,10,10; image-border: 0; image-border-color: 0.529399991,0.529399991,0.529399991,1; image-border-width: 1; shine-on: 1; shine-strength: 0.27; shine-alpha-level: 0.42; shine-height: 0.50; glass-arc-height: -0.12; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 0;" id="mensaChooser"></div>
+        <div apple-part="com.apple.Dashcode.part.lozengetextbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 1; image-button-type: 0; image-opacity: 1.00; image-top-color: 0.639261484,0.639322519,0.64673841,1; image-bottom-color: 0,0,0,1; image-radius: 10,10,10,10; image-border: 0; image-border-color: 0.529399991,0.529399991,0.529399991,1; image-border-width: 1; shine-on: 1; shine-strength: 0.27; shine-alpha-level: 0.42; shine-height: 0.50; glass-arc-height: -0.12; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 0;" id="manUpdate"></div>
+        <div apple-part="com.apple.Dashcode.part.scrollarea" id="information" apple-group="scrollArea1">
+            <div id="informationContent" class="content" apple-group="scrollArea1" style="position: absolute; left: 0px; top: 0px; right: 22px; bottom: 0px; overflow-x: hidden; overflow-y: hidden; ">
+            </div></div>
+        <div apple-part="com.apple.Dashcode.part.lozengepopupbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 1; image-button-type: 1; image-opacity: 1.00; image-top-color: 0.639261484,0.639322519,0.64673841,1; image-bottom-color: 0,0,0,1; image-radius: 10,10,10,10; image-border: 0; image-border-color: 0.529399991,0.529399991,0.529399991,1; image-border-width: 1; shine-on: 1; shine-strength: 0.27; shine-alpha-level: 0.42; shine-height: 0.50; glass-arc-height: -0.12; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 0;" id="priceChooser" apple-always-show-guides="true"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="priceLabel"></div>
+        <div id="mensaLabel" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis"></div>
+    </div>
+</body>
+</html>
