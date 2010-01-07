@@ -16,8 +16,8 @@ var INFO = "(1) mit Farbstoff<br>(2) mit Konservierungsstoff<br>(3) mit Antioxid
 
 var SEARCH_EXPRESSIONS = {
   table : /<table cellpadding="4" cellspacing="0" width="899">.*<\/table><img/,
-  menus : /<tr><td class="gelb" cellpadding="0" bgcolor="#fadc00" height="50" valign="middle" width="125px">/, 
-  menusSplit : /<td class="weiss" height="50" valign="top" width="150px">/,
+  food : /<tr><td class="gelb" cellpadding="0" bgcolor="#fadc00" height="50" valign="middle" width="125px">/, 
+  foodSplit : /<td class="weiss" height="50" valign="top" width="150px">/,
   priceMenuSplit : /<\/tr><tr>/,
   priceSplit : /<td class="preis" height="10" valign="top" width="150px">/, 
   price : /[0-9],[0-9]{2}/g,

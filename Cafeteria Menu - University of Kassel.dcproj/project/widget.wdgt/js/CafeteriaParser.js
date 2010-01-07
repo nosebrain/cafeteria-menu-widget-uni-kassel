@@ -13,9 +13,9 @@ CafeteriaParser.prototype.parseResult = function(response) {
   setStatus(STATUS_MESSAGE_PARSING); // TODO
   
   try {
-    menuTable = response.match(SEARCH_EXPRESSIONS.table);
+    foodTable = response.match(SEARCH_EXPRESSIONS.table);
 
-    menuStr = menuTable[0].split(SEARCH_EXPRESSIONS.menus);
+    foodStr = foodTable[0].split(SEARCH_EXPRESSIONS.food);
     menuStr.shift();
     
     this.parseMenu(menuStr);
@@ -31,22 +31,25 @@ CafeteriaParser.prototype.parseResult = function(response) {
     alert("exception while parsing site: " + e);
     setStatus(ERROR_MESSAGE_PARSING); // TODO
   }
+  
+  // notify listener 
+  // this.notifyListeners(); // TODO
 }
 
 CafeteriaParser.prototype.parseMenu = function(menuSource) {
   setStatus(STATUS_MESSAGE_MENU_PARSING); // TODO
   
-  this.cafeteria.clear();
+  this.cafeteria.setMenu(new Menu());
   
   for (var i = 0; i < menuStr.length; i++) {
-    priceMenuSplit = menuStr[i].split(SEARCH_EXPRESSIONS.priceMenuSplit);
+    priceFoodSplit = menuStr[i].split(SEARCH_EXPRESSIONS.priceMenuSplit);
   
-    // get menus for category i
-    menus = priceMenuSplit[0].split(SEARCH_EXPRESSIONS.menusSplit);
+    // get all food for category i
+    menus = priceFoodSplit[0].split(SEARCH_EXPRESSIONS.menusSplit);
     menus.shift();
     
-    // get prices for each menu
-    prices = priceMenuSplit[1].split(SEARCH_EXPRESSIONS.priceSplit);
+    // get all prices for each menu
+    prices = priceFoodSplit[1].split(SEARCH_EXPRESSIONS.priceFoodSplit);
     prices.shift();
     
     for (var j = 0; j < menus.length; j++) {
@@ -58,34 +61,25 @@ CafeteriaParser.prototype.parseMenu = function(menuSource) {
       description = description.replace(/- /, " ");
       
       if (description != " " ) {
-        menu = new Menu();
+        food = new Food();
         
-        menu.setDescription(description);
+        food.setDescription(description);
         alert(description);
       
         // add it to day
-        this.cafeteria.getDay(j).addToMenus(menu);
+        this.cafeteria.getMenu().getDay(j).addToMenus(food);
         
         // get price
         price = prices[j].match(SEARCH_EXPRESSIONS.price);
         
         if (price) {
           for (var x = 0; x < price.length; x++) {
-            menu.setPrice(x, price[x]);
+            food.setPrice(x, price[x]);
           }
         } else {
           alert("price not found");
         }
-         
-      }      
-      
-      // holidays
-      // holiday = description.match(/<span class="important">/); // FIXME: important doesn't mean holiday
-      
-      //if (holiday != null) {
-        //this.days[j].setHoliday(true);
-        //break;
-      //}
+      }
     }
   }
   
@@ -120,7 +114,7 @@ CafeteriaParser.prototype.parseWeek = function(weekSource) {
   // save it
   setPref(PREF_UPDATE, date.getTime()); 
   
-  setWeek(actWeek[1] + "-" + actWeek[3]);
+  this.cafeteria.getMenu().setWeek(actWeek[1] + "-" + actWeek[3]);
 }
 
 CafeteriaParser.prototype.logError = function(errorCode) {

@@ -1,29 +1,8 @@
-function Cafeteria(name, url) {
-  this.name = name;
-  this.url = url;
-  
+function Cafeteria() {
   this.nextUpdate = null;
   this.parser = new CafeteriaParser(this);
 }
 
-Cafeteria.prototype.getName = function() {
-  return this.name;
-}
-
-Cafeteria.prototype.getDay = function(day) {
-  return this.days[day];
-}
-
-Cafeteria.prototype.getURL = function() {
-  return this.url;
-}
-
-Cafeteria.prototype.setNextUpdate = function(date) {
-  this.nextUpdate = date;
-  
-  // save it
-  setPref(PREF_UPDATE, date.getTime());
-}
 
 Cafeteria.prototype.getNextUpdate = function() {
   if (!this.nextUpdate) {
@@ -36,6 +15,45 @@ Cafeteria.prototype.getNextUpdate = function() {
   
   return this.nextUpdate;
 }
+
+
+Cafeteria.prototype.setNextUpdate = function(date) {
+  this.nextUpdate = date;
+  
+  // save it
+  setPref(PREF_UPDATE, date.getTime());
+}
+
+
+Cafeteria.prototype.getName = function() {
+  return this.name;
+}
+
+
+Cafeteria.prototype.setName = function(name) {
+  this.name = name;
+}
+
+
+Cafeteria.prototype.getURL = function() {
+  return this.url;
+}
+
+
+Cafeteria.prototype.setURL = function(url) {
+  this.url = url;
+}
+
+
+Cafeteria.prototype.getMenu = function() {
+  return this.menu;
+}
+
+
+Cafeteria.prototype.setMenu = function(menu) {
+  this.menu = menu;
+}
+
 
 Cafeteria.prototype.updateNecessary = function() {
   // now
@@ -51,25 +69,7 @@ Cafeteria.prototype.updateNecessary = function() {
   return false;
 }
 
-Cafeteria.prototype.clear = function() {
-  this.days = new Array();
-  
-  for (var i = 0; i < 5; i++) {
-    this.days.push(new Day());
-  }
-}
-
-Cafeteria.prototype.getDay = function(day) {
-  return this.days[day]
-}
 
 Cafeteria.prototype.update = function(updateContent) {
   this.parser.parse();
-}
-
-Cafeteria.prototype.getMenusByDay = function(day) { 
-  if (day < 0 || day > 4) {
-    throw "IllegalSate getMenusByDay";
-  }
-  return this.days[day].to_s();
 }
