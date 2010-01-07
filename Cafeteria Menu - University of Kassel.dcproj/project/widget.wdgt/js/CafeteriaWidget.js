@@ -3,7 +3,7 @@ function CafeteriaWidget() {
   this.cafeteria = null;
   
   this.reader = new InfoPlistReader(); // TODO
-  this.listener = new CafeteriaWidgetListener();
+  this.listener = new CafeteriaWidgetListener(this);
 }
 
 
@@ -14,6 +14,17 @@ CafeteriaWidget.prototype.init = function() {
   this.setCafeteriaById(this.getPref(PREF_CAFETERIA));
   
   this.initCafeteriaChooser();
+}
+
+
+CafeteriaWidget.prototype.show = function() {
+  // check for food updates
+  if (this.cafeteria.updateNecessary()) {
+       this.cafeteria.update(true);
+  }
+  
+  // check for widget updates
+  this.updater.checkForUpdate(); // TODO: wSparkle
 }
 
 
@@ -34,7 +45,7 @@ CafeteriaWidget.prototype.initCafeteriaChooser = function() {
     cafeterias.push(cafs[i]["Name"]);
   }
   
-  $(ELEMENT_ID_POPUP_MENSACHOOSER).object.setOptions(cafeterias);
+  $(ELEMENT_ID_POPUP_CAFETERIACHOOSER).object.setOptions(cafeterias);
 }
 
 
@@ -56,10 +67,12 @@ CafeteriaWidget.prototype.getUpdater = function() {
 
 
 CafeteriaWidget.prototype.setCafeteria = function(cafeteria) {
+  old = this.cafeteria;
+
   this.cafeteria = cafeteria;
   
-  if (this.cafeteria) {
-    this.cafeteria.update();
+  if (old != cafeteria) {
+    this.listener.cafeteriaChanged(old, cafeteria);
   }
 }
 
@@ -67,9 +80,6 @@ CafeteriaWidget.prototype.setCafeteria = function(cafeteria) {
 CafeteriaWidget.prototype.setCafeteriaById = function(id) {
   cafFactory = new CafeteriaFactory();
   caf = cafFactory.getCafeteriaById(id);
-  
-  // presist cafeteria
-  this.savePref(PREF_CAFETERIA, id);
   
   this.setCafeteria(caf);  
 }
