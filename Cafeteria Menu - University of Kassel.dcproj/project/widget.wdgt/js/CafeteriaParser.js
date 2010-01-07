@@ -16,7 +16,7 @@ CafeteriaParser.prototype.parseResult = function(response) {
     foodTable = response.match(SEARCH_EXPRESSIONS.table);
 
     foodStr = foodTable[0].split(SEARCH_EXPRESSIONS.food);
-    menuStr.shift();
+    foodStr.shift();
     
     this.parseMenu(menuStr);
     this.parseWeek(response);

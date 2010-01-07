@@ -1,6 +1,11 @@
-function Cafeteria() {
+function Cafeteria(id) {
+  this.id = id;
   this.nextUpdate = null;
   this.parser = new CafeteriaParser(this);
+}
+
+Cafeteria.prototype.getId = function() {
+  return this.id;
 }
 
 

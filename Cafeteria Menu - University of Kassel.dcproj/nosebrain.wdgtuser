@@ -3,13 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>Breakpoints</key>
-	<dict/>
+	<dict>
+		<key>widget.wdgt/main.js:117</key>
+		<string></string>
+	</dict>
 	<key>CYLastWindowPosition</key>
 	<string>{706, 423}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
-		<integer>24</integer>
+		<integer>8</integer>
 		<key>SplitViewConfig</key>
 		<integer>3</integer>
 		<key>_indexOfCollapsedView</key>
@@ -88,8 +91,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {246, 453}}</string>
-			<string>{{0, 463}, {246, 330}}</string>
+			<string>{{0, 0}, {246, 166}}</string>
+			<string>{{0, 176}, {246, 617}}</string>
 		</array>
 	</dict>
 	<key>Objects view expanded items</key>
@@ -229,18 +232,24 @@
 				<integer>0</integer>
 				<integer>13</integer>
 			</array>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>15</integer>
+			</array>
 		</array>
 		<key>Objects view last selections</key>
 		<array>
 			<array>
 				<integer>0</integer>
-				<integer>1</integer>
-				<integer>2</integer>
+				<integer>0</integer>
+				<integer>15</integer>
+				<integer>3</integer>
 			</array>
 		</array>
 		<key>Visible StackLayout Views</key>
 		<array>
-			<string>back</string>
+			<string>front</string>
 		</array>
 	</dict>
 </dict>
