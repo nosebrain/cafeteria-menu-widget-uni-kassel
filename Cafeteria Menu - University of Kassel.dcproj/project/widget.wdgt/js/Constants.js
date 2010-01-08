@@ -8,7 +8,7 @@ var SEARCH_EXPRESSIONS = {
   table : /<table cellpadding="4" cellspacing="0" width="899">.*<\/table><img/,
   food : /<tr><td class="gelb" cellpadding="0" bgcolor="#fadc00" height="50" valign="middle" width="125px">/, 
   foodSplit : /<td class="weiss" height="50" valign="top" width="150px">/,
-  priceMenuSplit : /<\/tr><tr>/,
+  priceFoodSplit : /<\/tr><tr>/,
   priceSplit : /<td class="preis" height="10" valign="top" width="150px">/, 
   price : /[0-9],[0-9]{2}/g,
   week : /Speiseplan vom&nbsp;([0-9]{2}.[0-9]{2}). (.*|-|bis) ([0-9]{2}.[0-9]{2}.[0-9]{4})/
@@ -29,7 +29,8 @@ var ELEMENT_ID_INFO_SCROLL_AREA = "information";
 var ELEMENT_ID_POPUP_WEEKCHOOSER = "weekdayChooser";
 var ELEMENT_ID_POPUP_CAFETERIACHOOSER = "mensaChooser"; // TODO: change id
 var ELEMENT_ID_POPUP_PRICECHOOSER = "priceChooser";
-var ELEMENT_ID_MENSA = "mensa";
+var ELEMENT_ID_CAFETERIA = "cafeteria-name";
+var ELEMENT_ID_HOLIDAY = "holiday";
 
 // state messages
 var STATUS_MESSAGE_LOADING = "Loading data ...";

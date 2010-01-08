@@ -1,9 +1,5 @@
 var WIDGET = new CafeteriaWidget();
 
-function getMensaIndex() {
-  return getPref(PREF_MENSA);
-}
-
 //
 // Function: load()
 // Called by HTML body element's onload event when the widget is ready to start
@@ -13,7 +9,7 @@ function load() {
     
     WIDGET.init();
     
-    // => init()
+    // TODO: => init() ?
     replaceScrollAreaContent(ELEMENT_ID_INFO_SCROLL_AREA, INFO);
 }
 
@@ -22,7 +18,7 @@ function load() {
 // Called when the widget has been removed from the Dashboard
 //
 function remove() {
-    // Remove any preferences as needed    
+    // Remove any preferences as needed TODO: => WIDGET.remove();   
     removeAllPrefs();
 }
 
@@ -31,7 +27,7 @@ function remove() {
 // Called when the widget has been hidden
 //
 function hide() {
-    
+    // WUDGET.hide();
 }
 
 //
@@ -40,9 +36,6 @@ function hide() {
 //
 function show() {
     WIDGET.show();
-    
-    // ... and select the current day
-    autosetMenuAreaContent();
 }
 
 //
@@ -64,13 +57,12 @@ function showBack(event) {
         widget.prepareForTransition("ToBack");
     }
     
-    popupSetSelected(ELEMENT_ID_POPUP_MENSACHOOSER, getMensaIndex());
-    popupSetSelected(ELEMENT_ID_POPUP_PRICECHOOSER, getPref(PREF_PRICE));
+    popupSetSelected(ELEMENT_ID_POPUP_PRICECHOOSER, WIDGET.getPref(PREF_PRICE)); // TODO
         
     hideElement("front");
     showElement("back");
     
-    refreshScrollArea(ELEMENT_ID_INFO_SCROLL_AREA);
+    refreshScrollArea(ELEMENT_ID_INFO_SCROLL_AREA); // TODO: this is hack to get scroll bars to the scroll area
 
     if (window.widget) {
         setTimeout('widget.performTransition();', 0);
@@ -94,69 +86,28 @@ function showFront(event) {
     if (window.widget) {
         setTimeout('widget.performTransition();', 0);
         
-        autosetMenuAreaContent();
+        WIDGET.autoSetMenu();
     }
 }
-
-function setMenuAreaContent(day) {
-  hideElement("holiday");
-  // set popup
-  popupSetSelected(ELEMENT_ID_POPUP_WEEKCHOOSER, day);
-  
-  var dayO = MENSA.getDay(day);
-  
-  if (dayO.isHoliday()) {
-    hideElement("scrollArea");
-    showElement("holiday");
-  } else {
-    showElement("scrollArea");
-    var newContent = MENSA.getMenusByDay(day);
-    replaceScrollAreaContent(ELEMENT_ID_MENU_SCROLL_AREA, newContent);
-  }
-}
-
-
-function autosetMenuAreaContent() {
-  var now = new Date();
-  var day = now.getDay();
-  var hour = now.getHours();
-  
-  if (hour >= 14) {
-    day++;
-  }
-  
-  if (day > 5 || day < 0) {
-    if(toggle) {
-      toggleSize(null);
-    }
-    
-    return;
-  }
-
-  day--; // because 0 => Sunday
-  
-  setMenuAreaContent(day);
-}
-
 
 function switchWeekday(event) {
-  var day = popupGetSelected(ELEMENT_ID_POPUP_WEEKCHOOSER);
-  setMenuAreaContent(day);
+  day = popupGetSelected(ELEMENT_ID_POPUP_WEEKCHOOSER);
+  WIDGET.setDay(day);
 }
 
 
 function showMensaInBrowser(event) {
-  widget.openURL(MENSA.getURL());
+  widget.openURL(WIDGET.getCafeteria().getURL());
 }
 
-
+// TODO => CafeteriaWidget
 function setStatus(newState) {
   replaceInnerHTML("state", dashcode.getLocalizedString(newState));
 }
 
-
+// TODO => CafeteriaParserListener
 function setWeek(newWeek) {
-  replaceInnerHTML("week", newWeek);
+  replaceInnerHTML("week", newWeek); // TODO
 }
 
 
@@ -165,7 +116,7 @@ function manupdate(event) {
 }
 
 
-function chooserChangeMensa(event) {
+function chooserChangeMensa(event) { // TODO: function name
   cafId = popupGetSelected(ELEMENT_ID_POPUP_CAFETERIACHOOSER);
   WIDGET.setCafeteriaById(cafId);
 }
@@ -173,7 +124,7 @@ function chooserChangeMensa(event) {
 
 function chooserChangePrice(event) {
   priceId = popupGetSelected(ELEMENT_ID_POPUP_PRICECHOOSER);
-  WIDGET.savePref(PREF_PRICE, priceId);
+  WIDGET.savePref(PREF_PRICE, priceId); //TODO maybe change it
 }
 
 
