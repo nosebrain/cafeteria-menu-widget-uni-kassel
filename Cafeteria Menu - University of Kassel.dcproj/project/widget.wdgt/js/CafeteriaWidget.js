@@ -117,7 +117,5 @@ CafeteriaWidget.prototype.setDay = function(day) {
   
   this.day = day;
   
-  if (old != day) {
-    this.listener.dayChanged(old, day);
-  }
+  this.listener.dayChanged(old, day);
 }

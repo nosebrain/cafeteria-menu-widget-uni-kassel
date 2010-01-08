@@ -96,18 +96,14 @@ function switchWeekday(event) {
 }
 
 
-function showMensaInBrowser(event) {
+function openMenuInBrowser(event) {
   widget.openURL(WIDGET.getCafeteria().getURL());
 }
+
 
 // TODO => CafeteriaWidget
 function setStatus(newState) {
   replaceInnerHTML("state", dashcode.getLocalizedString(newState));
-}
-
-// TODO => CafeteriaParserListener
-function setWeek(newWeek) {
-  replaceInnerHTML("week", newWeek); // TODO
 }
 
 
