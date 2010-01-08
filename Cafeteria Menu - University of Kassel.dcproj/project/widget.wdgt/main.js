@@ -5,12 +5,9 @@ var WIDGET = new CafeteriaWidget();
 // Called by HTML body element's onload event when the widget is ready to start
 //
 function load() {
-    dashcode.setupParts();
-    
-    WIDGET.init();
-    
-    // TODO: => init() ?
-    replaceScrollAreaContent(ELEMENT_ID_INFO_SCROLL_AREA, INFO);
+  dashcode.setupParts();
+  
+  WIDGET.init();
 }
 
 //
@@ -18,8 +15,7 @@ function load() {
 // Called when the widget has been removed from the Dashboard
 //
 function remove() {
-    // Remove any preferences as needed TODO: => WIDGET.remove();   
-    removeAllPrefs();
+  WIDGET.remove(); 
 }
 
 //
@@ -27,7 +23,7 @@ function remove() {
 // Called when the widget has been hidden
 //
 function hide() {
-    // WUDGET.hide();
+  // WUDGET.hide();
 }
 
 //
@@ -35,7 +31,7 @@ function hide() {
 // Called when the widget has been shown
 //
 function show() {
-    WIDGET.show();
+  WIDGET.show();
 }
 
 //
@@ -43,7 +39,7 @@ function show() {
 // Called when the widget has been synchronized with .Mac
 //
 function sync() {
-    // TODO
+  // TODO
 }
 
 //
@@ -53,20 +49,20 @@ function sync() {
 // event: onClick event from the info button
 //
 function showBack(event) {
-    if (window.widget) {
-        widget.prepareForTransition("ToBack");
-    }
+  if (window.widget) {
+    widget.prepareForTransition("ToBack");
+  }
     
-    popupSetSelected(ELEMENT_ID_POPUP_PRICECHOOSER, WIDGET.getPref(PREF_PRICE)); // TODO
-        
-    hideElement("front");
-    showElement("back");
+  popupSetSelected(ELEMENT_ID_POPUP_PRICECHOOSER, WIDGET.getPref(PREF_PRICE)); // TODO
+  
+  hideElement("front");
+  showElement("back");
     
-    refreshScrollArea(ELEMENT_ID_INFO_SCROLL_AREA); // TODO: this is hack to get scroll bars to the scroll area
+  refreshScrollArea(ELEMENT_ID_INFO_SCROLL_AREA); // TODO: this is hack to get scroll bars to the scroll area
 
-    if (window.widget) {
-        setTimeout('widget.performTransition();', 0);
-    }
+  if (window.widget) {
+    setTimeout('widget.performTransition();', 0);
+  }
 }
 
 //
@@ -76,18 +72,18 @@ function showBack(event) {
 // event: onClick event from the done button
 //
 function showFront(event) {
-    if (window.widget) {
-        widget.prepareForTransition("ToFront");
-    }
+  if (window.widget) {
+    widget.prepareForTransition("ToFront");
+  }
     
-    showElement("front");
-    hideElement("back");
+  showElement("front");
+  hideElement("back");
 
-    if (window.widget) {
-        setTimeout('widget.performTransition();', 0);
+  if (window.widget) {
+    setTimeout('widget.performTransition();', 0);
         
-        WIDGET.autoSetMenu();
-    }
+    WIDGET.autoSetMenu();
+  }
 }
 
 function switchWeekday(event) {
@@ -112,7 +108,7 @@ function manupdate(event) {
 }
 
 
-function chooserChangeMensa(event) { // TODO: function name
+function changeCafeteria(event) {
   cafId = popupGetSelected(ELEMENT_ID_POPUP_CAFETERIACHOOSER);
   WIDGET.setCafeteriaById(cafId);
 }
@@ -130,8 +126,8 @@ function downloadLatestVersion(event) {
 
 
 if (window.widget) {
-    widget.onremove = remove;
-    widget.onhide = hide;
-    widget.onshow = show;
-    widget.onsync = sync;
+  widget.onremove = remove;
+  widget.onhide = hide;
+  widget.onshow = show;
+  widget.onsync = sync;
 }

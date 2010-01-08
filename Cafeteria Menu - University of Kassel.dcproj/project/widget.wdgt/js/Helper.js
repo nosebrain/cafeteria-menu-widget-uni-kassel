@@ -89,6 +89,29 @@ function refreshScrollArea(id) {
   }
 }
 
+
+function getScrollArea(id) {
+  scrollArea = $(id);
+  
+  if (!scrollArea) {
+    return null;
+  }
+  
+  return scrollArea.object;
+}
+
+
+function resizeScrollArea(id, width, height) {
+  scrollArea = $(id);
+  
+  if (scrollArea) {
+    scrollArea.style.height = height + "px";
+    scrollArea.style.width = width + "px";
+    
+    refreshScrollArea(id);
+  }
+}
+
 /**
  * popups
  */
@@ -106,13 +129,6 @@ function popupSetSelected(id, index) {
   if (popup) {
     popup.object.setSelectedIndex(index);
   }
-}
-
-// TODO
-function removeAllPrefs() {
-  for (i = 0; i < PREFS.length; i++) {
-    WIDGET.savePref(PREFS[i] , null);
-  } 
 }
 
 

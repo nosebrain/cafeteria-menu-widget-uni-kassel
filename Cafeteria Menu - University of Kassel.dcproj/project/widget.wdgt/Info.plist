@@ -63,6 +63,8 @@
 	</array>
 	<key>oldUpdateSite</key>
   <string>http://dev.nosebrain.de/cafeteria-widget/version/</string>
+  <key>oldDownloadUpdateSite</key>
+  <string>http://area51.nosebrain.de/mensa-widget/latest.zip</string>
   <key>wSparkleUpdateSite</key>
   <string>http://dev.nosebrain.de/cafeteria-widget/?feed=wSparkle&amp;cat=-3</string>
 </dict>
