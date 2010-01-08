@@ -5,13 +5,13 @@
  code generator otherwise the changes will be lost.
  */
 var dashcodePartSpecs = {
+    "cafeteria-name": { "text": "Mensa", "view": "DC.Text" },
     "done": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done", "view": "DC.View" },
     "holiday": { "text": "Enjoy your holiday", "view": "DC.Text" },
     "img": { "view": "DC.ImageLayout" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack", "view": "DC.View" },
     "information": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "spacing": 4, "view": "DC.View" },
     "manUpdate": { "creationFunction": "CreateButton", "leftImageWidth": 10, "onclick": "manupdate", "rightImageWidth": 10, "text": "Update data manually", "view": "DC.View" },
-    "mensa": { "text": "Mensa", "view": "DC.Text" },
     "mensaChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 10, "onchange": "chooserChangeMensa", "options": ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"], "rightImageWidth": 16, "view": "DC.View" },
     "mensaLabel": { "text": "Cafeteria", "view": "DC.Text" },
     "priceChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 10, "onchange": "chooserChangePrice", "options": [["Student", "0"], ["Staff", "1"], ["Guest", "2"]], "rightImageWidth": 16, "view": "DC.View" },

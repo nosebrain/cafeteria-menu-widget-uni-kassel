@@ -62,16 +62,6 @@ function replaceInnerHTML(id, newContent) {
   }
 }
 
-function setPref(key, value) {
-  var instanceKey = createInstancePreferenceKey(key)
-  widget.setPreferenceForKey(value, instanceKey);
-}
-
-
-function getPref(key) {
-  var instanceKey = createInstancePreferenceKey(key);
-  return widget.preferenceForKey(instanceKey);
-}
 
 /** 
  * scrollArea
@@ -89,6 +79,7 @@ function replaceScrollAreaContent(id, newContent) {
   
   refreshScrollArea(id);
 }
+
 
 function refreshScrollArea(id) {
   var scrollArea = $(id);
@@ -109,6 +100,7 @@ function popupGetSelected(id) {
   return null;
 }
 
+
 function popupSetSelected(id, index) {
   var popup = $(id);
   if (popup) {
@@ -116,20 +108,23 @@ function popupSetSelected(id, index) {
   }
 }
 
+// TODO
 function removeAllPrefs() {
   for (i = 0; i < PREFS.length; i++) {
-    setPref(PREFS[i] , null);
+    WIDGET.savePref(PREFS[i] , null);
   } 
 }
 
-function myParseInt(string) {
 
-  var count = 0;
+function myParseInt(string) {
+  // remove leading 0's
+  count = 0;
   while(string.substr(count,1) == "0") {
     count++;
   }
   
   string = string.substring(count, string.length);
   
+  // than call parse int
   return parseInt(string);
 }

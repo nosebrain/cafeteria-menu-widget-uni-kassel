@@ -16,27 +16,15 @@ CafeteriaWidget.prototype.init = function() {
   this.initCafeteriaChooser();
 }
 
-
-CafeteriaWidget.prototype.show = function() {
-  // check for food updates
-  if (this.cafeteria.updateNecessary()) {
-       this.cafeteria.update(true);
-  }
-  
-  // check for widget updates
-  this.updater.checkForUpdate(); // TODO: wSparkle
-}
-
-
 CafeteriaWidget.prototype.initPrefs = function() {
   for (var i = 0; i < PREFS.length; i++) {
-    if (!this.getPref(PREFS[i])) {
-      this.savePref(PREFS[i], 0); // init with 0
+    if (!this.getPref(PREFS[i])) { // no pref present …
+      this.savePref(PREFS[i], 0); // … init it with 0
     }
   }
 }
 
-
+// TODO: databinding?!?
 CafeteriaWidget.prototype.initCafeteriaChooser = function() {
   cafs = this.reader.get("Cafeterias");
   
@@ -46,6 +34,41 @@ CafeteriaWidget.prototype.initCafeteriaChooser = function() {
   }
   
   $(ELEMENT_ID_POPUP_CAFETERIACHOOSER).object.setOptions(cafeterias);
+}
+
+
+CafeteriaWidget.prototype.show = function() {
+  // check for food updates
+  if (this.cafeteria.updateNecessary()) {
+       this.cafeteria.update(true);
+  }
+  
+  // check for widget updates TODO: wSparkle
+  this.updater.checkForUpdate();
+  
+  // set menu
+  this.autoSetMenu();
+}
+
+
+CafeteriaWidget.prototype.autoSetMenu = function() {
+  now = new Date();
+  day = now.getDay();
+  hour = now.getHours();
+  
+  if (hour >= 14) {
+    day++;
+  }
+  
+  if (day > 5 || day < 0) { // FIXME: <= 0????
+    // TODO weekends
+    
+    return;
+  }
+
+  day--; // because 0 => Sunday
+  
+  this.setDay(day);
 }
 
 
@@ -66,6 +89,11 @@ CafeteriaWidget.prototype.getUpdater = function() {
 }
 
 
+CafeteriaWidget.prototype.getCafeteria = function(cafeteria) {
+  return this.cafeteria;
+}
+
+
 CafeteriaWidget.prototype.setCafeteria = function(cafeteria) {
   old = this.cafeteria;
 
@@ -82,4 +110,14 @@ CafeteriaWidget.prototype.setCafeteriaById = function(id) {
   caf = cafFactory.getCafeteriaById(id);
   
   this.setCafeteria(caf);  
+}
+
+CafeteriaWidget.prototype.setDay = function(day) {
+  old = this.day;
+  
+  this.day = day;
+  
+  if (old != day) {
+    this.listener.dayChanged(old, day);
+  }
 }

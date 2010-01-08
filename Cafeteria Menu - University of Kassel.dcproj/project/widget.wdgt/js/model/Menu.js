@@ -26,11 +26,3 @@ Menu.prototype.getDays = function() {
 Menu.prototype.getDay = function(day) {
   return this.days[day];
 }
-
-
-Menu.prototype.getFoodByDay = function(day) { 
-  if (day < 0 || day > 4) {
-    throw "IllegalSate getMenusByDay";
-  }
-  return this.days[day].to_s();
-}

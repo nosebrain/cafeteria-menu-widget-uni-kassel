@@ -18,13 +18,8 @@ CafeteriaParser.prototype.parseResult = function(response) {
     foodStr = foodTable[0].split(SEARCH_EXPRESSIONS.food);
     foodStr.shift();
     
-    this.parseMenu(menuStr);
+    this.parseMenu(foodStr);
     this.parseWeek(response);
-    
-    // TODO
-    /*if (autoUpdateContent) {
-      autosetMenuAreaContent();
-    }*/
     
     setStatus(""); // TODO
   } catch (e) {
@@ -33,38 +28,36 @@ CafeteriaParser.prototype.parseResult = function(response) {
   }
   
   // notify listener 
-  // this.notifyListeners(); // TODO
+  // this.listener.finshedParsing(result); // TODO
 }
 
-CafeteriaParser.prototype.parseMenu = function(menuSource) {
+CafeteriaParser.prototype.parseMenu = function(foodSource) {
   setStatus(STATUS_MESSAGE_MENU_PARSING); // TODO
   
   this.cafeteria.setMenu(new Menu());
   
-  for (var i = 0; i < menuStr.length; i++) {
-    priceFoodSplit = menuStr[i].split(SEARCH_EXPRESSIONS.priceMenuSplit);
+  for (var i = 0; i < foodSource.length; i++) {
+    priceFoodSplit = foodSource[i].split(SEARCH_EXPRESSIONS.priceFoodSplit);
   
     // get all food for category i
-    menus = priceFoodSplit[0].split(SEARCH_EXPRESSIONS.menusSplit);
-    menus.shift();
+    menu = priceFoodSplit[0].split(SEARCH_EXPRESSIONS.foodSplit);
+    menu.shift();
     
     // get all prices for each menu
-    prices = priceFoodSplit[1].split(SEARCH_EXPRESSIONS.priceFoodSplit);
+    prices = priceFoodSplit[1].split(SEARCH_EXPRESSIONS.priceSplit);
     prices.shift();
     
-    for (var j = 0; j < menus.length; j++) {
+    for (var j = 0; j < menu.length; j++) {
       // get description
-      clearMenu = menus[j].split(/<\/tr>/);
-      menus[j] = clearMenu[0];
+      clearMenu = menu[j].split(/<\/tr>/);
+      menu[j] = clearMenu[0];
             
-      description = removeHTMLCode(menus[j]);      
+      description = removeHTMLCode(menu[j]);      
       description = description.replace(/- /, " ");
       
       if (description != " " ) {
         food = new Food();
-        
         food.setDescription(description);
-        alert(description);
       
         // add it to day
         this.cafeteria.getMenu().getDay(j).addToMenus(food);
@@ -112,7 +105,7 @@ CafeteriaParser.prototype.parseWeek = function(weekSource) {
   }
   
   // save it
-  setPref(PREF_UPDATE, date.getTime()); 
+  WIDGET.savePref(PREF_UPDATE, date.getTime()); 
   
   this.cafeteria.getMenu().setWeek(actWeek[1] + "-" + actWeek[3]);
 }

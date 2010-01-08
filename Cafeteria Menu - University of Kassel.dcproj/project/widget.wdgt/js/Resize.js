@@ -25,8 +25,8 @@ function mouseMove(event) {
     
     var newHeight = 154 + (y - 285);
     
-    $("scrollArea").style.height = newHeight + "px";
-    refreshScrollArea("scrollArea");
+    $(ELEMENT_ID_MENU_SCROLL_AREA).style.height = newHeight + "px";
+    refreshScrollArea(ELEMENT_ID_MENU_SCROLL_AREA);
  
     event.stopPropagation();
     event.preventDefault();

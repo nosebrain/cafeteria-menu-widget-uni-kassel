@@ -15,7 +15,7 @@ Day.prototype.isHoliday = function() {
   return this.holiday;
 }
 
-Day.prototype.to_s = function() {
+Day.prototype.getMenuAsString = function() {
   var result = "<table>";
   
   for (var i = 0; i < this.menus.length; i++) {

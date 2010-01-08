@@ -12,7 +12,7 @@ Cafeteria.prototype.getId = function() {
 Cafeteria.prototype.getNextUpdate = function() {
   if (!this.nextUpdate) {
     // load from pref
-    updateTime = getPref(PREF_UPDATE);
+    updateTime = WIDGET.getPref(PREF_UPDATE); // TODO: ??!?
     if (updateTime) {
       this.nextUpdate = new Date(updateTime);
     }
@@ -75,6 +75,6 @@ Cafeteria.prototype.updateNecessary = function() {
 }
 
 
-Cafeteria.prototype.update = function(updateContent) {
+Cafeteria.prototype.update = function() {
   this.parser.parse();
 }
