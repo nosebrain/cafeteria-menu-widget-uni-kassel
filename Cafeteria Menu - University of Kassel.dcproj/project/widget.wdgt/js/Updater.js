@@ -1,6 +1,6 @@
 function Updater() {
   reader = new InfoPlistReader();
-
+  
   this.updateURL = reader.get("oldUpdateSite");
   this.currentVersion = reader.get("CFBundleShortVersionString");
 }

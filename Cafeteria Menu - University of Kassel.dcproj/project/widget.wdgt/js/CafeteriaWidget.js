@@ -2,7 +2,7 @@ function CafeteriaWidget() {
   this.updater = new Updater();
   this.cafeteria = null;
   
-  this.reader = new InfoPlistReader(); // TODO
+  this.reader = new InfoPlistReader();
   this.listener = new CafeteriaWidgetListener(this);
 }
 
@@ -50,6 +50,13 @@ CafeteriaWidget.prototype.show = function() {
   this.autoSetMenu();
 }
 
+CafeteriaWidget.prototype.remove = function() {
+  // delete prefs
+  for (var i = 0; i < PREFS.length; i++) {
+    this.savePref(PREFS[i], null);
+  }
+}
+
 
 CafeteriaWidget.prototype.autoSetMenu = function() {
   now = new Date();
@@ -73,19 +80,40 @@ CafeteriaWidget.prototype.autoSetMenu = function() {
 
 
 CafeteriaWidget.prototype.savePref = function(key, value) {
-  instanceKey = createInstancePreferenceKey(key)
-  widget.setPreferenceForKey(value, instanceKey);
+  this.savePref(key, value, false);
+}
+
+
+CafeteriaWidget.prototype.savePref = function(key, value, system) {
+  if (!system) {
+    key = createInstancePreferenceKey(key)
+  }
+  
+  widget.setPreferenceForKey(value, key);
 }
 
 
 CafeteriaWidget.prototype.getPref = function(key) {
-  instanceKey = createInstancePreferenceKey(key);
-  return widget.preferenceForKey(instanceKey);
+  return this.getPref(key, false);
+}
+
+
+CafeteriaWidget.prototype.getPref = function(key, system) {
+  if (!system) {
+    key = createInstancePreferenceKey(key);
+  }
+  
+  return widget.preferenceForKey(key);
+}
+
+
+CafeteriaWidget.prototype.getReader = function() {
+  return this.reader;
 }
 
 
 CafeteriaWidget.prototype.getUpdater = function() {
-  return this.updater();
+  return this.updater;
 }
 
 
@@ -111,6 +139,7 @@ CafeteriaWidget.prototype.setCafeteriaById = function(id) {
   
   this.setCafeteria(caf);  
 }
+
 
 CafeteriaWidget.prototype.setDay = function(day) {
   old = this.day;

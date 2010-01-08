@@ -29,6 +29,8 @@
     <script type="text/javascript" src="js/model/CafeteriaFactory.js" charset="utf-8"></script>
     <!-- main files -->
     <script type="text/javascript" src="js/CafeteriaWidget.js" charset="utf-8"></script>
+    
+    <!--<script type="text/javascript" src="js/Resize.js" charset="utf-8"></script>-->
     <script type="text/javascript" src="main.js" charset="utf-8"></script>
 </head>
 <body onload="load();" apple-part="com.apple.Dashcode.part.StackLayout">
@@ -53,7 +55,7 @@
             <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="title" apple-group="text" apple-style="part-height-dependent: true;"></div>
             <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="cafeteria-name" apple-group="text" apple-default-image-visibility="hidden" onclick="openMenuInBrowser(event)" apple-style="part-width-dependent: true;"></div>
             <img src="Images/update.png" id="updateImg" style="display: none; " onclick="downloadLatestVersion(event)" apple-part="com.apple.Dashcode.part.image">
-            <div apple-part="com.apple.Dashcode.part.imageLayout" id="img" apple-group="image"><img class="apple-hidden" src="Images/sw-logo.gif" id="inner_image" apple-group="image"></div>
+            <div apple-part="com.apple.Dashcode.part.imageLayout" id="img" apple-group="image" onclick="callapse(event)"><img class="apple-hidden" src="Images/sw-logo.gif" id="inner_image" apple-group="image"></div>
         </div>
         <img id="resize" src="/System/Library/WidgetResources/resize.png" onmousedown="mouseDown(event);">
     </div>

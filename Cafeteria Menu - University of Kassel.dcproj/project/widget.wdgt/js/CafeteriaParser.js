@@ -22,6 +22,8 @@ CafeteriaParser.prototype.parseResult = function(response) {
     this.parseMenu(foodStr);
     this.parseWeek(response);
     
+    this.parseInfo(response);
+    
     // notify listener 
     this.listener.finishedParsing(this.cafeteria);
   } catch (e) {
@@ -100,6 +102,16 @@ CafeteriaParser.prototype.parseWeek = function(weekSource) {
   WIDGET.savePref(PREF_UPDATE, date.getTime()); 
   
   this.cafeteria.getMenu().setWeek(actWeek[1] + "-" + actWeek[3]);
+}
+
+CafeteriaParser.prototype.parseInfo = function(infoSource) {
+  info = infoSource.match(SEARCH_EXPRESSIONS.info);
+  
+  info = info[1].replace(/, /g, "<br />");
+  info = info.replace(/\. /g, "<br />");
+  info = info.replace(/Wir verwenden /, "");
+  
+  this.listener.gotInformation(info);
 }
 
 
