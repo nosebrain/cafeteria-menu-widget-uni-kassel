@@ -16,7 +16,6 @@ var SEARCH_EXPRESSIONS = {
 
 // pref keys
 var PREF_CAFETERIA = "mensa";
-var PREF_MENSA = "mensa";
 var PREF_UPDATE = "lastUpdated";
 var PREF_PRICE = "priceType";
 
@@ -27,18 +26,19 @@ var PREFS = new Array(PREF_CAFETERIA, PREF_UPDATE, PREF_PRICE);
 var ELEMENT_ID_MENU_SCROLL_AREA = "scrollArea";
 var ELEMENT_ID_INFO_SCROLL_AREA = "information";
 var ELEMENT_ID_POPUP_WEEKCHOOSER = "weekdayChooser";
-var ELEMENT_ID_POPUP_CAFETERIACHOOSER = "mensaChooser"; // TODO: change id
+var ELEMENT_ID_POPUP_CAFETERIACHOOSER = "cafeteriaChooser";
 var ELEMENT_ID_POPUP_PRICECHOOSER = "priceChooser";
 var ELEMENT_ID_CAFETERIA = "cafeteria-name";
 var ELEMENT_ID_HOLIDAY = "holiday";
+var ELEMENT_ID_WEEK = "week";
+
+var UPDATE_DIV_ID = "updateImg"; // TODO
 
 // state messages
-var STATUS_MESSAGE_LOADING = "Loading data ...";
-var STATUS_MESSAGE_PARSING = "Parsing data ...";
-var STATUS_MESSAGE_MENU_PARSING = "Parsing menus ...";
-var STATUS_MESSAGE_PARSING_WEEK = "Parsing week ...";
-var STATUS_MESSAGE_READY = "Ready!";
+var STATE_LOADING = "Loading data ...";
+var STATE_PARSING = "Parsing data ...";
+var STATE_OK = "";
+var STATE_FAILED = "Error while parsing informations";
 
 // error messages
-var ERROR_MESSAGE_PARSING = "Error while parsing informations";
 var ERROR_MESSAGE_404 = "source url has changed!";

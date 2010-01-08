@@ -14,7 +14,7 @@ Updater.prototype.checkForUpdate = function() {
       // "OK"
       if (this.status == 200) {
         if (this.responseText != self.currentVersion) {
-          showElement("updateImg");
+          showElement(UPDATE_DIV_ID);
         } else {
           hideElement("updateImg");
         }

@@ -6,13 +6,13 @@
  */
 var dashcodePartSpecs = {
     "cafeteria-name": { "text": "Mensa", "view": "DC.Text" },
+    "cafeteriaChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 10, "onchange": "chooserChangeMensa", "options": ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"], "rightImageWidth": 16, "view": "DC.View" },
     "done": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done", "view": "DC.View" },
     "holiday": { "text": "Enjoy your holiday", "view": "DC.Text" },
     "img": { "view": "DC.ImageLayout" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack", "view": "DC.View" },
     "information": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "spacing": 4, "view": "DC.View" },
     "manUpdate": { "creationFunction": "CreateButton", "leftImageWidth": 10, "onclick": "manupdate", "rightImageWidth": 10, "text": "Update data manually", "view": "DC.View" },
-    "mensaChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 10, "onchange": "chooserChangeMensa", "options": ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"], "rightImageWidth": 16, "view": "DC.View" },
     "mensaLabel": { "text": "Cafeteria", "view": "DC.Text" },
     "priceChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 10, "onchange": "chooserChangePrice", "options": [["Student", "0"], ["Staff", "1"], ["Guest", "2"]], "rightImageWidth": 16, "view": "DC.View" },
     "priceLabel": { "text": "Show Price For", "view": "DC.Text" },
@@ -22,6 +22,7 @@ var dashcodePartSpecs = {
     "week": { "text": "01.01-31.12.2009", "view": "DC.Text" },
     "weekdayChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 3, "onchange": "switchWeekday", "options": [["Monday", "0"], ["Tuesday", "1"], ["Wednesday", "2"], ["Thursday", "3"], ["Friday", "4"]], "rightImageWidth": 16, "view": "DC.View" }
 };
+
 
 
 

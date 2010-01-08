@@ -17,7 +17,7 @@ var HTMLCodes = new Array(
 
 function removeHTMLCode(source) {
   for (i = 0; i < HTMLCodes.length; i++) {
-    var htmlCodeReplacer = HTMLCodes[i];
+    htmlCodeReplacer = HTMLCodes[i];
     source = source.replace(htmlCodeReplacer.htmlCode, htmlCodeReplacer.replace);
   }
   
@@ -26,7 +26,7 @@ function removeHTMLCode(source) {
 
 
 function showElement(id) {
-  var element = $(id);
+  element = $(id);
   
   if (element) {
     element.style.display = "block";
@@ -34,7 +34,7 @@ function showElement(id) {
 }
 
 function hideElement(id) {
-  var element = $(id);
+  element = $(id);
   
   if (element) {
     element.style.display = "none";
@@ -42,7 +42,7 @@ function hideElement(id) {
 }
 
 function setOpacity(id, value) {
-  var element = $(id);
+  element = $(id);
   
   if (element) {
     element.style.opacity = value;
@@ -55,7 +55,7 @@ function $(id) {
 
 
 function replaceInnerHTML(id, newContent) {
-  var element = $(id);
+  element = $(id);
   
   if (element) {
     element.innerHTML = newContent;
@@ -67,14 +67,14 @@ function replaceInnerHTML(id, newContent) {
  * scrollArea
  */
 function replaceScrollAreaContent(id, newContent) {
-  var scrollArea = $(id);
+  scrollArea = $(id);
   
   if (scrollArea == null) {
     // no scrollArea => nothing to do
     return;
   }
   
-  var content = scrollArea.object.content;
+  content = scrollArea.object.content;
   content.innerHTML = newContent;
   
   refreshScrollArea(id);
@@ -82,7 +82,7 @@ function replaceScrollAreaContent(id, newContent) {
 
 
 function refreshScrollArea(id) {
-  var scrollArea = $(id);
+  scrollArea = $(id);
   
   if (scrollArea) {
     scrollArea.object.refresh();
@@ -93,7 +93,7 @@ function refreshScrollArea(id) {
  * popups
  */
 function popupGetSelected(id) {
-  var popup = $(id);
+  popup = $(id);
   if (popup) {
     return popup.object.getSelectedIndex();
   }
@@ -102,7 +102,7 @@ function popupGetSelected(id) {
 
 
 function popupSetSelected(id, index) {
-  var popup = $(id);
+  popup = $(id);
   if (popup) {
     popup.object.setSelectedIndex(index);
   }

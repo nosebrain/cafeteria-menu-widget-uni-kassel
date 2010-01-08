@@ -1,18 +1,19 @@
 function CafeteriaParser(cafeteria) {
   this.cafeteria = cafeteria;
   this.request = null;
+  
+  this.listener = new CafeteriaParserListener();
 }
 
-CafeteriaParser.prototype.parseResult = function(response) {  
-  // clear new lines and 
-  lines = response.split("\n");
-  response = lines.join(" ");
-  lines = response.split("\r");
-  response = lines.join(" ");
-  
-  setStatus(STATUS_MESSAGE_PARSING); // TODO
-  
+CafeteriaParser.prototype.parseResult = function(response) { 
   try {
+    this.listener.startedParsing(response);
+    // clear new lines and 
+    lines = response.split("\n");
+    response = lines.join(" ");
+    lines = response.split("\r");
+    response = lines.join(" ");
+  
     foodTable = response.match(SEARCH_EXPRESSIONS.table);
 
     foodStr = foodTable[0].split(SEARCH_EXPRESSIONS.food);
@@ -21,19 +22,14 @@ CafeteriaParser.prototype.parseResult = function(response) {
     this.parseMenu(foodStr);
     this.parseWeek(response);
     
-    setStatus(""); // TODO
+    // notify listener 
+    this.listener.finishedParsing(this.cafeteria);
   } catch (e) {
-    alert("exception while parsing site: " + e);
-    setStatus(ERROR_MESSAGE_PARSING); // TODO
+    this.listener.parsingFailed(e);
   }
-  
-  // notify listener 
-  // this.listener.finshedParsing(result); // TODO
 }
 
 CafeteriaParser.prototype.parseMenu = function(foodSource) {
-  setStatus(STATUS_MESSAGE_MENU_PARSING); // TODO
-  
   this.cafeteria.setMenu(new Menu());
   
   for (var i = 0; i < foodSource.length; i++) {
@@ -59,9 +55,6 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
         food = new Food();
         food.setDescription(description);
       
-        // add it to day
-        this.cafeteria.getMenu().getDay(j).addToMenus(food);
-        
         // get price
         price = prices[j].match(SEARCH_EXPRESSIONS.price);
         
@@ -70,18 +63,17 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
             food.setPrice(x, price[x]);
           }
         } else {
-          alert("price not found");
+          alert("price not found for " + food.getDescription());
         }
+        
+        // add it to day
+        this.cafeteria.getMenu().getDay(j).addToMenus(food);
       }
     }
   }
-  
-  setStatus(STATUS_MESSAGE_READY);
 }
 
 CafeteriaParser.prototype.parseWeek = function(weekSource) {
-  setStatus(STATUS_MESSAGE_PARSING_WEEK); // TODO
-  
   actWeek = weekSource.match(SEARCH_EXPRESSIONS.week);
   
   dateStr = actWeek[3].split(/\./);
@@ -101,7 +93,7 @@ CafeteriaParser.prototype.parseWeek = function(weekSource) {
   nextUpdate = this.cafeteria.getNextUpdate();	
   
   if (nextUpdate) {
-    
+    // TODO
   }
   
   // save it
@@ -110,9 +102,6 @@ CafeteriaParser.prototype.parseWeek = function(weekSource) {
   this.cafeteria.getMenu().setWeek(actWeek[1] + "-" + actWeek[3]);
 }
 
-CafeteriaParser.prototype.logError = function(errorCode) {
-  alert(errorCode);
-}
 
 CafeteriaParser.prototype.parse = function() {
   // stop other request
@@ -135,4 +124,6 @@ CafeteriaParser.prototype.parse = function() {
   
   this.request.open("GET", this.cafeteria.getURL(), true);
   this.request.send(null);
+  
+  this.listener.startedDownload();
 }
