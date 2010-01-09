@@ -1,10 +1,10 @@
 function Day() {
-  this.menus = new Array();
+  this.food = new Array();
   this.holiday = false;
 }
 
-Day.prototype.addToMenus = function(menu) {
-  this.menus.push(menu);
+Day.prototype.addToFood = function(food) {
+  this.food.push(food);
 }
 
 Day.prototype.setHoliday = function(holiday) {
@@ -16,15 +16,15 @@ Day.prototype.isHoliday = function() {
 }
 
 Day.prototype.getMenuAsString = function() {
-  var result = "<table>";
+  result = "<table>";
   
-  for (var i = 0; i < this.menus.length; i++) {
+  for (var i = 0; i < this.food.length; i++) {
     result += "<tr";
     if (i % 2 == 1) {
       result += " class='alt'";
     } 
     result += ">";
-    result += this.menus[i].to_s();
+    result += this.food[i].to_s();
     result += "</tr>";
   }
   

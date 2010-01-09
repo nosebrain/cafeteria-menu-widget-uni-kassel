@@ -3,9 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>Breakpoints</key>
-	<dict/>
+	<dict>
+		<key>/System/Library/WidgetResources/AppleClasses/AppleScrollArea.js:158</key>
+		<string>-refresh</string>
+		<key>widget.wdgt/js/CafeteriaParser.js:84</key>
+		<string>-parseWeek</string>
+		<key>widget.wdgt/js/listener/CafeteriaWidgetListener.js:17</key>
+		<string>cafeteriaChanged</string>
+	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{1203, 385}</string>
+	<string>{854, 256}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -16,8 +23,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1130, 284}}</string>
-			<string>{{0, 294}, {1130, 499}}</string>
+			<string>{{0, 0}, {1130, 547}}</string>
+			<string>{{0, 557}, {1130, 236}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -65,7 +72,7 @@
 	<key>Design time language</key>
 	<string>en.lproj</string>
 	<key>EvaluatorFrame</key>
-	<string>1010 92 479 226 0 0 1920 1178 </string>
+	<string>674 63 479 226 0 0 1440 878 </string>
 	<key>MainSplitViewGeometry</key>
 	<dict>
 		<key>_indexOfCollapsedView</key>
@@ -77,7 +84,7 @@
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>362 288 1375 835 0 0 1920 1178 </string>
+	<string>63 43 1375 835 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -236,7 +243,12 @@
 			</array>
 		</array>
 		<key>Objects view last selections</key>
-		<array/>
+		<array>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+		</array>
 		<key>Visible StackLayout Views</key>
 		<array>
 			<string>front</string>

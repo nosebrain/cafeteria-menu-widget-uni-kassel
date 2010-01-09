@@ -19,10 +19,10 @@ Food.prototype.setDescription = function(description) {
 }
 
 Food.prototype.printPrice = function() {
-  var priceId = WIDGET.getPref(PREF_PRICE);
+  priceId = WIDGET.getPref(PREF_PRICE);
 
-  var price = this.getPrice(priceId);
-  var print = "<td class = \"price\">";
+  price = this.getPrice(priceId);
+  print = "<td class = \"price\">";
   
   if (price) {
     print += price;
@@ -33,5 +33,5 @@ Food.prototype.printPrice = function() {
 }
 
 Food.prototype.to_s = function() {
-  return "<td>" + this.description + "</td>" + this.printPrice(); // + this.category.to_s();
+  return "<td>" + this.description + "</td>" + this.printPrice();
 }

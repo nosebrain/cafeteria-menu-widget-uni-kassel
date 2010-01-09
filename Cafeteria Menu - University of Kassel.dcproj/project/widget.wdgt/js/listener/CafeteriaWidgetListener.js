@@ -4,13 +4,13 @@ function CafeteriaWidgetListener(widget) {
 
 
 CafeteriaWidgetListener.prototype.cafeteriaChanged = function(oldCaf, newCaf) {
-  // update data
   if (newCaf) {
+    // update data
     newCaf.update();
     
     id = newCaf.getId();
   
-    // presist cafeteria
+    // presist selected cafeteria id
     this.widget.savePref(PREF_CAFETERIA, id);
   
     // change selected item
