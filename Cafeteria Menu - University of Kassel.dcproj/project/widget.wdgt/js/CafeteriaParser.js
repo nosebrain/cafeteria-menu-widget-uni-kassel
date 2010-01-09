@@ -69,7 +69,7 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
         }
         
         // add it to day
-        this.cafeteria.getMenu().getDay(j).addToMenus(food);
+        this.cafeteria.getMenu().getDay(j).addToFood(food);
       }
     }
   }
@@ -79,6 +79,7 @@ CafeteriaParser.prototype.parseWeek = function(weekSource) {
   actWeek = weekSource.match(SEARCH_EXPRESSIONS.week);
   
   dateStr = actWeek[3].split(/\./);
+  dateStart = actWeek[2].split(/\./);
   
   year = dateStr[2];
   month = dateStr[1] - 1;
@@ -99,7 +100,7 @@ CafeteriaParser.prototype.parseWeek = function(weekSource) {
   }
   
   // save it
-  WIDGET.savePref(PREF_UPDATE, date.getTime()); 
+  WIDGET.savePref(PREF_UPDATE, date.getTime());
   
   this.cafeteria.getMenu().setWeek(actWeek[1] + "-" + actWeek[3]);
 }
@@ -108,8 +109,7 @@ CafeteriaParser.prototype.parseInfo = function(infoSource) {
   info = infoSource.match(SEARCH_EXPRESSIONS.info);
   
   info = info[1].replace(/, /g, "<br />");
-  info = info.replace(/\. /g, "<br />");
-  info = info.replace(/Wir verwenden /, "");
+  info = info.replace(/Wir verwenden /, "<br /><br />");
   
   this.listener.gotInformation(info);
 }

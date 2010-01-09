@@ -52,8 +52,10 @@ function showBack(event) {
   if (window.widget) {
     widget.prepareForTransition("ToBack");
   }
-    
-  popupSetSelected(ELEMENT_ID_POPUP_PRICECHOOSER, WIDGET.getPref(PREF_PRICE)); // TODO
+  
+  // TODO: 
+  popupSetSelected(ELEMENT_ID_POPUP_CAFETERIACHOOSER, WIDGET.getPref(PREF_CAFETERIA));
+  popupSetSelected(ELEMENT_ID_POPUP_PRICECHOOSER, WIDGET.getPref(PREF_PRICE));
   
   hideElement("front");
   showElement("back");

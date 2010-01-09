@@ -40,7 +40,7 @@ CafeteriaWidget.prototype.initCafeteriaChooser = function() {
 CafeteriaWidget.prototype.show = function() {
   // check for food updates
   if (this.cafeteria.updateNecessary()) {
-       this.cafeteria.update(true);
+    this.cafeteria.update(true);
   }
   
   // check for widget updates TODO: wSparkle
@@ -67,11 +67,8 @@ CafeteriaWidget.prototype.autoSetMenu = function() {
     day++;
   }
   
-  if (day > 5 || day < 0) { // FIXME: <= 0????
-    // TODO weekends
-    
-    return;
-  }
+  
+  day = Math.min(day, 5);
 
   day--; // because 0 => Sunday
   
@@ -127,9 +124,7 @@ CafeteriaWidget.prototype.setCafeteria = function(cafeteria) {
 
   this.cafeteria = cafeteria;
   
-  if (old != cafeteria) {
-    this.listener.cafeteriaChanged(old, cafeteria);
-  }
+  this.listener.cafeteriaChanged(old, cafeteria); // TODO: maybe fire propertyChange only on change?
 }
 
 
