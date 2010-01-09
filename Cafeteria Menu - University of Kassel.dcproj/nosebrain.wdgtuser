@@ -23,8 +23,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1130, 547}}</string>
-			<string>{{0, 557}, {1130, 236}}</string>
+			<string>{{0, 0}, {1130, 413}}</string>
+			<string>{{0, 423}, {1130, 370}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -247,6 +247,7 @@
 			<array>
 				<integer>0</integer>
 				<integer>0</integer>
+				<integer>7</integer>
 			</array>
 		</array>
 		<key>Visible StackLayout Views</key>

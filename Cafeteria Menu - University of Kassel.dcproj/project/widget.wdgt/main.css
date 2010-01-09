@@ -16,14 +16,6 @@ tr {
     color: rgb(125, 112, 2);
 }
 
-#bgContent {
-    position: absolute;
-    left: 23px;
-    top: 23px;
-    right: 23px;
-    bottom: 23px;
-    background-color: rgb(255, 232, 0);
-}
 
 #info {
     position: absolute;
@@ -63,127 +55,6 @@ tr {
     margin-left: auto;
     top: 240px;
     margin-top: auto;
-}
-
-#bgTopLeftCorner {
-    position: absolute;
-    background-image: url(Images/bg/topLeftCorner.png);
-    background-repeat: no-repeat;
-    background-attachment: initial;
-    -khtml-background-clip: initial;
-    -khtml-background-origin: initial;
-    background-color: initial;
-    left: 0px;
-    top: 0px;
-    width: 23px;
-    height: 23px;
-    background-position: 0% 0%;
-}
-
-#bgTopRightCorner {
-    position: absolute;
-    background-image: url(Images/bg/topRightCorner.png);
-    background-repeat: no-repeat;
-    background-attachment: initial;
-    -khtml-background-clip: initial;
-    -khtml-background-origin: initial;
-    background-color: initial;
-    right: 0px;
-    top: 0px;
-    width: 23px;
-    height: 23px;
-    background-position: 0% 0%;
-}
-
-#bgBottomLeftCorner {
-    position: absolute;
-    background-image: url(Images/bg/bottomLeftCorner.png);
-    background-repeat: no-repeat;
-    background-attachment: initial;
-    -khtml-background-clip: initial;
-    -khtml-background-origin: initial;
-    background-color: initial;
-    left: 0px;
-    bottom: 0px;
-    width: 23px;
-    height: 23px;
-    background-position: 0% 0%;
-}
-
-#bgBottomRightCorner {
-    position: absolute;
-    background-image: url(Images/bg/bottomRightCorner.png);
-    background-repeat: no-repeat;
-    background-attachment: initial;
-    -khtml-background-clip: initial;
-    -khtml-background-origin: initial;
-    background-color: initial;
-    right: 0px;
-    bottom: 0px;
-    width: 23px;
-    height: 23px;
-    background-position: 0% 0%;
-}
-
-#bgTop {
-    background-image: url(Images/bg/top.png);
-    background-repeat: repeat-x;
-    background-attachment: initial;
-    -khtml-background-clip: initial;
-    -khtml-background-origin: initial;
-    background-color: initial;
-    position: absolute;
-    top: 0px;
-    left: 23px;
-    right: 23px;
-    height: 23px;
-    background-position: 0% 0%;
-}
-
-#bgRight {
-    background-image: url(Images/bg/right.png);
-    background-repeat: repeat-y;
-    background-attachment: initial;
-    -khtml-background-clip: initial;
-    -khtml-background-origin: initial;
-    background-color: initial;
-    position: absolute;
-    top: 23px;
-    right: 0px;
-    width: 23px;
-    bottom: 23px;
-    height: auto;
-    background-position: 100% 0%;
-}
-
-#bgBottom {
-    background-image: url(Images/bg/bottom.png);
-    background-repeat: repeat-x;
-    background-attachment: initial;
-    -khtml-background-clip: initial;
-    -khtml-background-origin: initial;
-    background-color: initial;
-    position: absolute;
-    right: 23px;
-    bottom: 0px;
-    left: 23px;
-    height: 23px;
-    background-position: 0% 0%;
-}
-
-#bgLeft {
-    background-image: url(Images/bg/left.png);
-    background-repeat: repeat-y;
-    background-attachment: initial;
-    -khtml-background-clip: initial;
-    -khtml-background-origin: initial;
-    background-color: initial;
-    position: absolute;
-    top: 23px;
-    bottom: 23px;
-    left: 0px;
-    width: 23px;
-    background-position: 0% 0%;
 }
 
 #title {
@@ -423,7 +294,7 @@ tr {
     top: 10px;
     height: 39px;
     width: 39px;
-    left: 187px;
+    left: 170px;
 }
 
 #inner_image {
