@@ -124,7 +124,7 @@ function changePrice(event) {
 
 
 function downloadLatestVersion(event) {
-  widget.openURL(DOWNLOAD_URL); // TODO: 
+  widget.openURL(WIDGET.getUpdater().getDownloadURL());
 }
 
 

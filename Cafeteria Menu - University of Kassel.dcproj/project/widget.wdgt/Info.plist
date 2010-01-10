@@ -13,20 +13,10 @@
 	<key>CFBundleName</key>
 	<string>Versuch</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.1.5</string>
+	<string>2.0.2 alpha1</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.1.5</string>
-	<key>CloseBoxInsetX</key>
-	<integer>15</integer>
-	<key>CloseBoxInsetY</key>
-	<integer>15</integer>
-	<key>Height</key>
-	<integer>290</integer>
-	<key>MainHTML</key>
-	<string>main.html</string>
-	<key>Width</key>
-	<integer>262</integer>
-  <key>CafeteriaBaseAddress</key>
+	<string>2.0.2 alpha1</string>
+	<key>CafeteriaBaseAddress</key>
 	<string>http://www.studentenwerk-kassel.de/</string>
 	<key>Cafeterias</key>
 	<array>
@@ -61,11 +51,21 @@
 			<string>Witzenhausen</string>
 		</dict>
 	</array>
+	<key>CloseBoxInsetX</key>
+	<integer>15</integer>
+	<key>CloseBoxInsetY</key>
+	<integer>15</integer>
+	<key>Height</key>
+	<integer>290</integer>
+	<key>MainHTML</key>
+	<string>main.html</string>
+	<key>Width</key>
+	<integer>262</integer>
+	<key>oldDownloadUpdateSite</key>
+	<string>http://dev.nosebrain.de/cafeteria-widget/download/latest.zip</string>
 	<key>oldUpdateSite</key>
-  <string>http://dev.nosebrain.de/cafeteria-widget/version/</string>
-  <key>oldDownloadUpdateSite</key>
-  <string>http://area51.nosebrain.de/mensa-widget/latest.zip</string>
-  <key>wSparkleUpdateSite</key>
-  <string>http://dev.nosebrain.de/cafeteria-widget/?feed=wSparkle&amp;cat=-3</string>
+	<string>http://dev.nosebrain.de/cafeteria-widget/version/</string>
+	<key>wSparkleUpdateSite</key>
+	<string>http://dev.nosebrain.de/cafeteria-widget/?feed=wSparkle&amp;cat=-3</string>
 </dict>
 </plist>

@@ -3,6 +3,7 @@ function Updater() {
   
   this.updateURL = reader.get("oldUpdateSite");
   this.currentVersion = reader.get("CFBundleShortVersionString");
+  this.downloadURL = reader.get("oldDownloadUpdateSite");
 }
 
 Updater.prototype.checkForUpdate = function() {
@@ -24,4 +25,8 @@ Updater.prototype.checkForUpdate = function() {
     
   request.open("GET", this.updateURL, true);
   request.send(null);
+}
+
+Updater.prototype.getDownloadURL = function() {
+  return this.downloadURL;
 }
