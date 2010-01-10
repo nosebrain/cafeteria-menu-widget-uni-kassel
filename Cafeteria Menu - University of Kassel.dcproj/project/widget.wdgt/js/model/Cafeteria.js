@@ -26,7 +26,7 @@ Cafeteria.prototype.setNextUpdate = function(date) {
   this.nextUpdate = date;
   
   // save it
-  setPref(PREF_UPDATE, date.getTime());
+  PREF.savePref(PREF_UPDATE, date.getTime());
 }
 
 
