@@ -8,20 +8,10 @@ function CafeteriaWidget() {
 
 
 CafeteriaWidget.prototype.init = function() {
-  this.initPrefs();
-
   // init cafeteria
-  this.setCafeteriaById(this.getPref(PREF_CAFETERIA));
+  this.setCafeteriaById(PREF.getPref(PREF_CAFETERIA));
   
   this.initCafeteriaChooser();
-}
-
-CafeteriaWidget.prototype.initPrefs = function() {
-  for (var i = 0; i < PREFS.length; i++) {
-    if (!this.getPref(PREFS[i])) { // no pref present …
-      this.savePref(PREFS[i], 0); // … init it with 0
-    }
-  }
 }
 
 // TODO: databinding?!?
@@ -47,18 +37,18 @@ CafeteriaWidget.prototype.show = function() {
   this.updater.checkForUpdate();
   
   // set menu
-  this.autoSetMenu();
+  this.autosetMenu();
 }
 
 CafeteriaWidget.prototype.remove = function() {
   // delete prefs
   for (var i = 0; i < PREFS.length; i++) {
-    this.savePref(PREFS[i], null);
+    PREF.savePref(PREFS[i], null);
   }
 }
 
 
-CafeteriaWidget.prototype.autoSetMenu = function() {
+CafeteriaWidget.prototype.autosetMenu = function() {
   now = new Date();
   day = now.getDay();
   hour = now.getHours();
@@ -67,40 +57,13 @@ CafeteriaWidget.prototype.autoSetMenu = function() {
     day++;
   }
   
+  // TODO: what about weekends
   
-  day = Math.min(day, 5);
-
   day--; // because 0 => Sunday
+  day = Math.max(day, 0);
+  day = Math.min(day, 4);
   
   this.setDay(day);
-}
-
-
-CafeteriaWidget.prototype.savePref = function(key, value) {
-  this.savePref(key, value, false);
-}
-
-
-CafeteriaWidget.prototype.savePref = function(key, value, system) {
-  if (!system) {
-    key = createInstancePreferenceKey(key)
-  }
-  
-  widget.setPreferenceForKey(value, key);
-}
-
-
-CafeteriaWidget.prototype.getPref = function(key) {
-  return this.getPref(key, false);
-}
-
-
-CafeteriaWidget.prototype.getPref = function(key, system) {
-  if (!system) {
-    key = createInstancePreferenceKey(key);
-  }
-  
-  return widget.preferenceForKey(key);
 }
 
 
@@ -140,6 +103,8 @@ CafeteriaWidget.prototype.setDay = function(day) {
   old = this.day;
   
   this.day = day;
+  
+  alert("setting day to : " + day); // XXX: remove me
   
   this.listener.dayChanged(old, day);
 }

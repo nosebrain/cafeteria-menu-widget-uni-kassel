@@ -16,7 +16,6 @@ tr {
     color: rgb(125, 112, 2);
 }
 
-
 #info {
     position: absolute;
     right: 15px;
@@ -46,7 +45,6 @@ tr {
     bottom: 15px;
     right: 15px;
     -apple-dashboard-region: dashboard-region(control rectangle);
-    visibility: hidden;
 }
 
 #done {
@@ -294,7 +292,7 @@ tr {
     top: 10px;
     height: 39px;
     width: 39px;
-    left: 170px;
+    left: 186px;
 }
 
 #inner_image {

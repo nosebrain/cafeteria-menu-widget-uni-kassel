@@ -3,20 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Breakpoints</key>
-	<dict>
-		<key>/System/Library/WidgetResources/AppleClasses/AppleScrollArea.js:158</key>
-		<string>-refresh</string>
-		<key>widget.wdgt/js/CafeteriaParser.js:84</key>
-		<string>-parseWeek</string>
-		<key>widget.wdgt/js/listener/CafeteriaWidgetListener.js:17</key>
-		<string>cafeteriaChanged</string>
-	</dict>
+	<dict/>
 	<key>CYLastWindowPosition</key>
-	<string>{854, 256}</string>
+	<string>{726, 146}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
-		<integer>8</integer>
+		<integer>24</integer>
 		<key>SplitViewConfig</key>
 		<integer>3</integer>
 		<key>_indexOfCollapsedView</key>
@@ -95,8 +88,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {246, 166}}</string>
-			<string>{{0, 176}, {246, 617}}</string>
+			<string>{{0, 0}, {246, 278}}</string>
+			<string>{{0, 288}, {246, 505}}</string>
 		</array>
 	</dict>
 	<key>Objects view expanded items</key>
@@ -243,13 +236,7 @@
 			</array>
 		</array>
 		<key>Objects view last selections</key>
-		<array>
-			<array>
-				<integer>0</integer>
-				<integer>0</integer>
-				<integer>7</integer>
-			</array>
-		</array>
+		<array/>
 		<key>Visible StackLayout Views</key>
 		<array>
 			<string>front</string>

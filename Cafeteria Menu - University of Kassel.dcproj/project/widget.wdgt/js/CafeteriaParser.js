@@ -2,7 +2,7 @@ function CafeteriaParser(cafeteria) {
   this.cafeteria = cafeteria;
   this.request = null;
   
-  this.listener = new CafeteriaParserListener();
+  this.listener = new CafeteriaParserListener(this);
 }
 
 CafeteriaParser.prototype.parseResult = function(response) { 
@@ -78,6 +78,8 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
 CafeteriaParser.prototype.parseWeek = function(weekSource) {
   actWeek = weekSource.match(SEARCH_EXPRESSIONS.week);
   
+  // this.listener.gotWeek(actWeek[3]);
+  
   dateStr = actWeek[3].split(/\./);
   dateStart = actWeek[2].split(/\./);
   
@@ -100,7 +102,7 @@ CafeteriaParser.prototype.parseWeek = function(weekSource) {
   }
   
   // save it
-  WIDGET.savePref(PREF_UPDATE, date.getTime());
+  PREF.savePref(PREF_UPDATE, date.getTime());
   
   this.cafeteria.getMenu().setWeek(actWeek[1] + "-" + actWeek[3]);
 }

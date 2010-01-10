@@ -1,4 +1,10 @@
-function CafeteriaParserListener() {}
+function CafeteriaParserListener(parser) {
+  this.parser = parser;
+}
+
+CafeteriaParserListener.prototype.startedDownload = function() {
+  this.setCurrentState(STATE_LOADING);
+}
 
 
 CafeteriaParserListener.prototype.startedParsing = function(response) {
@@ -7,7 +13,13 @@ CafeteriaParserListener.prototype.startedParsing = function(response) {
 
 
 CafeteriaParserListener.prototype.gotInformation = function(result) {
-  WIDGET.savePref(PREF_INFO, result, true);
+  PREF.savePref(PREF_INFO, result, true);
+  replaceScrollAreaContent(ELEMENT_ID_INFO_SCROLL_AREA, result);
+}
+
+
+CafeteriaParserListener.prototype.gotInformation = function(result) {
+  PREF.savePref(PREF_INFO, result, true);
   replaceScrollAreaContent(ELEMENT_ID_INFO_SCROLL_AREA, result);
 }
 
@@ -21,9 +33,9 @@ CafeteriaParserListener.prototype.finishedParsing = function(result) {
 }
 
 
-CafeteriaParserListener.prototype.parsingFailed = function(result) {
+CafeteriaParserListener.prototype.parsingFailed = function(error) {
   // change state
-  alert("exception while " + this.currentState + ": " + result);
+  alert("exception while " + this.currentState + ": " + error);
   this.setCurrentState(STATE_FAILED);
 }
 
@@ -33,9 +45,4 @@ CafeteriaParserListener.prototype.setCurrentState = function(state) {
   
   // display state
   setStatus(state); // TODO
-}
-
-
-CafeteriaParserListener.prototype.startedDownload = function() {
-  this.setCurrentState(STATE_LOADING);
 }

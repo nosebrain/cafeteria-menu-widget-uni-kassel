@@ -14,7 +14,7 @@ var dashcodePartSpecs = {
     "information": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "spacing": 4, "view": "DC.View" },
     "manUpdate": { "creationFunction": "CreateButton", "leftImageWidth": 10, "onclick": "manupdate", "rightImageWidth": 10, "text": "Update data manually", "view": "DC.View" },
     "mensaLabel": { "text": "Cafeteria", "view": "DC.Text" },
-    "priceChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 10, "onchange": "chooserChangePrice", "options": [["Student", "0"], ["Staff", "1"], ["Guest", "2"]], "rightImageWidth": 16, "view": "DC.View" },
+    "priceChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 10, "onchange": "changePrice", "options": [["Student", "0"], ["Staff", "1"], ["Guest", "2"]], "rightImageWidth": 16, "view": "DC.View" },
     "priceLabel": { "text": "Show Price For", "view": "DC.Text" },
     "scrollArea": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "view": "DC.View" },
     "state": { "text": "Loading data ...", "view": "DC.Text" },
@@ -22,6 +22,7 @@ var dashcodePartSpecs = {
     "week": { "text": "01.01-31.12.2009", "view": "DC.Text" },
     "weekdayChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 3, "onchange": "switchWeekday", "options": [["Monday", "0"], ["Tuesday", "1"], ["Wednesday", "2"], ["Thursday", "3"], ["Friday", "4"]], "rightImageWidth": 16, "view": "DC.View" }
 };
+
 
 
 
