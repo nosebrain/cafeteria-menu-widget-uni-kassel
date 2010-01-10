@@ -9,14 +9,6 @@ var SEARCH_EXPRESSIONS = {
   info : /<td class="gelbunten" colspan="7" bgcolor="#fadc00" valign="top" width="875px"><font face="Arial" size="1">(.*)<\/font><\/td>/
 };
 
-// pref keys
-var PREF_CAFETERIA = "mensa";
-var PREF_UPDATE = "lastUpdated";
-var PREF_PRICE = "priceType";
-var PREF_INFO = "info";
-
-// all pref keys (info not added because saved for all instances of this widget)
-var PREFS = new Array(PREF_CAFETERIA, PREF_UPDATE, PREF_PRICE);
 
 // element ids
 var ELEMENT_ID_MENU_SCROLL_AREA = "scrollArea";

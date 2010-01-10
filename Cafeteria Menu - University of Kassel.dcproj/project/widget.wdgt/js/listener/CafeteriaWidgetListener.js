@@ -11,7 +11,7 @@ CafeteriaWidgetListener.prototype.cafeteriaChanged = function(oldCaf, newCaf) {
     id = newCaf.getId();
   
     // presist selected cafeteria id
-    this.widget.savePref(PREF_CAFETERIA, id);
+    PREF.savePref(PREF_CAFETERIA, id);
   
     // change selected item
     popupSetSelected(ELEMENT_ID_POPUP_CAFETERIACHOOSER, id);
@@ -30,9 +30,9 @@ CafeteriaWidgetListener.prototype.dayChanged = function(oldDay, newDay) {
   
   if (day.isHoliday()) {
     hideElement(ELEMENT_ID_MENU_SCROLL_AREA);
-    showElement("holiday");
+    showElement(ELEMENT_ID_HOLIDAY);
   } else {
-    hideElement("holiday");
+    hideElement(ELEMENT_ID_HOLIDAY);
     showElement(ELEMENT_ID_MENU_SCROLL_AREA);
     
      // get menu for new day

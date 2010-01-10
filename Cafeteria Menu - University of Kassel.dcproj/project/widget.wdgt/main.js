@@ -1,3 +1,4 @@
+var PREF = new Pref();
 var WIDGET = new CafeteriaWidget();
 
 //
@@ -84,7 +85,7 @@ function showFront(event) {
   if (window.widget) {
     setTimeout('widget.performTransition();', 0);
         
-    WIDGET.autoSetMenu();
+    WIDGET.autosetMenu();
   }
 }
 
@@ -116,7 +117,7 @@ function changeCafeteria(event) {
 }
 
 
-function chooserChangePrice(event) {
+function changePrice(event) {
   priceId = popupGetSelected(ELEMENT_ID_POPUP_PRICECHOOSER);
   WIDGET.savePref(PREF_PRICE, priceId); //TODO maybe change it
 }
