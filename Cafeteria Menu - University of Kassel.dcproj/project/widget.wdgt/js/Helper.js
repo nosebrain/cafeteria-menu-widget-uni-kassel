@@ -17,7 +17,7 @@ var HTMLCodes = new Array(
 
 function removeHTMLCode(source) {
   for (i = 0; i < HTMLCodes.length; i++) {
-    htmlCodeReplacer = HTMLCodes[i];
+    var htmlCodeReplacer = HTMLCodes[i];
     source = source.replace(htmlCodeReplacer.htmlCode, htmlCodeReplacer.replace);
   }
   
@@ -26,7 +26,7 @@ function removeHTMLCode(source) {
 
 
 function showElement(id) {
-  element = $(id);
+  var element = $(id);
   
   if (element) {
     element.style.display = "block";
@@ -34,7 +34,7 @@ function showElement(id) {
 }
 
 function hideElement(id) {
-  element = $(id);
+  var element = $(id);
   
   if (element) {
     element.style.display = "none";
@@ -42,7 +42,7 @@ function hideElement(id) {
 }
 
 function setOpacity(id, value) {
-  element = $(id);
+  var element = $(id);
   
   if (element) {
     element.style.opacity = value;
@@ -55,7 +55,7 @@ function $(id) {
 
 
 function replaceInnerHTML(id, newContent) {
-  element = $(id);
+  var element = $(id);
   
   if (element) {
     element.innerHTML = newContent;
@@ -67,14 +67,14 @@ function replaceInnerHTML(id, newContent) {
  * scrollArea
  */
 function replaceScrollAreaContent(id, newContent) {
-  scrollArea = $(id);
+  var scrollArea = $(id);
   
   if (scrollArea == null) {
     // no scrollArea => nothing to do
     return;
   }
   
-  content = scrollArea.object.content;
+  var content = scrollArea.object.content;
   content.innerHTML = newContent;
   
   refreshScrollArea(id);
@@ -82,7 +82,7 @@ function replaceScrollAreaContent(id, newContent) {
 
 
 function refreshScrollArea(id) {
-  scrollArea = $(id);
+  var scrollArea = $(id);
   
   if (scrollArea) {
     scrollArea.object.refresh();
@@ -91,7 +91,7 @@ function refreshScrollArea(id) {
 
 
 function getScrollArea(id) {
-  scrollArea = $(id);
+  var scrollArea = $(id);
   
   if (!scrollArea) {
     return null;
@@ -102,7 +102,7 @@ function getScrollArea(id) {
 
 
 function resizeScrollArea(id, width, height) {
-  scrollArea = $(id);
+  var scrollArea = $(id);
   
   if (scrollArea) {
     scrollArea.style.height = height + "px";
@@ -116,7 +116,8 @@ function resizeScrollArea(id, width, height) {
  * popups
  */
 function popupGetSelected(id) {
-  popup = $(id);
+  var popup = $(id);
+  
   if (popup) {
     return popup.object.getSelectedIndex();
   }
@@ -125,7 +126,8 @@ function popupGetSelected(id) {
 
 
 function popupSetSelected(id, index) {
-  popup = $(id);
+  var popup = $(id);
+  
   if (popup) {
     popup.object.setSelectedIndex(index);
   }
@@ -134,7 +136,7 @@ function popupSetSelected(id, index) {
 
 function myParseInt(string) {
   // remove leading 0's
-  count = 0;
+  var count = 0;
   while(string.substr(count,1) == "0") {
     count++;
   }

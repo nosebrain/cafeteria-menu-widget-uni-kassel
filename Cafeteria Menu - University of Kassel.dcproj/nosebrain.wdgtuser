@@ -3,9 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>Breakpoints</key>
-	<dict/>
+	<dict>
+		<key>widget.wdgt/js/listener/CafeteriaParserListener.js:22</key>
+		<string>gotWeek</string>
+	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{726, 146}</string>
+	<string>{680, 336}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>

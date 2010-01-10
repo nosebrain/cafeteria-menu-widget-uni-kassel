@@ -13,19 +13,19 @@ function mouseDown(event) {
 }
  
 function mouseMove(event) {
-  x = event.x + growboxInset.x;
-  y = event.y + growboxInset.y;
+  var x = event.x + growboxInset.x;
+  var y = event.y + growboxInset.y;
 
   // min width and height
   x = Math.max(x, WIDGET.getReader().get("Width"));
   y = Math.max(y, WIDGET.getReader().get("Height"));
     
   // calcs for scroll area
-  divWidth = x - window.innerWidth;
-  divHeight = y - window.innerHeight;
-  scrollArea = getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA); // TODO: scroll area
-  scrollAreaWidth = scrollArea.viewWidth + divWidth;
-  scrollAreaHeight = scrollArea.viewHeight + divHeight;
+  var divWidth = x - window.innerWidth;
+  var divHeight = y - window.innerHeight;
+  var scrollArea = getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA); // TODO: scroll area
+  var scrollAreaWidth = scrollArea.viewWidth + divWidth;
+  var scrollAreaHeight = scrollArea.viewHeight + divHeight;
     
   window.resizeTo(x, y);
 

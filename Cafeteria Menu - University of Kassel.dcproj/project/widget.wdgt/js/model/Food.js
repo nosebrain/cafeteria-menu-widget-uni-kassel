@@ -19,10 +19,10 @@ Food.prototype.setDescription = function(description) {
 }
 
 Food.prototype.printPrice = function() {
-  priceId = PREF.getPref(PREF_PRICE);
+  var priceId = PREF.getPref(PREF_PRICE);
 
-  price = this.getPrice(priceId);
-  print = "<td class = \"price\">";
+  var price = this.getPrice(priceId);
+  var print = "<td class = \"price\">";
   
   if (price) {
     print += price;
