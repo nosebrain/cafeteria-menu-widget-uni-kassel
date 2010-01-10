@@ -55,8 +55,8 @@ function showBack(event) {
   }
   
   // TODO: 
-  popupSetSelected(ELEMENT_ID_POPUP_CAFETERIACHOOSER, WIDGET.getPref(PREF_CAFETERIA));
-  popupSetSelected(ELEMENT_ID_POPUP_PRICECHOOSER, WIDGET.getPref(PREF_PRICE));
+  popupSetSelected(ELEMENT_ID_POPUP_CAFETERIACHOOSER, PREF.getPref(PREF_CAFETERIA));
+  popupSetSelected(ELEMENT_ID_POPUP_PRICECHOOSER, PREF.getPref(PREF_PRICE));
   
   hideElement("front");
   showElement("back");
@@ -90,7 +90,7 @@ function showFront(event) {
 }
 
 function switchWeekday(event) {
-  day = popupGetSelected(ELEMENT_ID_POPUP_WEEKCHOOSER);
+  var day = popupGetSelected(ELEMENT_ID_POPUP_WEEKCHOOSER);
   WIDGET.setDay(day);
 }
 
@@ -100,26 +100,20 @@ function openMenuInBrowser(event) {
 }
 
 
-// TODO => CafeteriaWidget
-function setStatus(newState) {
-  replaceInnerHTML("state", dashcode.getLocalizedString(newState));
-}
-
-
 function manupdate(event) {
   WIDGET.getCafeteria().update();
 }
 
 
 function changeCafeteria(event) {
-  cafId = popupGetSelected(ELEMENT_ID_POPUP_CAFETERIACHOOSER);
+  var cafId = popupGetSelected(ELEMENT_ID_POPUP_CAFETERIACHOOSER);
   WIDGET.setCafeteriaById(cafId);
 }
 
 
 function changePrice(event) {
-  priceId = popupGetSelected(ELEMENT_ID_POPUP_PRICECHOOSER);
-  WIDGET.savePref(PREF_PRICE, priceId); //TODO maybe change it
+  var priceId = popupGetSelected(ELEMENT_ID_POPUP_PRICECHOOSER);
+  WIDGET.savePref(PREF_PRICE, priceId); // TODO: maybe change it
 }
 
 

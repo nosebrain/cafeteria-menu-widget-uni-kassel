@@ -11,12 +11,12 @@ CafeteriaWidget.prototype.init = function() {
   // init cafeteria
   this.setCafeteriaById(PREF.getPref(PREF_CAFETERIA));
   
-  this.initCafeteriaChooser();
+  this.initCafeteriaChooser(); // XXX: databinding?!?
 }
 
 // TODO: databinding?!?
 CafeteriaWidget.prototype.initCafeteriaChooser = function() {
-  cafs = this.reader.get("Cafeterias");
+  var cafs = this.reader.get("Cafeterias");
   
   var cafeterias = new Array();
   for (i = 0; i < cafs.length; i++) {
@@ -49,17 +49,18 @@ CafeteriaWidget.prototype.remove = function() {
 
 
 CafeteriaWidget.prototype.autosetMenu = function() {
-  now = new Date();
-  day = now.getDay();
-  hour = now.getHours();
+  var now = new Date();
+  var day = now.getDay();
+  var hour = now.getHours();
   
-  if (hour >= 14) {
-    day++;
+  if (hour < 14) {
+    day--;
   }
   
-  // TODO: what about weekends
+  // day--; // because 0 => Sunday
   
-  day--; // because 0 => Sunday
+  // TODO: what about weekends ?
+  
   day = Math.max(day, 0);
   day = Math.min(day, 4);
   
@@ -83,7 +84,7 @@ CafeteriaWidget.prototype.getCafeteria = function(cafeteria) {
 
 
 CafeteriaWidget.prototype.setCafeteria = function(cafeteria) {
-  old = this.cafeteria;
+  var old = this.cafeteria;
 
   this.cafeteria = cafeteria;
   
@@ -92,19 +93,17 @@ CafeteriaWidget.prototype.setCafeteria = function(cafeteria) {
 
 
 CafeteriaWidget.prototype.setCafeteriaById = function(id) {
-  cafFactory = new CafeteriaFactory();
-  caf = cafFactory.getCafeteriaById(id);
+  var cafFactory = new CafeteriaFactory();
+  var caf = cafFactory.getCafeteriaById(id);
   
   this.setCafeteria(caf);  
 }
 
 
 CafeteriaWidget.prototype.setDay = function(day) {
-  old = this.day;
+  var old = this.day;
   
   this.day = day;
-  
   alert("setting day to : " + day); // XXX: remove me
-  
   this.listener.dayChanged(old, day);
 }

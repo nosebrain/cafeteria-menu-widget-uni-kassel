@@ -7,7 +7,7 @@ function Updater() {
 }
 
 Updater.prototype.checkForUpdate = function() {
-  request = new XMLHttpRequest();
+  var request = new XMLHttpRequest();
   
   var self = this;  
   request.onreadystatechange = function () {
@@ -17,7 +17,7 @@ Updater.prototype.checkForUpdate = function() {
         if (this.responseText != self.currentVersion) {
           showElement(UPDATE_DIV_ID);
         } else {
-          hideElement("updateImg");
+          hideElement(UPDATE_DIV_ID);
         }
       }
     }

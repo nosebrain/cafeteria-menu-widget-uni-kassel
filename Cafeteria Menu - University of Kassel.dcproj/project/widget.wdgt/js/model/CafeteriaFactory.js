@@ -7,9 +7,9 @@ function CafeteriaFactory() {
 
 
 CafeteriaFactory.prototype.getCafeteriaById = function(id) {
-  cafeteriaInfo = this.cafeteriaData[id];
+  var cafeteriaInfo = this.cafeteriaData[id];
   
-  cafeteria = new Cafeteria(id);
+  var cafeteria = new Cafeteria(id);
   cafeteria.setName(cafeteriaInfo["Name"]);
   cafeteria.setURL(this.baseURL + cafeteriaInfo["Address"]);
   cafeteria.setMenu(new Menu());
