@@ -11,7 +11,7 @@ Cafeteria.prototype.getId = function() {
 
 Cafeteria.prototype.getNextUpdate = function() {
   if (!this.nextUpdate) {
-    // load from pref
+    // load from pref TODO: move to cafeteria load method
     updateTime = PREF.getPref(PREF_UPDATE);
     if (updateTime) {
       this.nextUpdate = new Date(updateTime);
@@ -25,7 +25,7 @@ Cafeteria.prototype.getNextUpdate = function() {
 Cafeteria.prototype.setNextUpdate = function(date) {
   this.nextUpdate = date;
   
-  // save it
+  // save it TODO: Property change listener
   PREF.savePref(PREF_UPDATE, date.getTime());
 }
 
