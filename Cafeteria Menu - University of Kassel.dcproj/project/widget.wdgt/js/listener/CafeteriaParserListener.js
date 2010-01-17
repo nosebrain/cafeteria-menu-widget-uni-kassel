@@ -41,7 +41,7 @@ CafeteriaParserListener.prototype.gotWeek = function(start, end) {
   }
   
   // save it
-  PREF.savePref(PREF_UPDATE, date.getTime());
+  this.parser.getCafeteria().setNextUpdate(date);
   
   // update week
   replaceInnerHTML(ELEMENT_ID_WEEK, start + "-" + end);
