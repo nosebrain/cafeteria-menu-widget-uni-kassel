@@ -60,9 +60,9 @@ tr {
     color: black;
     font-family: HelveticaNeue-Bold;
     font-size: 11pt;
+    width: 138px;
     top: 10px;
     left: 11px;
-    width: 138px;
     margin-right: auto;
     height: auto;
 }
@@ -71,13 +71,12 @@ tr {
     position: absolute;
     color: black;
     font-family: HelveticaNeue-Bold;
-    width: 162px;
-    top: 28px;
-    left: 12px;
     font-size: 10pt;
-    margin-left: auto;
+    width: 41px;
+    top: 27px;
+    left: 12px;
     margin-right: auto;
-    bottom: 227px;
+    bottom: 25px;
     height: auto;
 }
 
@@ -120,12 +119,13 @@ tr {
     overflow: hidden;
     position: absolute;
     margin-top: 0px;
-    font-style: italic;
-    font-family: 'Helvetica Neue';
-    font-size: 10pt;
-    top: 257px;
     left: 44px;
+    font-family: 'Helvetica Neue';
+    font-size: 8pt;
+    top: 259px;
+    right: 142px;
     width: auto;
+    bottom: 19px;
     height: auto;
 }
 
@@ -284,18 +284,18 @@ tr {
     color: white;
 }
 
-#img {
+#image {
     position: absolute;
     right: auto;
     bottom: auto;
     margin-top: 0px;
-    top: 10px;
-    height: 39px;
     width: 39px;
-    left: 186px;
+    height: 31px;
+    top: 10px;
+    left: 187px;
 }
 
-#inner_image {
+#inner_image1 {
     position: absolute;
     bottom: 0px;
     right: 0px;

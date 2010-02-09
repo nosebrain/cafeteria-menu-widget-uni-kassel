@@ -6,7 +6,6 @@ function mouseDown(event) {
   document.addEventListener("mouseup", mouseUp, true);
  
   growboxInset = {x:(window.innerWidth - event.x), y:(window.innerHeight - event.y)};
-  oldHeight = window.innerHeight;
  
   event.stopPropagation();
   event.preventDefault();
@@ -23,22 +22,24 @@ function mouseMove(event) {
   // calcs for scroll area
   var divWidth = x - window.innerWidth;
   var divHeight = y - window.innerHeight;
+  
   var scrollArea = getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA); // TODO: scroll area
-  var scrollAreaWidth = scrollArea.viewWidth + divWidth;
+  var scrollAreaWidth = scrollArea.viewWidth + divWidth + 18; // 18 = scrollbar width
   var scrollAreaHeight = scrollArea.viewHeight + divHeight;
-    
+  
+  resizeScrollArea(ELEMENT_ID_MENU_SCROLL_AREA, scrollAreaWidth, scrollAreaHeight);
+  alert(scrollArea.viewWidth + "x" + scrollArea.viewHeight);
+  
   window.resizeTo(x, y);
-
-  resizeScrollArea(ELEMENT_ID_MENU_SCROLL_AREA, scrollAreaWidth, scrollAreaHeight); // TODO: method resizeScrollArea
  
   event.stopPropagation();
   event.preventDefault();
 }
  
 function mouseUp(event) {
-    document.removeEventListener("mousemove", mouseMove, true);
-    document.removeEventListener("mouseup", mouseUp, true);
+  document.removeEventListener("mousemove", mouseMove, true);
+  document.removeEventListener("mouseup", mouseUp, true);
  
-    event.stopPropagation();
-    event.preventDefault();
+  event.stopPropagation();
+  event.preventDefault();
 }
