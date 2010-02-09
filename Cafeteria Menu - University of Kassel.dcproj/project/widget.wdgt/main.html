@@ -31,7 +31,7 @@
     <script type="text/javascript" src="js/model/CafeteriaFactory.js" charset="utf-8"></script>
     <!-- main files -->
     <script type="text/javascript" src="js/CafeteriaWidget.js" charset="utf-8"></script>
-    <!--<script type="text/javascript" src="js/Resize.js" charset="utf-8"></script>-->
+    <script type="text/javascript" src="js/Resize.js" charset="utf-8"></script>
     <script type="text/javascript" src="main.js" charset="utf-8"></script>
 </head>
 <body onload="load();" apple-part="com.apple.Dashcode.part.StackLayout">
@@ -51,12 +51,12 @@
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="holiday"></div>
         <div apple-part="com.apple.Dashcode.part.scrollarea" id="scrollArea" apple-group="scrollArea">
             <div id="content" class="content" apple-group="scrollArea" style="position: absolute; left: 0px; top: 0px; right: 18px; bottom: 0px; overflow-x: hidden; overflow-y: hidden; "></div></div>
-        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="state" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="state"></div>
         <div apple-part="com.apple.Dashcode.part.box" id="header">
             <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="title" apple-group="text" apple-style="part-height-dependent: true;"></div>
-            <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="cafeteria-name" apple-group="text" apple-default-image-visibility="hidden" onclick="openMenuInBrowser(event)" apple-style="part-width-dependent: true;"></div>
+            <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="cafeteria-name" apple-group="text" apple-default-image-visibility="hidden" onclick="openMenuInBrowser(event)"></div>
             <img src="Images/update.png" id="updateImg" style="display: none; " onclick="downloadLatestVersion(event)" apple-part="com.apple.Dashcode.part.image">
-            <div apple-part="com.apple.Dashcode.part.imageLayout" id="img" apple-group="image" onclick="callapse(event)"><img class="apple-hidden" src="Images/sw-logo.gif" id="inner_image" apple-group="image"></div>
+            <div apple-part="com.apple.Dashcode.part.imageLayout" id="image" apple-group="image"><img class="apple-hidden" src="Images/fork-and-knife.png" id="inner_image1" apple-group="image"></div>
         </div>
         <img id="resize" src="/System/Library/WidgetResources/resize.png" onmousedown="mouseDown(event);">
     </div>

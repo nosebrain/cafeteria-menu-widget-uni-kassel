@@ -5,14 +5,14 @@
 	<key>Breakpoints</key>
 	<dict>
 		<key>widget.wdgt/js/listener/CafeteriaParserListener.js:22</key>
-		<string>gotWeek</string>
+		<string>-gotWeek</string>
 		<key>widget.wdgt/js/model/Cafeteria.js:21</key>
-		<string>getNextUpdate</string>
+		<string>-getNextUpdate</string>
 		<key>widget.wdgt/main.js:3</key>
-		<string></string>
+		<string>-</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{1121, 147}</string>
+	<string>{886, 433}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -28,7 +28,7 @@
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>5</integer>
+	<integer>0</integer>
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
@@ -72,7 +72,7 @@
 	<key>Design time language</key>
 	<string>en.lproj</string>
 	<key>EvaluatorFrame</key>
-	<string>1011 92 479 226 0 0 1920 1178 </string>
+	<string>674 63 479 226 0 0 1440 878 </string>
 	<key>MainSplitViewGeometry</key>
 	<dict>
 		<key>_indexOfCollapsedView</key>
@@ -84,7 +84,7 @@
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>528 343 1375 835 0 0 1920 1178 </string>
+	<string>63 43 1375 835 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -241,13 +241,14 @@
 				<integer>0</integer>
 				<integer>15</integer>
 			</array>
-		</array>
-		<key>Objects view last selections</key>
-		<array>
 			<array>
-				<integer>5</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>8</integer>
 			</array>
 		</array>
+		<key>Objects view last selections</key>
+		<array/>
 		<key>Visible StackLayout Views</key>
 		<array>
 			<string>front</string>
