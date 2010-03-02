@@ -4,6 +4,10 @@
 <dict>
 	<key>Breakpoints</key>
 	<dict>
+		<key>widget.wdgt/js/Helper.js:167</key>
+		<string>-resizeTo</string>
+		<key>widget.wdgt/js/Helper.js:173</key>
+		<string>-resizeWithAnimationTo</string>
 		<key>widget.wdgt/js/Pref.js:33</key>
 		<string>-savePref</string>
 		<key>widget.wdgt/js/listener/CafeteriaParserListener.js:22</key>
@@ -14,7 +18,7 @@
 		<string>-</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{465, 336}</string>
+	<string>{471, 69}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -294,14 +298,13 @@
 		<array>
 			<array>
 				<integer>0</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>4</integer>
+				<integer>0</integer>
+				<integer>9</integer>
 			</array>
 		</array>
 		<key>Visible StackLayout Views</key>
 		<array>
-			<string>back</string>
+			<string>front</string>
 		</array>
 	</dict>
 </dict>

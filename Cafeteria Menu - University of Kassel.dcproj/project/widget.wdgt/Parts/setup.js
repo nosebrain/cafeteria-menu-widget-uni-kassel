@@ -11,7 +11,7 @@ var dashcodePartSpecs = {
     "cafLabel": { "text": "Cafeteria", "view": "DC.Text" },
     "glassButton": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done" },
     "image": { "view": "DC.ImageLayout" },
-    "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack", "view": "DC.View" },
+    "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "resizeAndShowBack", "view": "DC.View" },
     "information": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "spacing": 4 },
     "priceChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 5, "onchange": "changePrice", "options": [["Student", "Item 1"], ["Staff", "Item 2"], ["Guest", "Item 3"]], "rightImageWidth": 16 },
     "priveLabel": { "text": "Show Price for", "view": "DC.Text" },

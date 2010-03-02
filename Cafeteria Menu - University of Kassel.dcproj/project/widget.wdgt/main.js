@@ -40,33 +40,37 @@ function show() {
 // Called when the widget has been synchronized with .Mac
 //
 function sync() {
-  // TODO
+  // WIDGET.sync(); // TODO:???
 }
 
 //
-// Function: showBack(event)
+// Function: resizeAndShowBack(event)
 // Called when the info button is clicked to show the back of the widget
 //
 // event: onClick event from the info button
 //
-function showBack(event) {
+function resizeAndShowBack(event) {
+  WidgetUtils.resizeWithAnimationTo(WIDGET.getReader().get("Width"), WIDGET.getReader().get("Height"), showBack);
+  
+  refreshScrollArea(ELEMENT_ID_INFO_SCROLL_AREA); // TODO: this is a hack to get scroll bars to the scroll area
+  
+  // TODO:
+  ElementUtils.getPopUp(ELEMENT_ID_POPUP_CAFETERIACHOOSER).setSelectedIndex(PREF.getPref(PREF_CAFETERIA));
+  ElementUtils.getPopUp(ELEMENT_ID_POPUP_PRICECHOOSER).setSelectedIndex(PREF.getPref(PREF_PRICE));
+}
+
+function showBack() {
   if (window.widget) {
     widget.prepareForTransition("ToBack");
   }
   
-  hideElement("front");
-  showElement("back");
-  
-  refreshScrollArea(ELEMENT_ID_INFO_SCROLL_AREA); // TODO: this is a hack to get scroll bars to the scroll area
+  ElementUtils.hide("front");
+  ElementUtils.show("back");
 
 
   if (window.widget) {
     setTimeout('widget.performTransition();', 0);
   }
-  
-  // TODO:
-  popupSetSelected(ELEMENT_ID_POPUP_CAFETERIACHOOSER, PREF.getPref(PREF_CAFETERIA));
-  popupSetSelected(ELEMENT_ID_POPUP_PRICECHOOSER, PREF.getPref(PREF_PRICE));
 }
 
 //
@@ -80,18 +84,20 @@ function showFront(event) {
     widget.prepareForTransition("ToFront");
   }
     
-  showElement("front");
-  hideElement("back");
+  ElementUtils.show("front");
+  ElementUtils.hide("back");
   
 
   if (window.widget) {
     setTimeout('widget.performTransition();', 0);
     setTimeout('WIDGET.autosetMenu();', 0);
+    setTimeout('WidgetUtils.resizeWithAnimationTo(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT), null);', 600);
   }
 }
 
+
 function switchWeekday(event) {
-  var day = popupGetSelected(ELEMENT_ID_POPUP_WEEKCHOOSER);
+  var day = ElementUtils.getPopUp(ELEMENT_ID_POPUP_WEEKCHOOSER).getSelectedIndex();
   WIDGET.setDay(day);
 }
 
@@ -107,13 +113,13 @@ function manupdate(event) {
 
 
 function changeCafeteria(event) {
-  var cafId = popupGetSelected(ELEMENT_ID_POPUP_CAFETERIACHOOSER);
+  var cafId = ElementUtils.getPopUp(ELEMENT_ID_POPUP_CAFETERIACHOOSER).getSelectedIndex();
   WIDGET.setCafeteriaById(cafId);
 }
 
 
 function changePrice(event) {
-  var priceId = popupGetSelected(ELEMENT_ID_POPUP_PRICECHOOSER);
+  var priceId = ElementUtils.getPopUp(ELEMENT_ID_POPUP_PRICECHOOSER).getSelectedIndex();
   PREF.savePref(PREF_PRICE, priceId);
 }
 
