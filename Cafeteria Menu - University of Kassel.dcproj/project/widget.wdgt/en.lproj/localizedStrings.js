@@ -8,19 +8,20 @@ var localizedStrings = {
     "Cafeteria": "Cafeteria",
     "Done": "Done",
     "Error while parsing informations": "Error while parsing informations",
-    "Friday": "Friday",
+    "FRIDAY": "FRIDAY",
     "Loading data ...": "Loading data ...",
-    "Monday": "Monday",
+    "MONDAY": "MONDAY",
     "Parsing data ...": "Parsing data ...",
     "Parsing menus ...": "Parsing menus ...",
     "Parsing week ...": "Parsing week ...",
     "Ready!": "\"Ready!\"",
     "Show Price For": "Show Price For",
     "source url has changed!": "source url has changed!",
-    "Thursday": "Thursday",
+    "THURSDAY": "THURSDAY",
     "title": "Cafeteria menu",
-    "Tuesday": "Tuesday",
+    "TUESDAY": "TUESDAY",
     "Update data manually": "Update data manually",
-    "Wednesday": "Wednesday"
+    "WEDNESDAY": "WEDNESDAY"
 };
+
 

@@ -7,9 +7,11 @@
 		<key>Widget</key>
 		<dict>
 			<key>AppIconFGImagePoint</key>
-			<string>{13, 12}</string>
+			<string>{21, 18}</string>
 			<key>AppIconFGImageSize</key>
-			<string>{49, 49}</string>
+			<string>{31, 41}</string>
+			<key>AppIconImageSettings</key>
+			<string>image-theme: 1; image-shape: 3; image-opacity: 1.00; image-top-color: 1,1,1,1; image-bottom-color: 0.973509073,0.878644109,0.160180956,1; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.5294,0.5294,0.5294,1; image-border-width: 1; shine-strength: 0.90; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; shadow-include-shadow: 1; shadow-offset: 0.00,-3.00; shadow-color: 0,0,0,0.3333;</string>
 			<key>AppIconIncludeFGImage</key>
 			<true/>
 			<key>CYBackwardCompatibleExport</key>

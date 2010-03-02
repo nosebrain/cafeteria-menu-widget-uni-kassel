@@ -54,18 +54,19 @@ function showBack(event) {
     widget.prepareForTransition("ToBack");
   }
   
-  // TODO: 
-  popupSetSelected(ELEMENT_ID_POPUP_CAFETERIACHOOSER, PREF.getPref(PREF_CAFETERIA));
-  popupSetSelected(ELEMENT_ID_POPUP_PRICECHOOSER, PREF.getPref(PREF_PRICE));
-  
   hideElement("front");
   showElement("back");
-    
-  refreshScrollArea(ELEMENT_ID_INFO_SCROLL_AREA); // TODO: this is hack to get scroll bars to the scroll area
+  
+  refreshScrollArea(ELEMENT_ID_INFO_SCROLL_AREA); // TODO: this is a hack to get scroll bars to the scroll area
+
 
   if (window.widget) {
     setTimeout('widget.performTransition();', 0);
   }
+  
+  // TODO:
+  popupSetSelected(ELEMENT_ID_POPUP_CAFETERIACHOOSER, PREF.getPref(PREF_CAFETERIA));
+  popupSetSelected(ELEMENT_ID_POPUP_PRICECHOOSER, PREF.getPref(PREF_PRICE));
 }
 
 //
@@ -81,11 +82,11 @@ function showFront(event) {
     
   showElement("front");
   hideElement("back");
+  
 
   if (window.widget) {
     setTimeout('widget.performTransition();', 0);
-        
-    WIDGET.autosetMenu();
+    setTimeout('WIDGET.autosetMenu();', 0);
   }
 }
 
@@ -113,7 +114,7 @@ function changeCafeteria(event) {
 
 function changePrice(event) {
   var priceId = popupGetSelected(ELEMENT_ID_POPUP_PRICECHOOSER);
-  WIDGET.savePref(PREF_PRICE, priceId); // TODO: maybe change it
+  PREF.savePref(PREF_PRICE, priceId);
 }
 
 

@@ -5,23 +5,22 @@
  code generator otherwise the changes will be lost.
  */
 var dashcodePartSpecs = {
+    "button": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "manupdate", "rightImageWidth": 5, "text": "Update manually" },
     "cafeteria-name": { "text": "Mensa", "view": "DC.Text" },
-    "cafeteriaChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 10, "onchange": "changeCafeteria", "options": ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"], "rightImageWidth": 16, "view": "DC.View" },
-    "done": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done", "view": "DC.View" },
-    "holiday": { "text": "Enjoy your holiday", "view": "DC.Text" },
+    "cafeteriaChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 5, "onchange": "changeCafeteria", "options": ["Item 1", "Item 2", "Item 3"], "rightImageWidth": 16 },
+    "cafLabel": { "text": "Cafeteria", "view": "DC.Text" },
+    "glassButton": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done" },
     "image": { "view": "DC.ImageLayout" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack", "view": "DC.View" },
-    "information": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "spacing": 4, "view": "DC.View" },
-    "manUpdate": { "creationFunction": "CreateButton", "leftImageWidth": 10, "onclick": "manupdate", "rightImageWidth": 10, "text": "Update data manually", "view": "DC.View" },
-    "mensaLabel": { "text": "Cafeteria", "view": "DC.Text" },
-    "priceChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 10, "onchange": "changePrice", "options": [["Student", "0"], ["Staff", "1"], ["Guest", "2"]], "rightImageWidth": 16, "view": "DC.View" },
-    "priceLabel": { "text": "Show Price For", "view": "DC.Text" },
+    "information": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "spacing": 4 },
+    "priceChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 5, "onchange": "changePrice", "options": [["Student", "Item 1"], ["Staff", "Item 2"], ["Guest", "Item 3"]], "rightImageWidth": 16 },
+    "priveLabel": { "text": "Show Price for", "view": "DC.Text" },
     "scrollArea": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "view": "DC.View" },
     "state": { "text": "Loading data ...", "view": "DC.Text" },
-    "title": { "text": "title", "view": "DC.Text" },
-    "week": { "text": "01.01-31.12.2009", "view": "DC.Text" },
-    "weekdayChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 3, "onchange": "switchWeekday", "options": [["Monday", "0"], ["Tuesday", "1"], ["Wednesday", "2"], ["Thursday", "3"], ["Friday", "4"]], "rightImageWidth": 16, "view": "DC.View" }
+    "week": { "text": "01.01-31.12.2010", "view": "DC.Text" },
+    "weekdayChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 3, "onchange": "switchWeekday", "options": [["MONDAY", "0"], ["TUESDAY", "1"], ["WEDNESDAY", "2"], ["THURSDAY", "3"], ["FRIDAY", "4"]], "rightImageWidth": 16, "view": "DC.View" }
 };
+
 
 
 

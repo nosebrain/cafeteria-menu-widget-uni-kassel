@@ -104,7 +104,7 @@ CafeteriaParser.prototype.parse = function() {
       if (this.status == 200) {
         self.parseResult(this.responseText);
       } else {
-        self.logError(this.status);
+        alert(this.status); // TODO
       }
     }
   };
