@@ -23,14 +23,13 @@ function mouseMove(event) {
   var divWidth = x - window.innerWidth;
   var divHeight = y - window.innerHeight;
   
-  var scrollArea = getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA); // TODO: scroll area
-  var scrollAreaWidth = scrollArea.viewWidth + divWidth + 18; // 18 = scrollbar width
+  var scrollArea = getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA);
+  var scrollAreaWidth = scrollArea.viewWidth + divWidth + 18; // 18 = scrollbar width FIXME: how to get the value
   var scrollAreaHeight = scrollArea.viewHeight + divHeight;
   
   resizeScrollArea(ELEMENT_ID_MENU_SCROLL_AREA, scrollAreaWidth, scrollAreaHeight);
-  alert(scrollArea.viewWidth + "x" + scrollArea.viewHeight);
   
-  window.resizeTo(x, y);
+  window.resizeBy(divWidth, divHeight);
  
   event.stopPropagation();
   event.preventDefault();
@@ -39,6 +38,9 @@ function mouseMove(event) {
 function mouseUp(event) {
   document.removeEventListener("mousemove", mouseMove, true);
   document.removeEventListener("mouseup", mouseUp, true);
+  
+  PREF.savePref(PREF_WIDTH, window.innerWidth);
+  PREF.savePref(PREF_HEIGHT, window.innerHeight);
  
   event.stopPropagation();
   event.preventDefault();

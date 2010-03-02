@@ -27,6 +27,8 @@ tr {
 
 #back {
     display: none;
+    min-width: 258px;
+    min-height: 284px;
 }
 
 #backImg {
@@ -35,8 +37,8 @@ tr {
     top: 0px;
     left: 0px;
     right: 0px;
-    width: auto;
     bottom: 0px;
+    width: auto;
     height: auto;
 }
 
@@ -47,36 +49,19 @@ tr {
     -apple-dashboard-region: dashboard-region(control rectangle);
 }
 
-#done {
-    position: absolute;
-    left: 185px;
-    margin-left: auto;
-    top: 240px;
-    margin-top: auto;
-}
-
-#title {
-    position: absolute;
-    color: black;
-    font-family: HelveticaNeue-Bold;
-    font-size: 11pt;
-    width: 138px;
-    top: 10px;
-    left: 11px;
-    margin-right: auto;
-    height: auto;
-}
-
 #cafeteria-name {
     position: absolute;
     color: black;
-    font-family: HelveticaNeue-Bold;
-    font-size: 10pt;
-    width: 41px;
-    top: 27px;
-    left: 12px;
+    font-weight: bold;
+    font-family: 'Helvetica Neue';
+    font-size: 11pt;
+    text-align: left;
+    top: 23px;
+    left: 26px;
+    min-height: 18px;
+    width: 157px;
     margin-right: auto;
-    bottom: 25px;
+    bottom: 242px;
     height: auto;
 }
 
@@ -87,17 +72,19 @@ tr {
 }
 
 #weekdayChooser {
-    font-family: HelveticaNeue-Bold;
-    font-size: 12px;
     text-align: center;
-    width: 97px;
-    margin-top: 70px;
-    margin-left: 141px;
     -khtml-margin-top-collapse: separate;
     -khtml-margin-bottom-collapse: separate;
     position: relative;
-    min-height: 20px;
+    font-weight: bold;
+    margin-left: 23px;
+    margin-top: 63px;
+    font-family: 'Helvetica Neue';
+    font-size: 8pt;
+    min-height: 23px;
     height: auto;
+    margin-right: 23px;
+    width: auto;
 }
 
 #scrollArea {
@@ -107,10 +94,10 @@ tr {
     -khtml-margin-top-collapse: separate;
     -khtml-margin-bottom-collapse: separate;
     position: relative;
-    height: 154px;
     margin-left: 23px;
-    margin-top: 6px;
-    width: 216px;
+    width: 213px;
+    margin-top: 5px;
+    height: 152px;
 }
 
 #state {
@@ -122,81 +109,26 @@ tr {
     left: 44px;
     font-family: 'Helvetica Neue';
     font-size: 8pt;
-    top: 259px;
     right: 142px;
-    width: auto;
-    bottom: 19px;
+    width: 100px;
+    bottom: 20px;
     height: auto;
 }
 
 #week {
     position: absolute;
-    color: black;
     font-size: 10pt;
     width: 105px;
     font-family: 'Helvetica Neue';
-    top: 72px;
-    margin-left: auto;
-    left: 25px;
+    text-shadow: none;
+    cursor: default;
+    -khtml-user-select: none;
+    color: rgb(0, 0, 0);
+    left: 26px;
+    top: 42px;
     margin-right: auto;
-    bottom: 200px;
+    bottom: 230px;
     height: auto;
-}
-
-#manUpdate {
-    font-family: HelveticaNeue-Bold;
-    font-size: 12px;
-    text-align: center;
-    position: absolute;
-    right: auto;
-    margin-top: 0px;
-    width: 214px;
-    color: rgb(255, 255, 255);
-    left: 24px;
-    top: 79px;
-    bottom: 191px;
-    height: auto;
-}
-
-#cafeteriaChooser {
-    font-family: HelveticaNeue-Bold;
-    font-size: 12px;
-    position: absolute;
-    right: auto;
-    margin-top: 0px;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    left: 24px;
-    width: 213px;
-    top: 49px;
-    bottom: 221px;
-    height: auto;
-    opacity: 1;
-}
-
-#information {
-    font-family: HelveticaNeue;
-    font-size: 10pt;
-    position: absolute;
-    right: auto;
-    bottom: auto;
-    margin-top: 0px;
-    left: 29px;
-    width: 208px;
-    color: rgb(255, 255, 255);
-    height: 84px;
-    top: 155px;
-}
-
-#header {
-    border-color: black;
-    border-width: 1px;
-    position: absolute;
-    margin-top: 0px;
-    height: 52px;
-    width: 238px;
-    top: 13px;
-    left: 13px;
 }
 
 #updateImg {
@@ -214,74 +146,13 @@ tr {
     color: rgb(0, 0, 0);
 }
 
-#holiday {
-    color: black;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: absolute;
-    margin-top: 0px;
-    font-family: 'Helvetica Neue';
-    font-size: 11pt;
-    top: 165px;
-    left: 64px;
-    right: 64px;
+#bgContent {
+    left: 23px !important;
+    top: 23px !important;
+    bottom: 23px;
+    height: auto;
+    right: 19px !important;
     width: auto;
-    bottom: 108px;
-    height: auto;
-}
-
-#priceChooser {
-    text-align: center;
-    color: rgb(255, 255, 255);
-    width: 103px;
-    font-weight: bold;
-    font-size: 9pt;
-    font-family: 'Helvetica Neue';
-    margin-top: 109px;
-    margin-left: 134px;
-    -khtml-margin-top-collapse: separate;
-    -khtml-margin-bottom-collapse: separate;
-    position: relative;
-    min-height: 20px;
-    height: auto;
-}
-
-#priceLabel {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: absolute;
-    margin-top: 0px;
-    font-weight: bold;
-    font-family: 'Helvetica Neue';
-    font-size: 10pt;
-    color: rgb(255, 255, 255);
-    left: 30px;
-    top: 110px;
-    right: 132px;
-    width: auto;
-    bottom: 164px;
-    height: auto;
-}
-
-#mensaLabel {
-    font-size: 13px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: absolute;
-    margin-top: 0px;
-    top: 26px;
-    width: 85px;
-    min-height: 20px;
-    left: 29px;
-    bottom: 244px;
-    height: auto;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    font-family: 'Lucida Grande';
-}
-
-.selected #mensaLabel {
-    color: white;
 }
 
 #image {
@@ -289,13 +160,18 @@ tr {
     right: auto;
     bottom: auto;
     margin-top: 0px;
-    width: 39px;
-    height: 31px;
-    top: 10px;
-    left: 187px;
+    border-style: solid;
+    -webkit-border-top-left-radius: 8px 8px;
+    -webkit-border-top-right-radius: 8px 8px;
+    -webkit-border-bottom-left-radius: 8px 8px;
+    -webkit-border-bottom-right-radius: 8px 8px;
+    top: 23px;
+    width: 28px;
+    height: 28px;
+    right: 28px;
 }
 
-#inner_image1 {
+#inner_image {
     position: absolute;
     bottom: 0px;
     right: 0px;
@@ -306,4 +182,123 @@ tr {
     max-height: 100%;
     width: auto;
     height: auto;
+}
+
+#box {
+    border-color: black;
+    border-width: 1px;
+    position: absolute;
+    margin-top: 0px;
+    left: 13px;
+    top: 13px;
+    width: 234px;
+    height: 222px;
+}
+
+#cafeteriaChooser {
+    font-family: HelveticaNeue-Bold;
+    font-size: 12px;
+    text-align: left;
+    position: absolute;
+    right: auto;
+    margin-top: 0px;
+    left: 15px;
+    width: 201px;
+    top: 40px;
+    bottom: 162px;
+    height: auto;
+}
+
+#priceChooser {
+    font-family: HelveticaNeue-Bold;
+    font-size: 12px;
+    text-align: left;
+    position: absolute;
+    right: auto;
+    margin-top: 0px;
+    width: 92px;
+    left: 122px;
+    top: 97px;
+    bottom: 105px;
+    height: auto;
+}
+
+#glassButton {
+    cursor: default;
+    -khtml-user-select: none;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 237px;
+    left: 182px;
+}
+
+#button {
+    font-family: HelveticaNeue-Bold;
+    font-size: 12px;
+    text-align: center;
+    cursor: default;
+    -khtml-user-select: none;
+    position: absolute;
+    right: auto;
+    margin-top: 0px;
+    left: 15px;
+    width: 200px;
+    top: 69px;
+    bottom: 133px;
+    height: auto;
+}
+
+#information {
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    left: 15px;
+    top: 126px;
+    height: 82px;
+    width: 202px;
+    color: rgb(255, 255, 255);
+}
+
+#priveLabel {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 0px;
+    font-weight: bold;
+    font-family: 'Lucida Grande';
+    font-size: 10pt;
+    color: rgb(255, 255, 255);
+    left: 16px;
+    top: 99px;
+    right: 121px;
+    width: auto;
+    height: auto;
+}
+
+.selected #priveLabel {
+    color: white;
+}
+
+#cafLabel {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 0px;
+    font-weight: bold;
+    font-family: 'Lucida Grande';
+    font-size: 10pt;
+    color: rgb(255, 255, 255);
+    top: 17px;
+    left: 15px;
+    width: auto;
+    height: auto;
+}
+
+.selected #cafLabel {
+    color: white;
 }

@@ -125,6 +125,15 @@ function popupGetSelected(id) {
 }
 
 
+function getPopup(id) {
+  var popup = $(id);
+  
+  if (popup) {
+    return popup.object;
+  }
+}
+
+
 function popupSetSelected(id, index) {
   var popup = $(id);
   

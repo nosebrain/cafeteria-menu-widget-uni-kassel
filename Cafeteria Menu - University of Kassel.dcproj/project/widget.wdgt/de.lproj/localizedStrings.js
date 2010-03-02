@@ -5,22 +5,23 @@
  code generator otherwise the changes will be lost.
  */
 var localizedStrings = {
-    "Cafeteria": "Mensa",
+    "Cafeteria": "Preis anziegen für",
     "Done": "Fertig",
     "Error while parsing informations": "Fehler beim Analysieren der Seite",
-    "Friday": "Freitag",
+    "FRIDAY": "FREITAG",
     "Loading data ...": "Lade Daten ...",
-    "Monday": "Montag",
+    "MONDAY": "MONTAG",
     "Parsing data ...": "Analysiere Daten ...",
     "Parsing menus ...": "Analysiere Menüs ...",
     "Parsing week ...": "Analysiere Woche ...",
     "Ready!": "Fertig!",
-    "Show Price For": "Mensa",
+    "Show Price For": "Preis anziegen für",
     "source url has changed!": "Adresse hat sich geändert!",
-    "Thursday": "Donnerstag",
+    "THURSDAY": "DONNERSTAG",
     "title": "Mensa Speiseplan",
-    "Tuesday": "Dienstag",
+    "TUESDAY": "DIENSTAG",
     "Update data manually": "Daten manuell neu laden",
-    "Wednesday": "Mittwoch"
+    "WEDNESDAY": "MITTWOCH"
 };
+
 

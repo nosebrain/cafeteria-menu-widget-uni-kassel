@@ -56,11 +56,11 @@
 	<key>CloseBoxInsetY</key>
 	<integer>15</integer>
 	<key>Height</key>
-	<integer>290</integer>
+	<integer>284</integer>
 	<key>MainHTML</key>
 	<string>main.html</string>
 	<key>Width</key>
-	<integer>262</integer>
+	<integer>258</integer>
 	<key>oldDownloadUpdateSite</key>
 	<string>http://dev.nosebrain.de/cafeteria-widget/download/latest.zip</string>
 	<key>oldUpdateSite</key>

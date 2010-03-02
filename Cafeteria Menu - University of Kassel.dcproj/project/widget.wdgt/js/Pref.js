@@ -3,6 +3,8 @@ var PREF_CAFETERIA = "mensa";
 var PREF_UPDATE = "lastUpdated";
 var PREF_PRICE = "priceType";
 var PREF_INFO = "info";
+var PREF_WIDTH = "myWidth";
+var PREF_HEIGHT = "myHeight";
 
 // all pref keys (info not added because saved for all instances of this widget)
 var PREFS = new Array(PREF_CAFETERIA, PREF_UPDATE, PREF_PRICE);
@@ -28,7 +30,7 @@ Pref.prototype.savePref = function(key, value) {
 
 Pref.prototype.savePref = function(key, value, system) {
   if (!system) {
-    key = createInstancePreferenceKey(key)
+    key = createInstancePreferenceKey(key);
   }
   
   widget.setPreferenceForKey(value, key);

@@ -6,7 +6,6 @@ function CafeteriaWidget() {
   this.listener = new CafeteriaWidgetListener(this);
 }
 
-
 CafeteriaWidget.prototype.init = function() {
   // init cafeteria
   this.setCafeteriaById(PREF.getPref(PREF_CAFETERIA));
@@ -65,6 +64,11 @@ CafeteriaWidget.prototype.autosetMenu = function() {
   day = Math.min(day, 4);
   
   this.setDay(day);
+}
+
+
+CafeteriaWidget.prototype.reresize = function() {
+  window.resizeTo(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT));
 }
 
 
