@@ -15,9 +15,9 @@ Updater.prototype.checkForUpdate = function() {
       // "OK"
       if (this.status == 200) {
         if (this.responseText != self.currentVersion) {
-          showElement(UPDATE_DIV_ID);
+          ElementUtils.show(UPDATE_DIV_ID);
         } else {
-          hideElement(UPDATE_DIV_ID);
+          ElementUtils.hide(UPDATE_DIV_ID);
         }
       }
     }

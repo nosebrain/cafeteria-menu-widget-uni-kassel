@@ -44,7 +44,7 @@ CafeteriaParserListener.prototype.gotWeek = function(start, end) {
   this.parser.getCafeteria().setNextUpdate(date);
   
   // update week
-  replaceInnerHTML(ELEMENT_ID_WEEK, start + "-" + end);
+  ElementUtils.replaceInnerHTML(ELEMENT_ID_WEEK, start + "-" + end);
 }
 
 
@@ -65,5 +65,5 @@ CafeteriaParserListener.prototype.setCurrentState = function(state) {
   this.currentState = state;
   
   // display state
-  replaceInnerHTML(ELEMENT_ID_STATUS_LABEL, dashcode.getLocalizedString(state));
+  ElementUtils.replaceInnerHTML(ELEMENT_ID_STATUS_LABEL, dashcode.getLocalizedString(state));
 }

@@ -16,20 +16,11 @@ function mouseMove(event) {
   var y = event.y + growboxInset.y;
 
   // min width and height
-  x = Math.max(x, WIDGET.getReader().get("Width"));
-  y = Math.max(y, WIDGET.getReader().get("Height"));
+  x = Math.max(x, 0); //WIDGET.getReader().get("Width"));
+  y = Math.max(y, 0); //WIDGET.getReader().get("Height"));
     
-  // calcs for scroll area
-  var divWidth = x - window.innerWidth;
-  var divHeight = y - window.innerHeight;
-  
-  var scrollArea = getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA);
-  var scrollAreaWidth = scrollArea.viewWidth + divWidth + 18; // 18 = scrollbar width FIXME: how to get the value
-  var scrollAreaHeight = scrollArea.viewHeight + divHeight;
-  
-  resizeScrollArea(ELEMENT_ID_MENU_SCROLL_AREA, scrollAreaWidth, scrollAreaHeight);
-  
-  window.resizeBy(divWidth, divHeight);
+  // resize it
+  WIDGET.resize(x, y);
  
   event.stopPropagation();
   event.preventDefault();

@@ -22,7 +22,7 @@ CafeteriaWidget.prototype.initCafeteriaChooser = function() {
     cafeterias.push(cafs[i]["Name"]);
   }
   
-  $(ELEMENT_ID_POPUP_CAFETERIACHOOSER).object.setOptions(cafeterias);
+  ElementUtils.getPopUp(ELEMENT_ID_POPUP_CAFETERIACHOOSER).setOptions(cafeterias);
 }
 
 
@@ -67,8 +67,14 @@ CafeteriaWidget.prototype.autosetMenu = function() {
 }
 
 
-CafeteriaWidget.prototype.reresize = function() {
-  window.resizeTo(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT));
+CafeteriaWidget.prototype.resizeWithAnimation = function(w, h, callback) {
+  
+  
+}
+
+
+CafeteriaWidget.prototype.resize = function(w, h) {  
+  WidgetUtils.resizeTo(w, h);
 }
 
 

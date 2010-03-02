@@ -14,17 +14,17 @@ CafeteriaWidgetListener.prototype.cafeteriaChanged = function(oldCaf, newCaf) {
     PREF.savePref(PREF_CAFETERIA, id);
   
     // change selected item
-    popupSetSelected(ELEMENT_ID_POPUP_CAFETERIACHOOSER, id);
+    ElementUtils.getPopUp(ELEMENT_ID_POPUP_CAFETERIACHOOSER).setSelectedIndex(id);
   
     // change name
-    replaceInnerHTML(ELEMENT_ID_CAFETERIA, newCaf.getName());
+    ElementUtils.replaceInnerHTML(ELEMENT_ID_CAFETERIA, newCaf.getName());
   }
 }
 
 
 CafeteriaWidgetListener.prototype.dayChanged = function(oldDay, newDay) {
   // set popup
-  popupSetSelected(ELEMENT_ID_POPUP_WEEKCHOOSER, newDay);
+  ElementUtils.getPopUp(ELEMENT_ID_POPUP_WEEKCHOOSER).setSelectedIndex(newDay);
   
   var day = this.widget.getCafeteria().getMenu().getDay(newDay);
   
@@ -33,11 +33,12 @@ CafeteriaWidgetListener.prototype.dayChanged = function(oldDay, newDay) {
   }
   
   if (day.isHoliday()) {
-    hideElement(ELEMENT_ID_MENU_SCROLL_AREA);
-    showElement(ELEMENT_ID_HOLIDAY);
+    // TODO: fix parsing
+    // ElementUtils.hide(ELEMENT_ID_MENU_SCROLL_AREA);
+    // ElementUtils.show(ELEMENT_ID_HOLIDAY);
   } else {
-    hideElement(ELEMENT_ID_HOLIDAY);
-    showElement(ELEMENT_ID_MENU_SCROLL_AREA);
+    ElementUtils.hide(ELEMENT_ID_HOLIDAY);
+    ElementUtils.show(ELEMENT_ID_MENU_SCROLL_AREA);
     
      // get menu for new day
     newContent = day.getMenuAsString();
