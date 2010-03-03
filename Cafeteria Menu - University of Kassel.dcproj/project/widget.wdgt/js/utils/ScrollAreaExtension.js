@@ -7,8 +7,8 @@ AppleScrollArea.prototype.setContent = function(newContent) {
 AppleScrollArea.prototype.resize = function(width, height) {
   var parent = this.content.parentNode;
 
-  parent.style.height = height + "px";;
-  parent.style.width = width + "px";;
+  parent.style.height = parseInt(height) + "px";;
+  parent.style.width = parseInt(width) + "px";;
   
   this.refresh();
 }

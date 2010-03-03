@@ -1,6 +1,7 @@
 var PREF = new Pref();
 var WIDGET = new CafeteriaWidget();
 
+
 //
 // Function: load()
 // Called by HTML body element's onload event when the widget is ready to start
