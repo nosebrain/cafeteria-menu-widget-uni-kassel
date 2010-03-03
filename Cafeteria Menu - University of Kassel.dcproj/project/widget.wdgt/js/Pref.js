@@ -1,8 +1,10 @@
-// pref keys
+// global pref keys
+var PREF_INFO = "info";
+
+// pref keys instance
 var PREF_CAFETERIA = "mensa";
 var PREF_UPDATE = "lastUpdated";
 var PREF_PRICE = "priceType";
-var PREF_INFO = "info";
 var PREF_WIDTH = "myWidth";
 var PREF_HEIGHT = "myHeight";
 

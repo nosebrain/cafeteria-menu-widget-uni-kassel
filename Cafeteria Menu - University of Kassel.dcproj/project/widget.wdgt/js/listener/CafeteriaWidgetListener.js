@@ -41,7 +41,8 @@ CafeteriaWidgetListener.prototype.dayChanged = function(oldDay, newDay) {
     ElementUtils.show(ELEMENT_ID_MENU_SCROLL_AREA);
     
      // get menu for new day
-    newContent = day.getMenuAsString();
-    replaceScrollAreaContent(ELEMENT_ID_MENU_SCROLL_AREA, newContent);
+    var newContent = day.getMenuAsString();
+    ElementUtils.getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA).setContent(newContent);
+    // replaceScrollAreaContent(ELEMENT_ID_MENU_SCROLL_AREA, newContent);
   }
 }

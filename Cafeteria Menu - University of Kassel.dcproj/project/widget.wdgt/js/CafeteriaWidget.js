@@ -11,9 +11,11 @@ CafeteriaWidget.prototype.init = function() {
   this.setCafeteriaById(PREF.getPref(PREF_CAFETERIA));
   
   this.initCafeteriaChooser(); // XXX: databinding?!?
+  
+  this.restoreSize();
 }
 
-// TODO: databinding?!?
+
 CafeteriaWidget.prototype.initCafeteriaChooser = function() {
   var cafs = this.reader.get("Cafeterias");
   
@@ -66,14 +68,22 @@ CafeteriaWidget.prototype.autosetMenu = function() {
   this.setDay(day);
 }
 
-
-CafeteriaWidget.prototype.resizeWithAnimation = function(w, h, callback) {
-  
-  
+CafeteriaWidget.prototype.restoreSize = function() {
+  WidgetUtils.resizeWithAnimationTo(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT), null);
 }
 
 
 CafeteriaWidget.prototype.resize = function(w, h) {  
+  // calcs for scroll area
+  var divWidth = w - window.innerWidth;
+  var divHeight = h - window.innerHeight;
+
+  var scrollArea = ElementUtils.getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA);
+  var scrollAreaWidth = scrollArea.viewWidth + divWidth + 18; // 18 = scrollbar width FIXME: how to get the value
+  var scrollAreaHeight = scrollArea.viewHeight + divHeight;
+  
+  scrollArea.resize(scrollAreaWidth, scrollAreaHeight);
+
   WidgetUtils.resizeTo(w, h);
 }
 
@@ -114,6 +124,5 @@ CafeteriaWidget.prototype.setDay = function(day) {
   var old = this.day;
   
   this.day = day;
-  alert("setting day to : " + day); // XXX: remove me
   this.listener.dayChanged(old, day);
 }

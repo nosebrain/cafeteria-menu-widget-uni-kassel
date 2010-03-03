@@ -52,9 +52,7 @@ function sync() {
 function resizeAndShowBack(event) {
   WidgetUtils.resizeWithAnimationTo(WIDGET.getReader().get("Width"), WIDGET.getReader().get("Height"), showBack);
   
-  refreshScrollArea(ELEMENT_ID_INFO_SCROLL_AREA); // TODO: this is a hack to get scroll bars to the scroll area
-  
-  // TODO:
+  // load settings TODO: refactor? 
   ElementUtils.getPopUp(ELEMENT_ID_POPUP_CAFETERIACHOOSER).setSelectedIndex(PREF.getPref(PREF_CAFETERIA));
   ElementUtils.getPopUp(ELEMENT_ID_POPUP_PRICECHOOSER).setSelectedIndex(PREF.getPref(PREF_PRICE));
 }
@@ -70,6 +68,7 @@ function showBack() {
 
   if (window.widget) {
     setTimeout('widget.performTransition();', 0);
+    setTimeout('ElementUtils.getScrollArea(ELEMENT_ID_INFO_SCROLL_AREA).refresh()', 0);// TODO: this is a hack to get scroll bars to the scroll area
   }
 }
 
@@ -91,7 +90,7 @@ function showFront(event) {
   if (window.widget) {
     setTimeout('widget.performTransition();', 0);
     setTimeout('WIDGET.autosetMenu();', 0);
-    setTimeout('WidgetUtils.resizeWithAnimationTo(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT), null);', 600);
+    setTimeout('WIDGET.restoreSize();', 600);
   }
 }
 

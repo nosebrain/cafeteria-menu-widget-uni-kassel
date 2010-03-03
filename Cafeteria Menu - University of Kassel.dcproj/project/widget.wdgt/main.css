@@ -67,23 +67,22 @@ tr {
 
 #cafeteria-name:hover {
     text-decoration: underline;
-    // TODO: move me to seperate class
-;
 }
 
 #weekdayChooser {
     text-align: center;
     -khtml-margin-top-collapse: separate;
     -khtml-margin-bottom-collapse: separate;
-    position: relative;
     font-weight: bold;
-    margin-left: 23px;
-    margin-top: 63px;
     font-family: 'Helvetica Neue';
     font-size: 8pt;
-    min-height: 23px;
+    position: absolute;
+    left: 23px;
+    right: 23px;
+    top: 63px;
+    margin-top: 0px;
+    bottom: 198px;
     height: auto;
-    margin-right: 23px;
     width: auto;
 }
 
@@ -96,8 +95,8 @@ tr {
     position: relative;
     margin-left: 23px;
     width: 213px;
-    margin-top: 5px;
     height: 152px;
+    margin-top: 91px;
 }
 
 #state {

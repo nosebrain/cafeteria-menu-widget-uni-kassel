@@ -16,12 +16,12 @@ function mouseMove(event) {
   var y = event.y + growboxInset.y;
 
   // min width and height
-  x = Math.max(x, 0); //WIDGET.getReader().get("Width"));
-  y = Math.max(y, 0); //WIDGET.getReader().get("Height"));
+  x = Math.max(x, WIDGET.getReader().get("Min-Width"));
+  y = Math.max(y, WIDGET.getReader().get("Min-Height"));
     
   // resize it
   WIDGET.resize(x, y);
- 
+  
   event.stopPropagation();
   event.preventDefault();
 }

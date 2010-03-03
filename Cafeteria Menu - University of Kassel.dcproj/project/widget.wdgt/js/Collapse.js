@@ -1,7 +1,0 @@
-function collapse() {
-  
-}
-
-function expand() {
-  
-}
