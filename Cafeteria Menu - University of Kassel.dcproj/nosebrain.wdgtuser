@@ -4,21 +4,27 @@
 <dict>
 	<key>Breakpoints</key>
 	<dict>
-		<key>widget.wdgt/js/Helper.js:167</key>
-		<string>-resizeTo</string>
-		<key>widget.wdgt/js/Helper.js:173</key>
-		<string>-resizeWithAnimationTo</string>
-		<key>widget.wdgt/js/Pref.js:33</key>
+		<key>/System/Library/WidgetResources/AppleClasses/AppleScrollArea.js:109</key>
+		<string>-</string>
+		<key>widget.wdgt/js/Helper.js:27</key>
+		<string>-myParseInt</string>
+		<key>widget.wdgt/js/Helper.js:28</key>
+		<string>-myParseInt</string>
+		<key>widget.wdgt/js/Pref.js:35</key>
 		<string>-savePref</string>
 		<key>widget.wdgt/js/listener/CafeteriaParserListener.js:22</key>
 		<string>-gotWeek</string>
 		<key>widget.wdgt/js/model/Cafeteria.js:21</key>
 		<string>-getNextUpdate</string>
+		<key>widget.wdgt/js/utils/ScrollAreaExtension.js:8</key>
+		<string>-resize</string>
 		<key>widget.wdgt/main.js:3</key>
 		<string>-</string>
+		<key>widget.wdgt/main.js:56</key>
+		<string>resizeAndShowBack</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{471, 69}</string>
+	<string>{918, 309}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -295,13 +301,7 @@
 			</array>
 		</array>
 		<key>Objects view last selections</key>
-		<array>
-			<array>
-				<integer>0</integer>
-				<integer>0</integer>
-				<integer>9</integer>
-			</array>
-		</array>
+		<array/>
 		<key>Visible StackLayout Views</key>
 		<array>
 			<string>front</string>

@@ -14,13 +14,13 @@ CafeteriaParserListener.prototype.startedParsing = function(response) {
 
 CafeteriaParserListener.prototype.gotInformation = function(result) {
   PREF.savePref(PREF_INFO, result, true);
-  replaceScrollAreaContent(ELEMENT_ID_INFO_SCROLL_AREA, result);
+  ElementUtils.getScrollArea(ELEMENT_ID_INFO_SCROLL_AREA).setContent(result);
 }
 
 
 CafeteriaParserListener.prototype.gotWeek = function(start, end) {
   var dateStr = end.split(/\./); 
-  var dateStart = start.split(/\./); // TODO: first day of the week
+  // var dateStart = start.split(/\./); // TODO: first day of the week
   
   var year = dateStr[2];
   var month = dateStr[1] - 1;

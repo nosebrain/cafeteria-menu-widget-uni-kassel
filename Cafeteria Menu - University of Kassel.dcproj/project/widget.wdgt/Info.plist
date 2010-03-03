@@ -13,9 +13,9 @@
 	<key>CFBundleName</key>
 	<string>Versuch</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.2 alpha1</string>
+	<string>2.0.2</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.2 alpha1</string>
+	<string>2.0.2</string>
 	<key>CafeteriaBaseAddress</key>
 	<string>http://www.studentenwerk-kassel.de/</string>
 	<key>Cafeterias</key>
@@ -59,6 +59,10 @@
 	<integer>284</integer>
 	<key>MainHTML</key>
 	<string>main.html</string>
+	<key>Min-Height</key>
+	<integer>180</integer>
+	<key>Min-Width</key>
+	<integer>258</integer>
 	<key>Width</key>
 	<integer>258</integer>
 	<key>oldDownloadUpdateSite</key>
