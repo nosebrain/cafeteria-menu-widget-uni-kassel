@@ -37,8 +37,8 @@ tr {
     top: 0px;
     left: 0px;
     right: 0px;
-    bottom: 0px;
     width: auto;
+    bottom: 0px;
     height: auto;
 }
 
@@ -299,5 +299,25 @@ tr {
 }
 
 .selected #cafLabel {
+    color: white;
+}
+
+#copyStuff {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 0px;
+    font-family: 'Lucida Grande';
+    color: rgb(255, 255, 255);
+    font-size: 4pt;
+    top: 253px;
+    left: 30px;
+    right: 158px;
+    width: auto;
+    bottom: 24px;
+    height: auto;
+}
+
+.selected #copyStuff {
     color: white;
 }

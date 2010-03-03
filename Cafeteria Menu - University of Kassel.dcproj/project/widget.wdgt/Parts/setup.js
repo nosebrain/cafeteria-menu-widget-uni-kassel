@@ -9,6 +9,7 @@ var dashcodePartSpecs = {
     "cafeteria-name": { "text": "Mensa", "view": "DC.Text" },
     "cafeteriaChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 5, "onchange": "changeCafeteria", "options": ["Item 1", "Item 2", "Item 3"], "rightImageWidth": 16 },
     "cafLabel": { "text": "Cafeteria", "view": "DC.Text" },
+    "copyStuff": { "text": "icon by  Joseph Wain (CC)", "view": "DC.Text" },
     "glassButton": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done" },
     "image": { "view": "DC.ImageLayout" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "resizeAndShowBack", "view": "DC.View" },
@@ -20,6 +21,7 @@ var dashcodePartSpecs = {
     "week": { "text": "01.01-31.12.2010", "view": "DC.Text" },
     "weekdayChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 3, "onchange": "switchWeekday", "options": [["MONDAY", "0"], ["TUESDAY", "1"], ["WEDNESDAY", "2"], ["THURSDAY", "3"], ["FRIDAY", "4"]], "rightImageWidth": 16, "view": "DC.View" }
 };
+
 
 
 
