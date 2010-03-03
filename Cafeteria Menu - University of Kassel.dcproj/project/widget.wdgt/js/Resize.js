@@ -30,6 +30,7 @@ function mouseUp(event) {
   document.removeEventListener("mousemove", mouseMove, true);
   document.removeEventListener("mouseup", mouseUp, true);
   
+  // save dimensions it
   PREF.savePref(PREF_WIDTH, window.innerWidth);
   PREF.savePref(PREF_HEIGHT, window.innerHeight);
  

@@ -69,11 +69,17 @@ CafeteriaWidget.prototype.autosetMenu = function() {
 }
 
 CafeteriaWidget.prototype.restoreSize = function() {
-  WidgetUtils.resizeWithAnimationTo(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT), null);
+  WidgetUtils.resizeWithAnimationTo(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT), this.restoreCollapse);
+}
+
+CafeteriaWidget.prototype.restoreCollapse = function() {
+  if (PREF.getPref(PREF_COLLAPSED)) {
+    WidgetUtils.collapse();
+  }
 }
 
 
-CafeteriaWidget.prototype.resize = function(w, h) {  
+CafeteriaWidget.prototype.resize = function(w, h) {
   // calcs for scroll area
   var divWidth = w - window.innerWidth;
   var divHeight = h - window.innerHeight;

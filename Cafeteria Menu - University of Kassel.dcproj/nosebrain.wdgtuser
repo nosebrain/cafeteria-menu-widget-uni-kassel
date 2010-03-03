@@ -4,27 +4,15 @@
 <dict>
 	<key>Breakpoints</key>
 	<dict>
-		<key>/System/Library/WidgetResources/AppleClasses/AppleScrollArea.js:109</key>
-		<string>-</string>
-		<key>widget.wdgt/js/Helper.js:27</key>
-		<string>-myParseInt</string>
-		<key>widget.wdgt/js/Helper.js:28</key>
-		<string>-myParseInt</string>
-		<key>widget.wdgt/js/Pref.js:35</key>
-		<string>-savePref</string>
-		<key>widget.wdgt/js/listener/CafeteriaParserListener.js:22</key>
-		<string>-gotWeek</string>
-		<key>widget.wdgt/js/model/Cafeteria.js:21</key>
-		<string>-getNextUpdate</string>
-		<key>widget.wdgt/js/utils/ScrollAreaExtension.js:8</key>
+		<key>widget.wdgt/js/CafeteriaWidget.js:85</key>
 		<string>-resize</string>
-		<key>widget.wdgt/main.js:3</key>
+		<key>widget.wdgt/js/Collapse.js:2</key>
+		<string>-toogle</string>
+		<key>widget.wdgt/js/Collapse.js:8</key>
 		<string>-</string>
-		<key>widget.wdgt/main.js:56</key>
-		<string>resizeAndShowBack</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{918, 309}</string>
+	<string>{651, 342}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
