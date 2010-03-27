@@ -69,6 +69,7 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
           if (food.getDescription().search(SEARCH_EXPRESSIONS.holiday) != -1) {
             var day = this.cafeteria.getMenu().getDay(j);
             day.setHoliday(true);
+            // TODO: remove html code
             day.setDescription(day.getDescription() + food.getDescription());
           }
         }
