@@ -18,7 +18,6 @@ var ELEMENT_ID_POPUP_WEEKCHOOSER = "weekdayChooser";
 var ELEMENT_ID_POPUP_CAFETERIACHOOSER = "cafeteriaChooser";
 var ELEMENT_ID_POPUP_PRICECHOOSER = "priceChooser";
 var ELEMENT_ID_CAFETERIA = "cafeteria-name";
-var ELEMENT_ID_HOLIDAY = "holiday";
 var ELEMENT_ID_WEEK = "week";
 var ELEMENT_ID_STATUS_LABEL = "state";
 var ELEMENT_ID_RESIZE = "resize";

@@ -32,15 +32,15 @@ CafeteriaWidgetListener.prototype.dayChanged = function(oldDay, newDay) {
     alert("no day " + newDay);
   }
   
+  var content = "";
+  
   if (day.isHoliday()) {
-    ElementUtils.getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA).setContent(day.getDescription());
-  } else {
-    ElementUtils.hide(ELEMENT_ID_HOLIDAY);
-    ElementUtils.show(ELEMENT_ID_MENU_SCROLL_AREA);
-    
-     // get menu for new day
-    var newContent = day.getMenuAsString();
-    ElementUtils.getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA).setContent(newContent);
-    // replaceScrollAreaContent(ELEMENT_ID_MENU_SCROLL_AREA, newContent);
+    content = day.getDescription();
+  } else {    
+    // get menu for new day
+    content = day.getMenuAsString();
   }
+  
+  // set new content
+  ElementUtils.getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA).setContent(content);
 }
