@@ -65,6 +65,12 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
           }
         } else {
           alert("price not found for " + food.getDescription());
+          // maybe it's a holiday
+          if (food.getDescription().search(SEARCH_EXPRESSIONS.holiday) != -1) {
+            var day = this.cafeteria.getMenu().getDay(j);
+            day.setHoliday(true);
+            day.setDescription(day.getDescription() + food.getDescription());
+          }
         }
         
         // add it to day

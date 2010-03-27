@@ -6,7 +6,8 @@ var SEARCH_EXPRESSIONS = {
   priceSplit : /<td class="preis" height="10" valign="top" width="150px">/, 
   price : /[0-9],[0-9]{2}/g,
   week : /Speiseplan vom&nbsp;([0-9]{2}.[0-9]{2}). (.*|-|bis) ([0-9]{2}.[0-9]{2}.[0-9]{4})/,
-  info : /<td class="gelbunten" colspan="7" bgcolor="#fadc00" valign="top" width="875px"><font face="Arial" size="1">(.*)<\/font><\/td>/
+  info : /<td class="gelbunten" colspan="7" bgcolor="#fadc00" valign="top" width="875px"><font face="Arial" size="1">(.*)<\/font><\/td>/,
+  holiday : /<span class="important">/
 };
 
 

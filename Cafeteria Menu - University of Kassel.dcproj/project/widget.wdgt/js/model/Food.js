@@ -18,6 +18,10 @@ Food.prototype.setDescription = function(description) {
   this.description = description;
 }
 
+Food.prototype.getDescription = function() {
+  return this.description;
+}
+
 Food.prototype.printPrice = function() {
   var priceId = PREF.getPref(PREF_PRICE);
 

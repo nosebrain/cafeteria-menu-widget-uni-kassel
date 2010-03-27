@@ -4,6 +4,8 @@
 <dict>
 	<key>Breakpoints</key>
 	<dict>
+		<key>widget.wdgt/js/CafeteriaParser.js:60</key>
+		<string>-parseMenu</string>
 		<key>widget.wdgt/js/CafeteriaWidget.js:85</key>
 		<string>-resize</string>
 		<key>widget.wdgt/js/Collapse.js:2</key>
@@ -23,8 +25,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1130, 307}}</string>
-			<string>{{0, 317}, {1130, 476}}</string>
+			<string>{{0, 0}, {1100, 307}}</string>
+			<string>{{0, 317}, {1100, 476}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -80,11 +82,11 @@
 		<key>sizes</key>
 		<array>
 			<string>{{0, 0}, {244, 814}}</string>
-			<string>{{245, 0}, {1131, 814}}</string>
+			<string>{{245, 0}, {1101, 814}}</string>
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>63 43 1375 835 0 0 1440 878 </string>
+	<string>71 43 1345 835 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -95,8 +97,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {246, 278}}</string>
-			<string>{{0, 288}, {246, 505}}</string>
+			<string>{{0, 0}, {246, 279}}</string>
+			<string>{{0, 289}, {246, 504}}</string>
 		</array>
 	</dict>
 	<key>Objects view expanded items</key>
@@ -292,7 +294,7 @@
 		<array/>
 		<key>Visible StackLayout Views</key>
 		<array>
-			<string>back</string>
+			<string>front</string>
 		</array>
 	</dict>
 </dict>

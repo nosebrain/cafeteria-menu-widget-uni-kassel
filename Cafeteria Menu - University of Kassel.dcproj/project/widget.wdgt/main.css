@@ -105,12 +105,13 @@ tr {
     overflow: hidden;
     position: absolute;
     margin-top: 0px;
-    left: 44px;
     font-family: 'Helvetica Neue';
     font-size: 8pt;
     right: 142px;
-    width: 100px;
-    bottom: 20px;
+    width: 177px;
+    left: 43px;
+    top: 253px;
+    bottom: 16px;
     height: auto;
 }
 
@@ -137,8 +138,8 @@ tr {
     right: auto;
     bottom: auto;
     margin-top: 0px;
-    left: 132px;
-    top: 18px;
+    top: 42px;
+    left: 152px;
 }
 
 #front {
