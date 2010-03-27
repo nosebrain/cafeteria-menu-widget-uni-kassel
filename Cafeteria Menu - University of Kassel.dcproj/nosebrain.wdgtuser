@@ -4,13 +4,15 @@
 <dict>
 	<key>Breakpoints</key>
 	<dict>
-		<key>widget.wdgt/js/CafeteriaParser.js:60</key>
+		<key>widget.wdgt/js/CafeteriaParser.js:3</key>
+		<string>-</string>
+		<key>widget.wdgt/js/CafeteriaParser.js:84</key>
 		<string>-parseMenu</string>
-		<key>widget.wdgt/js/CafeteriaWidget.js:85</key>
+		<key>widget.wdgt/js/CafeteriaWidget.js:110</key>
 		<string>-resize</string>
-		<key>widget.wdgt/js/Collapse.js:2</key>
+		<key>widget.wdgt/js/Collapse.js:27</key>
 		<string>-toogle</string>
-		<key>widget.wdgt/js/Collapse.js:8</key>
+		<key>widget.wdgt/js/Collapse.js:33</key>
 		<string>-</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
@@ -18,7 +20,7 @@
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
-		<integer>8</integer>
+		<integer>24</integer>
 		<key>SplitViewConfig</key>
 		<integer>3</integer>
 		<key>_indexOfCollapsedView</key>

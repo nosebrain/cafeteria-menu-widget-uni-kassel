@@ -1,9 +1,35 @@
+/**
+ * Cafeteria Widget - University of Kassel
+ *
+ *
+ * Copyright 2009 - 2010, Daniel Zoller
+ *                        http://nosebrain.de
+ *
+ * This widget is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This widget is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this widget; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA 
+ *
+ *
+ * @author Daniel Zoller<nosebrain@gmx.net>
+ */
+
 function CafeteriaParser(cafeteria) {
   this.cafeteria = cafeteria;
   this.request = null;
   
   this.listener = new CafeteriaParserListener(this);
 }
+
 
 CafeteriaParser.prototype.parseResult = function(response) { 
   try {
@@ -31,6 +57,7 @@ CafeteriaParser.prototype.parseResult = function(response) {
   }
 }
 
+
 CafeteriaParser.prototype.parseMenu = function(foodSource) {
   this.cafeteria.setMenu(new Menu());
   
@@ -52,40 +79,42 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
             
       var description = removeHTMLCode(menu[j]).replace(/- /, " ");
       
-      if (description != " " ) {
-        var food = new Food();
-        food.setDescription(description);
-      
+      if (description != " ") {      
         // get price
         var price = prices[j].match(SEARCH_EXPRESSIONS.price);
         
         if (price) {
+          var food = new Food();
+          food.setDescription(description);
+        
           for (var x = 0; x < price.length; x++) {
             food.setPrice(x, price[x]);
           }
+          
+          // add it to day
+          this.cafeteria.getMenu().getDay(j).addToFood(food);
         } else {
-          alert("price not found for " + food.getDescription());
+          alert("price not found for " + description);
           // maybe it's a holiday
-          if (food.getDescription().search(SEARCH_EXPRESSIONS.holiday) != -1) {
+          if (description.search(SEARCH_EXPRESSIONS.holiday) != -1) {
             var day = this.cafeteria.getMenu().getDay(j);
             day.setHoliday(true);
             // TODO: remove html code
-            day.setDescription(day.getDescription() + food.getDescription());
+            day.setDescription(day.getDescription() + description);
           }
-        }
-        
-        // add it to day
-        this.cafeteria.getMenu().getDay(j).addToFood(food);
+        }        
       }
     }
   }
 }
+
 
 CafeteriaParser.prototype.parseWeek = function(weekSource) {
   var actWeek = weekSource.match(SEARCH_EXPRESSIONS.week);
   
   this.listener.gotWeek(actWeek[1], actWeek[3]);
 }
+
 
 CafeteriaParser.prototype.parseInfo = function(infoSource) {
   var info = infoSource.match(SEARCH_EXPRESSIONS.info);
