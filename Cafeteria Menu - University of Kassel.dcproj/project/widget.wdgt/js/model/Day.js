@@ -1,6 +1,7 @@
 function Day() {
   this.food = new Array();
   this.holiday = false;
+  this.description = "";
 }
 
 Day.prototype.addToFood = function(food) {
@@ -13,6 +14,14 @@ Day.prototype.setHoliday = function(holiday) {
 
 Day.prototype.isHoliday = function() {
   return this.holiday;
+}
+
+Day.prototype.setDescription = function(description) {
+  this.description = description;
+}
+
+Day.prototype.getDescription = function() {
+  return this.description;
 }
 
 Day.prototype.getMenuAsString = function() {

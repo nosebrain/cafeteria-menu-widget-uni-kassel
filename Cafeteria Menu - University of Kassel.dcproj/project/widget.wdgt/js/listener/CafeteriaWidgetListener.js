@@ -33,9 +33,7 @@ CafeteriaWidgetListener.prototype.dayChanged = function(oldDay, newDay) {
   }
   
   if (day.isHoliday()) {
-    // TODO: fix parsing
-    // ElementUtils.hide(ELEMENT_ID_MENU_SCROLL_AREA);
-    // ElementUtils.show(ELEMENT_ID_HOLIDAY);
+    ElementUtils.getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA).setContent(day.getDescription());
   } else {
     ElementUtils.hide(ELEMENT_ID_HOLIDAY);
     ElementUtils.show(ELEMENT_ID_MENU_SCROLL_AREA);
