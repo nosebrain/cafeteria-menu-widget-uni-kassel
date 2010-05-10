@@ -15,7 +15,7 @@ var localizedStrings = {
     "Parsing menus ...": "Parsing menus ...",
     "Parsing week ...": "Parsing week ...",
     "Ready!": "\"Ready!\"",
-    "Show Price For": "Show Price For",
+    "Show price for": "Show price for",
     "source url has changed!": "source url has changed!",
     "THURSDAY": "THURSDAY",
     "title": "Cafeteria menu",
@@ -23,5 +23,6 @@ var localizedStrings = {
     "Update data manually": "Update data manually",
     "WEDNESDAY": "WEDNESDAY"
 };
+
 
 

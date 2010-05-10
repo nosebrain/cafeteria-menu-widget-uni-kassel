@@ -15,12 +15,13 @@ var dashcodePartSpecs = {
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "resizeAndShowBack", "view": "DC.View" },
     "information": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "spacing": 4 },
     "priceChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 5, "onchange": "changePrice", "options": [["Student", "Item 1"], ["Staff", "Item 2"], ["Guest", "Item 3"]], "rightImageWidth": 16 },
-    "priveLabel": { "text": "Show Price for", "view": "DC.Text" },
+    "priveLabel": { "text": "Show price for", "view": "DC.Text" },
     "scrollArea": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "view": "DC.View" },
     "state": { "text": "Loading data ...", "view": "DC.Text" },
     "week": { "text": "01.01-31.12.2010", "view": "DC.Text" },
     "weekdayChooser": { "creationFunction": "CreatePopupButton", "leftImageWidth": 3, "onchange": "switchWeekday", "options": [["MONDAY", "0"], ["TUESDAY", "1"], ["WEDNESDAY", "2"], ["THURSDAY", "3"], ["FRIDAY", "4"]], "rightImageWidth": 16, "view": "DC.View" }
 };
+
 
 
 
