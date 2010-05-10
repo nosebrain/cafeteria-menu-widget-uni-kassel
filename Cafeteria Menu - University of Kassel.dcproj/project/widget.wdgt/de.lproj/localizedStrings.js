@@ -5,7 +5,7 @@
  code generator otherwise the changes will be lost.
  */
 var localizedStrings = {
-    "Cafeteria": "Preis anziegen für",
+    "Cafeteria": "Mensa",
     "Done": "Fertig",
     "Error while parsing informations": "Fehler beim Analysieren der Seite",
     "FRIDAY": "FREITAG",
@@ -15,7 +15,7 @@ var localizedStrings = {
     "Parsing menus ...": "Analysiere Menüs ...",
     "Parsing week ...": "Analysiere Woche ...",
     "Ready!": "Fertig!",
-    "Show Price For": "Preis anziegen für",
+    "Show price for": "Preisstufe",
     "source url has changed!": "Adresse hat sich geändert!",
     "THURSDAY": "DONNERSTAG",
     "title": "Mensa Speiseplan",
@@ -23,5 +23,6 @@ var localizedStrings = {
     "Update data manually": "Daten manuell neu laden",
     "WEDNESDAY": "MITTWOCH"
 };
+
 
 
