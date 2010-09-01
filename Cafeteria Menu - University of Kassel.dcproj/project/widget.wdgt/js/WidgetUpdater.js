@@ -23,7 +23,7 @@
  * @author Daniel Zoller<nosebrain@gmx.net>
  */
 
-function Updater() {
+function WidgetUpdater() {
   reader = new InfoPlistReader();
   
   this.updateURL = reader.get("oldUpdateSite");
@@ -31,7 +31,7 @@ function Updater() {
   this.downloadURL = reader.get("oldDownloadUpdateSite");
 }
 
-Updater.prototype.checkForUpdate = function() {
+WidgetUpdater.prototype.checkForUpdate = function() {
   var request = new XMLHttpRequest();
   
   var self = this;  
@@ -52,6 +52,6 @@ Updater.prototype.checkForUpdate = function() {
   request.send(null);
 }
 
-Updater.prototype.getDownloadURL = function() {
+WidgetUpdater.prototype.getDownloadURL = function() {
   return this.downloadURL;
 }
