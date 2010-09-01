@@ -24,7 +24,7 @@
  */
 
 function CafeteriaWidget() {
-  this.updater = new Updater();
+  this.updater = new WidgetUpdater();
   this.cafeteria = null;
   
   this.reader = new InfoPlistReader();
