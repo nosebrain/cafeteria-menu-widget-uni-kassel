@@ -24,13 +24,17 @@
  */
 
 function Day() {
-  this.food = new Array();
+  this.foods = new Array();
   this.holiday = false;
   this.description = "";
 }
 
 Day.prototype.addToFood = function(food) {
-  this.food.push(food);
+  this.foods.push(food);
+}
+
+Day.prototype.getFoods = function() {
+  return this.foods;
 }
 
 Day.prototype.setHoliday = function(holiday) {
@@ -47,22 +51,4 @@ Day.prototype.setDescription = function(description) {
 
 Day.prototype.getDescription = function() {
   return this.description;
-}
-
-Day.prototype.getMenuAsString = function() {
-  var result = "<table>";
-  
-  for (var i = 0; i < this.food.length; i++) {
-    result += "<tr";
-    if (i % 2 == 1) {
-      result += " class='alt'";
-    } 
-    result += ">";
-    result += this.food[i].to_s();
-    result += "</tr>";
-  }
-  
-  result += "</table>";
-  
-  return result;
 }

@@ -33,7 +33,7 @@ Cafeteria.prototype.getId = function() {
   return this.id;
 }
 
-
+// TODO: move to MenuUpdater
 Cafeteria.prototype.getNextUpdate = function() {
   if (!this.nextUpdate) {
     // load from pref TODO: move to cafeteria load method
@@ -46,7 +46,7 @@ Cafeteria.prototype.getNextUpdate = function() {
   return this.nextUpdate;
 }
 
-
+// TODO: move to MenuUpdater
 Cafeteria.prototype.setNextUpdate = function(date) {
   this.nextUpdate = date;
   
@@ -84,7 +84,7 @@ Cafeteria.prototype.setMenu = function(menu) {
   this.menu = menu;
 }
 
-
+// TODO: move to MenuUpdater
 Cafeteria.prototype.updateNecessary = function() {
   // now
   var now = new Date();
@@ -99,7 +99,7 @@ Cafeteria.prototype.updateNecessary = function() {
   return false;
 }
 
-
+// TODO: move to MenuUpdater
 Cafeteria.prototype.update = function() {
   this.parser.parse();
 }

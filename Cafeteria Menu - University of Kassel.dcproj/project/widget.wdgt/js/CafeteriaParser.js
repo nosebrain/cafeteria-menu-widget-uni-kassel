@@ -97,6 +97,7 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
           alert("price not found for " + description);
           // maybe it's a holiday
           if (description.search(SEARCH_EXPRESSIONS.holiday) != -1) {
+            alert("holiday");
             var day = this.cafeteria.getMenu().getDay(j);
             day.setHoliday(true);
             // TODO: remove html code

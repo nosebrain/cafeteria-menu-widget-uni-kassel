@@ -37,9 +37,9 @@ var SEARCH_EXPRESSIONS = {
 
 
 // element ids
-var ELEMENT_ID_MENU_SCROLL_AREA = "scrollArea";
+
 var ELEMENT_ID_INFO_SCROLL_AREA = "information";
-var ELEMENT_ID_POPUP_WEEKCHOOSER = "weekdayChooser";
+var ELEMENT_ID_MENU_SCROLL_AREA = "scrollArea";
 var ELEMENT_ID_POPUP_CAFETERIACHOOSER = "cafeteriaChooser";
 var ELEMENT_ID_POPUP_PRICECHOOSER = "priceChooser";
 var ELEMENT_ID_CAFETERIA = "cafeteria-name";
