@@ -35,6 +35,7 @@ function CafeteriaWidget() {
   
   this.menuUpdater = new MenuUpdater();
   this.menuUpdater.setWidget(this);
+  this.menuUpdater.setFrontViewController(this.frontViewController); // TODO
 }
 
 CafeteriaWidget.prototype.init = function() {

@@ -50,11 +50,5 @@ var ELEMENT_ID_INFO = "info";
 
 var UPDATE_DIV_ID = "updateImg"; // TODO: wSparkle
 
-// states
-var STATE_LOADING = "Loading data ...";
-var STATE_PARSING = "Parsing data ...";
-var STATE_OK = "";
-var STATE_FAILED = "Error while parsing informations";
-
 // error messages
 var ERROR_MESSAGE_404 = "source url has changed!";
