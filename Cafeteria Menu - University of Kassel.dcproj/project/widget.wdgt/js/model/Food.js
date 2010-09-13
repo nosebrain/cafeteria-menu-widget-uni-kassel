@@ -46,21 +46,3 @@ Food.prototype.setDescription = function(description) {
 Food.prototype.getDescription = function() {
   return this.description;
 }
-
-Food.prototype.printPrice = function() {
-  var priceId = PREF.getPref(PREF_PRICE);
-
-  var price = this.getPrice(priceId);
-  var print = "<td class = \"price\">";
-  
-  if (price) {
-    print += price;
-    print += "€";
-  } 
-  
-  return print + "</td>";
-}
-
-Food.prototype.to_s = function() {
-  return "<td>" + this.description + "</td>" + this.printPrice();
-}

@@ -29,12 +29,18 @@ function CafeteriaWidget() {
   
   this.reader = new InfoPlistReader();
   this.listener = new CafeteriaWidgetListener(this);
+  
+  this.frontViewController = new CafeteriaMenuViewController();
+  this.frontViewController.setWidget(this);
 }
 
 CafeteriaWidget.prototype.init = function() {
   // init cafeteria
   this.setCafeteriaById(PREF.getPref(PREF_CAFETERIA));
   
+  this.frontViewController.viewWillAppear();
+  
+  // TODO: move to CafeteriaBackViewController.js
   this.initCafeteriaChooser(); // XXX: databinding?!?
   
   this.restoreSize();
@@ -62,8 +68,8 @@ CafeteriaWidget.prototype.show = function() {
   // check for widget updates TODO: wSparkle
   this.updater.checkForUpdate();
   
-  // set menu
-  this.autosetMenu();
+  // inform the controllers
+  this.frontViewController.viewDidAppear();
 }
 
 CafeteriaWidget.prototype.remove = function() {
@@ -71,26 +77,6 @@ CafeteriaWidget.prototype.remove = function() {
   for (var i = 0; i < PREFS.length; i++) {
     PREF.savePref(PREFS[i], null);
   }
-}
-
-
-CafeteriaWidget.prototype.autosetMenu = function() {
-  var now = new Date();
-  var day = now.getDay();
-  var hour = now.getHours();
-  
-  if (hour < 14) {
-    day--;
-  }
-  
-  // day--; // because 0 => Sunday
-  
-  // TODO: what about weekends ?
-  
-  day = Math.max(day, 0);
-  day = Math.min(day, 4);
-  
-  this.setDay(day);
 }
 
 CafeteriaWidget.prototype.restoreSize = function() {
@@ -139,7 +125,30 @@ CafeteriaWidget.prototype.setCafeteria = function(cafeteria) {
 
   this.cafeteria = cafeteria;
   
-  this.listener.cafeteriaChanged(old, cafeteria); // TODO: maybe fire propertyChange only on change?
+  this.changedCafeteria(old, cafeteria);
+  
+  // this.listener.cafeteriaChanged(old, cafeteria); // TODO: maybe fire propertyChange only on change?
+}
+
+CafeteriaWidget.prototype.changedCafeteria = function(oldCafeteria, newCafeteria) {
+  if (newCafeteria) {
+    // TODO: updater
+    // update data
+    newCafeteria.update();
+    
+    var id = newCafeteria.getId();
+  
+    // presist selected cafeteria id
+    PREF.savePref(PREF_CAFETERIA, id);
+    
+    
+  
+    // change selected item // TODO: backviewController
+    ElementUtils.getPopUp(ELEMENT_ID_POPUP_CAFETERIACHOOSER).setSelectedIndex(id);
+  
+    
+    this.frontViewController.changedCafeteria(oldCafeteria, newCafeteria);
+  }
 }
 
 
@@ -155,5 +164,5 @@ CafeteriaWidget.prototype.setDay = function(day) {
   var old = this.day;
   
   this.day = day;
-  this.listener.dayChanged(old, day);
+  this.frontViewController.dayChanged(old, day);
 }

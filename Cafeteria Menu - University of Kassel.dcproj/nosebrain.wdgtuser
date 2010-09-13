@@ -4,19 +4,15 @@
 <dict>
 	<key>Breakpoints</key>
 	<dict>
-		<key>widget.wdgt/js/CafeteriaParser.js:3</key>
-		<string>-</string>
-		<key>widget.wdgt/js/CafeteriaParser.js:84</key>
-		<string>-parseMenu</string>
-		<key>widget.wdgt/js/CafeteriaWidget.js:110</key>
-		<string>-resize</string>
-		<key>widget.wdgt/js/Collapse.js:27</key>
-		<string>-toogle</string>
-		<key>widget.wdgt/js/Collapse.js:33</key>
+		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:42</key>
+		<string>-dayChanged</string>
+		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:45</key>
+		<string>-dayChanged</string>
+		<key>widget.wdgt/js/frameworks/jquery-widget-plugins/jquery-popup.js:9</key>
 		<string>-</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{692, 298}</string>
+	<string>{933, 387}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -88,7 +84,7 @@
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>95 43 1345 835 0 0 1440 878 </string>
+	<string>68 43 1345 835 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -334,7 +330,13 @@
 			</array>
 		</array>
 		<key>Objects view last selections</key>
-		<array/>
+		<array>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>13</integer>
+			</array>
+		</array>
 		<key>Visible StackLayout Views</key>
 		<array>
 			<string>front</string>

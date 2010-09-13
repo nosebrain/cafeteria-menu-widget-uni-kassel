@@ -161,10 +161,10 @@ tr {
     bottom: auto;
     margin-top: 0px;
     border-style: solid;
-    -webkit-border-top-left-radius: 8px 8px;
-    -webkit-border-top-right-radius: 8px 8px;
-    -webkit-border-bottom-left-radius: 8px 8px;
-    -webkit-border-bottom-right-radius: 8px 8px;
+    border-top-left-radius: 8px 8px;
+    border-top-right-radius: 8px 8px;
+    border-bottom-left-radius: 8px 8px;
+    border-bottom-right-radius: 8px 8px;
     top: 23px;
     width: 28px;
     height: 28px;

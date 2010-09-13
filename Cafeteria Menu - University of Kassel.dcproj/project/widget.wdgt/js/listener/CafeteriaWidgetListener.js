@@ -22,9 +22,15 @@
  *
  * @author Daniel Zoller<nosebrain@gmx.net>
  */
+ 
+/*
+ * TODO: merge with CafeteriaFrontViewController
+*/
 
 function CafeteriaWidgetListener(widget) {
   this.widget = widget;
+  this.controller = new CafeteriaMenuViewController();
+  this.controller.setWidget(this.widget);
 }
 
 
@@ -44,28 +50,4 @@ CafeteriaWidgetListener.prototype.cafeteriaChanged = function(oldCaf, newCaf) {
     // change name
     ElementUtils.replaceInnerHTML(ELEMENT_ID_CAFETERIA, newCaf.getName());
   }
-}
-
-
-CafeteriaWidgetListener.prototype.dayChanged = function(oldDay, newDay) {
-  // set popup
-  ElementUtils.getPopUp(ELEMENT_ID_POPUP_WEEKCHOOSER).setSelectedIndex(newDay);
-  
-  var day = this.widget.getCafeteria().getMenu().getDay(newDay);
-  
-  if (!day) {
-    alert("no day " + newDay);
-  }
-  
-  var content = "";
-  
-  if (day.isHoliday()) {
-    content = day.getDescription();
-  } else {    
-    // get menu for new day
-    content = day.getMenuAsString();
-  }
-  
-  // set new content
-  ElementUtils.getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA).setContent(content);
 }

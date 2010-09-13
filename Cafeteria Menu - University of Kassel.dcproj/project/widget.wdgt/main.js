@@ -25,7 +25,7 @@ function remove() {
 // Called when the widget has been hidden
 //
 function hide() {
-  // WUDGET.hide();
+  // WIDGET.hide();
 }
 
 //
@@ -51,6 +51,7 @@ function sync() {
 // event: onClick event from the info button
 //
 function resizeAndShowBack(event) {
+  // TODO move to CafeteriaBackController viewWillAppear(); viewDidAppear()
   WidgetUtils.resizeWithAnimationTo(WIDGET.getReader().get("Width"), WIDGET.getReader().get("Height"), showBack);
   
   // load settings TODO: refactor? 
@@ -69,6 +70,8 @@ function showBack() {
 
   if (window.widget) {
     setTimeout('widget.performTransition();', 0);
+    
+    // TODO: move view code WIDGET.backShowed();
     setTimeout('ElementUtils.getScrollArea(ELEMENT_ID_INFO_SCROLL_AREA).refresh()', 0);// TODO: this is a hack to get scroll bars to the scroll area
   }
 }
@@ -83,13 +86,14 @@ function showFront(event) {
   if (window.widget) {
     widget.prepareForTransition("ToFront");
   }
-    
+  
   ElementUtils.show("front");
   ElementUtils.hide("back");
   
 
   if (window.widget) {
     setTimeout('widget.performTransition();', 0);
+    // TODO: move View code 
     setTimeout('WIDGET.autosetMenu();', 0);
     setTimeout('WIDGET.restoreSize();', 600);
   }
