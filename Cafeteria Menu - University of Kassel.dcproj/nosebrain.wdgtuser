@@ -8,10 +8,12 @@
 		<string>-CafeteriaParser</string>
 		<key>widget.wdgt/js/CafeteriaParser.js:27</key>
 		<string>-CafeteriaParser</string>
-		<key>widget.wdgt/js/CafeteriaWidget.js:71</key>
+		<key>widget.wdgt/js/CafeteriaWidget.js:72</key>
 		<string>-show</string>
-		<key>widget.wdgt/js/MenuUpdater.js:12</key>
+		<key>widget.wdgt/js/MenuUpdater.js:38</key>
 		<string>-checkForUpdate</string>
+		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:111</key>
+		<string>changedState</string>
 		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:47</key>
 		<string>-dayChanged</string>
 		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:50</key>

@@ -105,6 +105,12 @@ CafeteriaMenuViewController.prototype.getViewForFood = function(food) {
   return result;
 }
 
+CafeteriaMenuViewController.prototype.changedState = function(oldState, newState) {
+  // display state
+  var message = dashcode.getLocalizedString(newState);
+  $("#info").html(message);
+}
+
 CafeteriaMenuViewController.prototype.viewWillAppear = function() {
   alert("viewWillAppear"); // TODO: viewDidLoad
 }
