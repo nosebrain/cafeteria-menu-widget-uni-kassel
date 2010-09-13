@@ -35,6 +35,7 @@ function CafeteriaWidgetListener(widget) {
 
 
 CafeteriaWidgetListener.prototype.cafeteriaChanged = function(oldCaf, newCaf) {
+  alert("DEP: CafeteriaChanged");
   if (newCaf) {
     // update data
     newCaf.update();

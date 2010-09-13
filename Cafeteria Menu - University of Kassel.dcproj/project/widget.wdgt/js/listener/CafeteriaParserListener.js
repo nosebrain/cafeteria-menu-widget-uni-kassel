@@ -23,8 +23,8 @@
  * @author Daniel Zoller<nosebrain@gmx.net>
  */
 
-function CafeteriaParserListener(parser) {
-  this.parser = parser;
+function CafeteriaParserListener() {
+
 }
 
 CafeteriaParserListener.prototype.startedDownload = function() {
@@ -59,14 +59,16 @@ CafeteriaParserListener.prototype.gotWeek = function(start, end) {
     date.setHours(now.getHours());
   }
   
-  var nextUpdate = this.parser.getCafeteria().getNextUpdate();	
+  // TODO: set next update
   
-  if (nextUpdate) {
+  // var nextUpdate = this.parser.getCafeteria().getNextUpdate();	
+  
+  // if (nextUpdate) {
     // TODO: add 60 minutes
-  }
+  // }
   
   // save it
-  this.parser.getCafeteria().setNextUpdate(date);
+  // this.parser.getCafeteria().setNextUpdate(date);
   
   // update week
   ElementUtils.replaceInnerHTML(ELEMENT_ID_WEEK, start + "-" + end);
