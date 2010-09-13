@@ -32,6 +32,9 @@ function CafeteriaWidget() {
   
   this.frontViewController = new CafeteriaMenuViewController();
   this.frontViewController.setWidget(this);
+  
+  this.menuUpdater = new MenuUpdater();
+  this.menuUpdater.setWidget(this);
 }
 
 CafeteriaWidget.prototype.init = function() {
@@ -44,6 +47,10 @@ CafeteriaWidget.prototype.init = function() {
   this.initCafeteriaChooser(); // XXX: databinding?!?
   
   this.restoreSize();
+}
+
+CafeteriaWidget.prototype.switchedWeekday = function() {
+  this.frontViewController.switchedWeekday();
 }
 
 
@@ -60,15 +67,13 @@ CafeteriaWidget.prototype.initCafeteriaChooser = function() {
 
 
 CafeteriaWidget.prototype.show = function() {
-  // check for food updates
-  if (this.cafeteria.updateNecessary()) {
-    this.cafeteria.update(true);
-  }
+  // check for food updates  
+  this.menuUpdater.checkForUpdate();
   
   // check for widget updates TODO: wSparkle
   this.updater.checkForUpdate();
   
-  // inform the controllers
+  // inform the view controllers
   this.frontViewController.viewDidAppear();
 }
 
@@ -134,7 +139,9 @@ CafeteriaWidget.prototype.changedCafeteria = function(oldCafeteria, newCafeteria
   if (newCafeteria) {
     // TODO: updater
     // update data
-    newCafeteria.update();
+    
+    this.menuUpdater.checkForUpdate();
+    // newCafeteria.update();
     
     var id = newCafeteria.getId();
   

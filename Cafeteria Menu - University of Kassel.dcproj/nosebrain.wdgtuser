@@ -4,12 +4,26 @@
 <dict>
 	<key>Breakpoints</key>
 	<dict>
-		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:42</key>
+		<key>widget.wdgt/js/CafeteriaParser.js:26</key>
+		<string>-CafeteriaParser</string>
+		<key>widget.wdgt/js/CafeteriaParser.js:27</key>
+		<string>-CafeteriaParser</string>
+		<key>widget.wdgt/js/CafeteriaWidget.js:71</key>
+		<string>-show</string>
+		<key>widget.wdgt/js/MenuUpdater.js:12</key>
+		<string>-checkForUpdate</string>
+		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:47</key>
 		<string>-dayChanged</string>
-		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:45</key>
+		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:50</key>
 		<string>-dayChanged</string>
 		<key>widget.wdgt/js/frameworks/jquery-widget-plugins/jquery-popup.js:9</key>
 		<string>-</string>
+		<key>widget.wdgt/main.js:120</key>
+		<string>-changeCafeteria</string>
+		<key>widget.wdgt/main.js:36</key>
+		<string>-show</string>
+		<key>widget.wdgt/main.js:37</key>
+		<string>-show</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
 	<string>{933, 387}</string>
@@ -330,13 +344,7 @@
 			</array>
 		</array>
 		<key>Objects view last selections</key>
-		<array>
-			<array>
-				<integer>0</integer>
-				<integer>0</integer>
-				<integer>13</integer>
-			</array>
-		</array>
+		<array/>
 		<key>Visible StackLayout Views</key>
 		<array>
 			<string>front</string>

@@ -19,19 +19,18 @@
  * along with this widget; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA 
  *
- *
  * @author Daniel Zoller<nosebrain@gmx.net>
  */
 
-function CafeteriaParser(cafeteria) {
+function CafeteriaParser(cafeteria, listener) {
   this.cafeteria = cafeteria;
   this.request = null;
   
-  this.listener = new CafeteriaParserListener(this);
+  this.listener = listener;
 }
 
 
-CafeteriaParser.prototype.parseResult = function(response) { 
+CafeteriaParser.prototype.parseResult = function(response) {
   try {
     this.listener.startedParsing(response);
     // clear new lines and 
@@ -59,7 +58,8 @@ CafeteriaParser.prototype.parseResult = function(response) {
 
 
 CafeteriaParser.prototype.parseMenu = function(foodSource) {
-  this.cafeteria.setMenu(new Menu());
+  var menuO = new Menu();
+  this.cafeteria.setMenu(menuO);
   
   for (var i = 0; i < foodSource.length; i++) {
     var priceFoodSplit = foodSource[i].split(SEARCH_EXPRESSIONS.priceFoodSplit);
@@ -92,7 +92,7 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
           }
           
           // add it to day
-          this.cafeteria.getMenu().getDay(j).addToFood(food);
+          menuO.getDay(j).addToFood(food);
         } else {
           alert("price not found for " + description);
           // maybe it's a holiday

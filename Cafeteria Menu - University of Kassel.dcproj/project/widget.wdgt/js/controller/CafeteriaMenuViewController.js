@@ -38,6 +38,11 @@ CafeteriaMenuViewController.prototype.changedCafeteria = function(oldCafeteria, 
   $(CAFETERIA_LABEL_SELECTOR).html(newCafeteria.getName());
 }
 
+CafeteriaMenuViewController.prototype.switchedWeekday = function() {
+  var day = $(WEEK_DAY_CHOOSER_SELECTOR).popup().getSelectedIndex();
+  this.widget.setDay(day);
+}
+
 CafeteriaMenuViewController.prototype.dayChanged = function(oldDay, newDay) {
   // set popup
   $(WEEK_DAY_CHOOSER_SELECTOR).popup().setSelectedIndex(newDay);

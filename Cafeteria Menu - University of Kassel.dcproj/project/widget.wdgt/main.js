@@ -8,7 +8,6 @@ var WIDGET = new CafeteriaWidget();
 //
 function load() {
   dashcode.setupParts();
-  
   WIDGET.init();
 }
 
@@ -25,6 +24,7 @@ function remove() {
 // Called when the widget has been hidden
 //
 function hide() {
+  // TODO
   // WIDGET.hide();
 }
 
@@ -94,19 +94,19 @@ function showFront(event) {
   if (window.widget) {
     setTimeout('widget.performTransition();', 0);
     // TODO: move View code 
-    setTimeout('WIDGET.autosetMenu();', 0);
+    // setTimeout('WIDGET.autosetMenu();', 0);
     setTimeout('WIDGET.restoreSize();', 600);
   }
 }
 
 
 function switchWeekday(event) {
-  var day = ElementUtils.getPopUp(ELEMENT_ID_POPUP_WEEKCHOOSER).getSelectedIndex();
-  WIDGET.setDay(day);
+  WIDGET.switchedWeekday();
 }
 
 
 function openMenuInBrowser(event) {
+  // WIDGET.openCafeteriaSite() TODO
   widget.openURL(WIDGET.getCafeteria().getURL());
 }
 
@@ -117,7 +117,7 @@ function manupdate(event) {
 
 
 function changeCafeteria(event) {
-  var cafId = ElementUtils.getPopUp(ELEMENT_ID_POPUP_CAFETERIACHOOSER).getSelectedIndex();
+  var cafId = $("#" + ELEMENT_ID_POPUP_CAFETERIACHOOSER).popup().getSelectedIndex(); // TODO
   WIDGET.setCafeteriaById(cafId);
 }
 
@@ -129,6 +129,7 @@ function changePrice(event) {
 
 
 function downloadLatestVersion(event) {
+  // WIDGET.downloadNewestVersion(); // TODO: implement 
   widget.openURL(WIDGET.getUpdater().getDownloadURL());
 }
 
