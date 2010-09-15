@@ -34,7 +34,7 @@ function CafeteriaWidget() {
   this.reader = new InfoPlistReader();
   
   // init view controllers
-  this.frontViewController = new CafeteriaMenuViewController();
+  this.frontViewController = new FrontViewController();
   this.frontViewController.setWidget(this);
   
   this.backViewController = new BackViewController();

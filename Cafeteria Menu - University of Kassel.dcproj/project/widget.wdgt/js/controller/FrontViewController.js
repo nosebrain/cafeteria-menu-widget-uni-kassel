@@ -34,27 +34,27 @@ var RESIZE_SELECTOR = '#resize';
 var COLLAPSED_CLASS_NAME = 'collapsed';
 var EXPANDED_CLASS_NAME = 'expanded';
 
-// TODO: rename to FrontViewController
-function CafeteriaMenuViewController() {
+
+function FrontViewController() {
 
 }
 
-CafeteriaMenuViewController.prototype.changedCafeteria = function(oldCafeteria, newCafeteria) {
+FrontViewController.prototype.changedCafeteria = function(oldCafeteria, newCafeteria) {
   // change name
   $(CAFETERIA_LABEL_SELECTOR).html(newCafeteria.getName());
 }
 
-CafeteriaMenuViewController.prototype.switchedWeekday = function() {
+FrontViewController.prototype.switchedWeekday = function() {
   var day = $(WEEK_DAY_CHOOSER_SELECTOR).popup().getSelectedIndex();
   this.widget.setDay(day);
 }
 
-CafeteriaMenuViewController.prototype.showWeek = function(start, end) {
+FrontViewController.prototype.showWeek = function(start, end) {
   // update week
   $(WEEK_LABEL_SELECTOR).html(start + '-' + end);
 }
 
-CafeteriaMenuViewController.prototype.dayChanged = function(oldDay, newDay) {
+FrontViewController.prototype.dayChanged = function(oldDay, newDay) {
   // set popup
   $(WEEK_DAY_CHOOSER_SELECTOR).popup().setSelectedIndex(newDay);
   
@@ -77,7 +77,7 @@ CafeteriaMenuViewController.prototype.dayChanged = function(oldDay, newDay) {
   $(MENU_AREA_SELECTOR).scrollArea().setContent(content);
 }
 
-CafeteriaMenuViewController.prototype.getViewForDay = function(day) {
+FrontViewController.prototype.getViewForDay = function(day) {
   var result = "<table>";
   
   var foods = day.getFoods();
@@ -97,7 +97,7 @@ CafeteriaMenuViewController.prototype.getViewForDay = function(day) {
   return result;
 }
 
-CafeteriaMenuViewController.prototype.getViewForFood = function(food) {
+FrontViewController.prototype.getViewForFood = function(food) {
   var result = "<td>";
   result += food.getDescription();
   result += "</td>";
@@ -116,22 +116,22 @@ CafeteriaMenuViewController.prototype.getViewForFood = function(food) {
   return result;
 }
 
-CafeteriaMenuViewController.prototype.changedState = function(oldState, newState) {
+FrontViewController.prototype.changedState = function(oldState, newState) {
   // display state
   var message = dashcode.getLocalizedString(newState);
   $(INFO_LABEL_SELECTOR).html(message);
 }
 
-CafeteriaMenuViewController.prototype.viewDidLoad = function() {
+FrontViewController.prototype.viewDidLoad = function() {
   // restore size and collapse state
   this.resizeToWithAnimation(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT), this.restoreCollapse);
 }
 
-CafeteriaMenuViewController.prototype.restoreCollapse = function() {
+FrontViewController.prototype.restoreCollapse = function() {
   alert('TODO: restore collapse'); // TODO: implement me
 }
 
-CafeteriaMenuViewController.prototype.viewWillAppear = function() {  
+FrontViewController.prototype.viewWillAppear = function() {  
   // autoset the day
   var now = new Date();
   var day = now.getDay();
@@ -149,15 +149,15 @@ CafeteriaMenuViewController.prototype.viewWillAppear = function() {
   this.widget.setDay(day);
 }
 
-CafeteriaMenuViewController.prototype.viewWillDisappear = function() {
+FrontViewController.prototype.viewWillDisappear = function() {
   this.resizeToWithAnimation(WIDGET.getReader().get("Width"), WIDGET.getReader().get("Height"), this.widget.showBackView);
 }
 
-CafeteriaMenuViewController.prototype.viewDidAppear = function() {
+FrontViewController.prototype.viewDidAppear = function() {
   this.resizeToWithAnimation(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT), null);
 }
 
-CafeteriaMenuViewController.prototype.resize = function(w, h) {
+FrontViewController.prototype.resize = function(w, h) {
   // calcs for scroll area
   var divWidth = w - window.innerWidth;
   var divHeight = h - window.innerHeight;
@@ -171,14 +171,14 @@ CafeteriaMenuViewController.prototype.resize = function(w, h) {
   this.resizeTo(w, h);
 }
 
-CafeteriaMenuViewController.prototype.resizeTo = function(w, h) {
+FrontViewController.prototype.resizeTo = function(w, h) {
   $(FRONT_VIEW_SELECTOR).width(w).height(h);
 	if (window.widget) {
 		window.resizeTo(w, h);
 	}
 }
 
-CafeteriaMenuViewController.prototype.resizeToWithAnimation = function(w, h, callback) {
+FrontViewController.prototype.resizeToWithAnimation = function(w, h, callback) {
   $(FRONT_VIEW_SELECTOR).animate({ 
     width: w,
     height: h
@@ -204,15 +204,15 @@ CafeteriaMenuViewController.prototype.resizeToWithAnimation = function(w, h, cal
   });
 }
 
-CafeteriaMenuViewController.prototype.collapse = function() {
+FrontViewController.prototype.collapse = function() {
   this.collapse_resize(80, 80, 1);
 }
 
-CafeteriaMenuViewController.prototype.expand = function() {
+FrontViewController.prototype.expand = function() {
   this.collapse_resize(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT), 0);
 }
 
-CafeteriaMenuViewController.prototype.collapse_resize = function(w, h, collapse) {
+FrontViewController.prototype.collapse_resize = function(w, h, collapse) {
   this.resizeToWithAnimation(w, h, null);
   var g_collapse = collapse;
   $(MENU_AREA_SELECTOR + ', ' + WEEK_DAY_CHOOSER_SELECTOR + ', ' + WEEK_LABEL_SELECTOR + ', ' + INFO_BUTTON_SELECTOR + ', ' + CAFETERIA_LABEL_SELECTOR + ', ' + RESIZE_SELECTOR + ', ' + UPDATE_DIV_SELECTOR + ', ' + INFO_LABEL_SELECTOR).animate({
@@ -232,6 +232,6 @@ CafeteriaMenuViewController.prototype.collapse_resize = function(w, h, collapse)
   });
 }
 
-CafeteriaMenuViewController.prototype.setWidget = function(widget) {
+FrontViewController.prototype.setWidget = function(widget) {
   this.widget = widget;
 }
