@@ -22,9 +22,11 @@
  *
  * @author Daniel Zoller<nosebrain@gmx.net>
  */
+ 
+var UPDATE_DIV_SELECTOR = "#updateImg";
 
 function WidgetUpdater() {
-  reader = new InfoPlistReader();
+  var reader = new InfoPlistReader();
   
   this.updateURL = reader.get("oldUpdateSite");
   this.currentVersion = reader.get("CFBundleShortVersionString");
@@ -32,24 +34,24 @@ function WidgetUpdater() {
 }
 
 WidgetUpdater.prototype.checkForUpdate = function() {
-  var request = new XMLHttpRequest();
-  
-  var self = this;  
-  request.onreadystatechange = function () {
-    if (this.readyState == 4) {
-      // "OK"
-      if (this.status == 200) {
-        if (this.responseText != self.currentVersion) {
-          ElementUtils.show(UPDATE_DIV_ID);
-        } else {
-          ElementUtils.hide(UPDATE_DIV_ID);
-        }
-      }
-    }
-  };
-    
-  request.open("GET", this.updateURL, true);
-  request.send(null);
+  $.ajax({
+    url: this.updateURL,
+    success: this.gotVersion,
+    error: this.handleError
+  });
+}
+
+WidgetUpdater.prototype.handleError = function(request, textStatus, errorThrown) {
+  // log error
+  alert(textStatus + ' ' + errorThrown);
+}
+
+WidgetUpdater.prototype.gotVersion = function(version) {
+  if (version != self.currentVersion) {
+    $(UPDATE_DIV_SELECTOR).show();
+  } else {
+    $(UPDATE_DIV_SELECTOR).hide();
+  }
 }
 
 WidgetUpdater.prototype.getDownloadURL = function() {

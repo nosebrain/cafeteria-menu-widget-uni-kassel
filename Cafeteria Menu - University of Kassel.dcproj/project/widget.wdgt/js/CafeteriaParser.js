@@ -25,7 +25,6 @@
 function CafeteriaParser(cafeteria, listener) {
   this.cafeteria = cafeteria;
   this.request = null;
-  
   this.listener = listener;
 }
 
@@ -101,12 +100,14 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
             var day = this.cafeteria.getMenu().getDay(j);
             day.setHoliday(true);
             // TODO: remove html code
-            day.setDescription(day.getDescription() + description);
+            day.setDescription(removeHTMLCode(day.getDescription()) + description);
           }
         }        
       }
     }
   }
+  
+  // got menu 
 }
 
 
@@ -133,7 +134,9 @@ CafeteriaParser.prototype.parse = function() {
     this.request.abort();
   }
   
+  // TODO: jQuery
   this.request = new XMLHttpRequest(); // TODO: Exception
+  
   
   var self = this;
   this.request.onreadystatechange = function() {
@@ -150,9 +153,4 @@ CafeteriaParser.prototype.parse = function() {
   this.request.send(null);
   
   this.listener.startedDownload();
-}
-
-
-CafeteriaParser.prototype.getCafeteria = function() {
-  return this.cafeteria;
 }

@@ -24,9 +24,9 @@
  */
 
 function toogle(event) {
-  if (ElementUtils.get("front").className == "expanded") {
-    WidgetUtils.collapse();
+  if ($('#front').attr('class') == 'expanded') {
+    WIDGET.getFrontViewController().collapse();
   } else {
-    WidgetUtils.expand();
+    WIDGET.getFrontViewController().expand();
   }
 }

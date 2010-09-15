@@ -8,19 +8,23 @@
 		<string>-CafeteriaParser</string>
 		<key>widget.wdgt/js/CafeteriaParser.js:27</key>
 		<string>-CafeteriaParser</string>
-		<key>widget.wdgt/js/CafeteriaWidget.js:72</key>
+		<key>widget.wdgt/js/CafeteriaWidget.js:76</key>
 		<string>-show</string>
-		<key>widget.wdgt/js/MenuUpdater.js:38</key>
+		<key>widget.wdgt/js/MenuUpdater.js:58</key>
 		<string>-checkForUpdate</string>
-		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:111</key>
-		<string>changedState</string>
-		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:47</key>
+		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:116</key>
+		<string>-changedState</string>
+		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:52</key>
 		<string>-dayChanged</string>
-		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:50</key>
+		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:55</key>
 		<string>-dayChanged</string>
 		<key>widget.wdgt/js/frameworks/jquery-widget-plugins/jquery-popup.js:9</key>
 		<string>-</string>
-		<key>widget.wdgt/main.js:120</key>
+		<key>widget.wdgt/js/utils/ElementUtils.js:2</key>
+		<string></string>
+		<key>widget.wdgt/js/utils/WidgetUtils.js:2</key>
+		<string>-</string>
+		<key>widget.wdgt/main.js:116</key>
 		<string>-changeCafeteria</string>
 		<key>widget.wdgt/main.js:36</key>
 		<string>-show</string>
@@ -28,7 +32,7 @@
 		<string>-show</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{933, 387}</string>
+	<string>{963, 391}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -344,12 +348,25 @@
 				<integer>2</integer>
 				<integer>0</integer>
 			</array>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>3</integer>
+			</array>
 		</array>
 		<key>Objects view last selections</key>
-		<array/>
+		<array>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>3</integer>
+			</array>
+		</array>
 		<key>Visible StackLayout Views</key>
 		<array>
-			<string>front</string>
+			<string>back</string>
 		</array>
 	</dict>
 </dict>

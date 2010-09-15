@@ -52,6 +52,7 @@ function sync() {
 //
 function resizeAndShowBack(event) {
   // TODO move to CafeteriaBackController viewWillAppear(); viewDidAppear()
+  WIDGET.showBack();
   WidgetUtils.resizeWithAnimationTo(WIDGET.getReader().get("Width"), WIDGET.getReader().get("Height"), showBack);
   
   // load settings TODO: refactor? 
@@ -64,9 +65,8 @@ function showBack() {
     widget.prepareForTransition("ToBack");
   }
   
-  ElementUtils.hide("front");
-  ElementUtils.show("back");
-
+  $('#front').hide();
+  $('#back').show();
 
   if (window.widget) {
     setTimeout('widget.performTransition();', 0);
@@ -99,34 +99,28 @@ function showFront(event) {
   }
 }
 
-
 function switchWeekday(event) {
-  WIDGET.switchedWeekday();
+  WIDGET.getFrontViewController().switchedWeekday();
 }
-
 
 function openMenuInBrowser(event) {
   // WIDGET.openCafeteriaSite() TODO
   widget.openURL(WIDGET.getCafeteria().getURL());
 }
 
-
 function manupdate(event) {
-  WIDGET.getCafeteria().update();
+  WIDGET.getMenuUpdater().updateMan();
 }
-
 
 function changeCafeteria(event) {
   var cafId = $("#" + ELEMENT_ID_POPUP_CAFETERIACHOOSER).popup().getSelectedIndex(); // TODO
   WIDGET.setCafeteriaById(cafId);
 }
 
-
 function changePrice(event) {
   var priceId = ElementUtils.getPopUp(ELEMENT_ID_POPUP_PRICECHOOSER).getSelectedIndex();
   PREF.savePref(PREF_PRICE, priceId);
 }
-
 
 function downloadLatestVersion(event) {
   // WIDGET.downloadNewestVersion(); // TODO: implement 

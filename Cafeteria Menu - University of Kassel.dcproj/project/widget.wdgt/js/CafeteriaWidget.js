@@ -22,16 +22,21 @@
  *
  * @author Daniel Zoller<nosebrain@gmx.net>
  */
+ 
+var FRONT_VIEW_SELECTOR = '#front';
 
 function CafeteriaWidget() {
   this.updater = new WidgetUpdater();
   this.cafeteria = null;
   
   this.reader = new InfoPlistReader();
-  this.listener = new CafeteriaWidgetListener(this);
   
   this.frontViewController = new CafeteriaMenuViewController();
   this.frontViewController.setWidget(this);
+  
+  // TODO
+  // this.backViewController = new BackViewController();
+  // this.backViewController.setWidget(this);
   
   this.menuUpdater = new MenuUpdater();
   this.menuUpdater.setWidget(this);
@@ -42,18 +47,19 @@ CafeteriaWidget.prototype.init = function() {
   // init cafeteria
   this.setCafeteriaById(PREF.getPref(PREF_CAFETERIA));
   
-  this.frontViewController.viewWillAppear();
+  this.frontViewController.viewDidLoad();
+  
+  
   
   // TODO: move to CafeteriaBackViewController.js
+  // this.backViewController.viewDidLoad();
   this.initCafeteriaChooser(); // XXX: databinding?!?
+}
+
+CafeteriaWidget.prototype.showBack = function() {
+  // this.backViewController.viewWillAppear();
   
-  this.restoreSize();
 }
-
-CafeteriaWidget.prototype.switchedWeekday = function() {
-  this.frontViewController.switchedWeekday();
-}
-
 
 CafeteriaWidget.prototype.initCafeteriaChooser = function() {
   var cafs = this.reader.get("Cafeterias");
@@ -63,16 +69,15 @@ CafeteriaWidget.prototype.initCafeteriaChooser = function() {
     cafeterias.push(cafs[i]["Name"]);
   }
   
-  ElementUtils.getPopUp(ELEMENT_ID_POPUP_CAFETERIACHOOSER).setOptions(cafeterias);
+  $('#cafeteriaChooser').popup().setOptions(cafeterias);
 }
 
-
 CafeteriaWidget.prototype.show = function() {
-  // check for food updates  
-  this.menuUpdater.checkForUpdate();
-  
   // check for widget updates TODO: wSparkle
   this.updater.checkForUpdate();
+  
+  // check for food updates  
+  this.menuUpdater.checkForUpdate();
   
   // inform the view controllers
   this.frontViewController.viewDidAppear();
@@ -85,46 +90,17 @@ CafeteriaWidget.prototype.remove = function() {
   }
 }
 
-CafeteriaWidget.prototype.restoreSize = function() {
-  WidgetUtils.resizeWithAnimationTo(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT), this.restoreCollapse);
-}
-
-CafeteriaWidget.prototype.restoreCollapse = function() {
-  if (PREF.getPref(PREF_COLLAPSED)) {
-    WidgetUtils.collapse();
-  }
-}
-
-
-CafeteriaWidget.prototype.resize = function(w, h) {
-  // calcs for scroll area
-  var divWidth = w - window.innerWidth;
-  var divHeight = h - window.innerHeight;
-
-  var scrollArea = ElementUtils.getScrollArea(ELEMENT_ID_MENU_SCROLL_AREA);
-  var scrollAreaWidth = scrollArea.viewWidth + divWidth + 18; // 18 = scrollbar width FIXME: how to get the value
-  var scrollAreaHeight = scrollArea.viewHeight + divHeight;
-  
-  scrollArea.resize(scrollAreaWidth, scrollAreaHeight);
-
-  WidgetUtils.resizeTo(w, h);
-}
-
-
 CafeteriaWidget.prototype.getReader = function() {
   return this.reader;
 }
-
 
 CafeteriaWidget.prototype.getUpdater = function() {
   return this.updater;
 }
 
-
 CafeteriaWidget.prototype.getCafeteria = function(cafeteria) {
   return this.cafeteria;
 }
-
 
 CafeteriaWidget.prototype.setCafeteria = function(cafeteria) {
   var old = this.cafeteria;
@@ -132,33 +108,26 @@ CafeteriaWidget.prototype.setCafeteria = function(cafeteria) {
   this.cafeteria = cafeteria;
   
   this.changedCafeteria(old, cafeteria);
-  
-  // this.listener.cafeteriaChanged(old, cafeteria); // TODO: maybe fire propertyChange only on change?
 }
 
 CafeteriaWidget.prototype.changedCafeteria = function(oldCafeteria, newCafeteria) {
   if (newCafeteria) {
-    // TODO: updater
     // update data
-    
     this.menuUpdater.checkForUpdate();
-    // newCafeteria.update();
     
     var id = newCafeteria.getId();
   
     // presist selected cafeteria id
     PREF.savePref(PREF_CAFETERIA, id);
     
-    
-  
-    // change selected item // TODO: backviewController
-    ElementUtils.getPopUp(ELEMENT_ID_POPUP_CAFETERIACHOOSER).setSelectedIndex(id);
-  
+    // change selected item
+    // TODO: backviewController
+    $('#cafeteriaChooser').popup().setSelectedIndex(id);
+    // this.backViewController.cafeteriaChanged(oldCafeteria, newCafeteria);
     
     this.frontViewController.changedCafeteria(oldCafeteria, newCafeteria);
   }
 }
-
 
 CafeteriaWidget.prototype.setCafeteriaById = function(id) {
   var cafFactory = new CafeteriaFactory();
@@ -167,10 +136,17 @@ CafeteriaWidget.prototype.setCafeteriaById = function(id) {
   this.setCafeteria(caf);  
 }
 
-
 CafeteriaWidget.prototype.setDay = function(day) {
   var old = this.day;
   
   this.day = day;
   this.frontViewController.dayChanged(old, day);
+}
+
+CafeteriaWidget.prototype.getMenuUpdater = function() {
+  return this.menuUpdater;
+}
+
+CafeteriaWidget.prototype.getFrontViewController = function() {
+  return this.frontViewController;
 }

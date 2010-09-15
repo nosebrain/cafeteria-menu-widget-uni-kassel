@@ -45,7 +45,7 @@ function mouseMove(event) {
   y = Math.max(y, WIDGET.getReader().get("Min-Height"));
     
   // resize it
-  WIDGET.resize(x, y);
+  WIDGET.getFrontViewController().resize(x, y);
   
   event.stopPropagation();
   event.preventDefault();
