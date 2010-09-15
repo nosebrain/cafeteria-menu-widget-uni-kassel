@@ -72,8 +72,7 @@ CafeteriaParser.prototype.parseResult = function(response) {
 
 CafeteriaParser.prototype.parseMenu = function(foodSource) {
   var menuO = new Menu();
-  this.cafeteria.setMenu(menuO);
-  
+
   for (var i = 0; i < foodSource.length; i++) {
     var priceFoodSplit = foodSource[i].split(SEARCH_EXPRESSIONS.priceFoodSplit);
   
@@ -111,9 +110,8 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
           // maybe it's a holiday
           if (description.search(SEARCH_EXPRESSIONS.holiday) != -1) {
             alert("holiday");
-            var day = this.cafeteria.getMenu().getDay(j);
+            var day = menuO.getDay(j);
             day.setHoliday(true);
-            // TODO: remove html code
             day.setDescription(removeHTMLCode(day.getDescription()) + description);
           }
         }        
