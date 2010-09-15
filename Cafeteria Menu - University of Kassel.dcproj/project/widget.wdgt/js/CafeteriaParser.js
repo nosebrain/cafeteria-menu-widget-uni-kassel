@@ -21,6 +21,17 @@
  *
  * @author Daniel Zoller<nosebrain@gmx.net>
  */
+var SEARCH_EXPRESSIONS = {
+  table : /<table cellpadding="4" cellspacing="0" width="899">.*<\/table><img/,
+  food : /<tr><td class="gelb" cellpadding="0" bgcolor="#fadc00" height="50" valign="middle" width="125px">/, 
+  foodSplit : /<td class="weiss" height="50" valign="top" width="150px">/,
+  priceFoodSplit : /<\/tr><tr>/,
+  priceSplit : /<td class="preis" height="10" valign="top" width="150px">/, 
+  price : /[0-9],[0-9]{2}/g,
+  week : /Speiseplan vom&nbsp;([0-9]{2}.[0-9]{2}). (.*|-|bis) ([0-9]{2}.[0-9]{2}.[0-9]{4})/,
+  info : /<td class="gelbunten" colspan="7" bgcolor="#fadc00" valign="top" width="875px"><font face="Arial" size="1">(.*)<\/font><\/td>/,
+  holiday : /<span class="important">/
+};
 
 function CafeteriaParser(cafeteria, listener) {
   this.cafeteria = cafeteria;

@@ -24,6 +24,7 @@
  */
  
 var FRONT_VIEW_SELECTOR = '#front';
+var BACK_VIEW_SELECTOR = '#back';
 
 function CafeteriaWidget() {
   this.updater = new WidgetUpdater();
@@ -34,9 +35,9 @@ function CafeteriaWidget() {
   this.frontViewController = new CafeteriaMenuViewController();
   this.frontViewController.setWidget(this);
   
-  // TODO
-  // this.backViewController = new BackViewController();
-  // this.backViewController.setWidget(this);
+  
+  this.backViewController = new BackViewController();
+  this.backViewController.setWidget(this);
   
   this.menuUpdater = new MenuUpdater();
   this.menuUpdater.setWidget(this);
@@ -47,29 +48,50 @@ CafeteriaWidget.prototype.init = function() {
   // init cafeteria
   this.setCafeteriaById(PREF.getPref(PREF_CAFETERIA));
   
-  this.frontViewController.viewDidLoad();
-  
-  
-  
-  // TODO: move to CafeteriaBackViewController.js
-  // this.backViewController.viewDidLoad();
-  this.initCafeteriaChooser(); // XXX: databinding?!?
+  // inform the controllers
+  this.frontViewController.viewDidLoad();  
+  this.backViewController.viewDidLoad();
 }
 
 CafeteriaWidget.prototype.showBack = function() {
-  // this.backViewController.viewWillAppear();
-  
+  this.frontViewController.viewWillDisappear(); // resizes the front view and calles showBackView when finished
+  this.backViewController.viewWillAppear();
 }
 
-CafeteriaWidget.prototype.initCafeteriaChooser = function() {
-  var cafs = this.reader.get("Cafeterias");
-  
-  var cafeterias = new Array();
-  for (i = 0; i < cafs.length; i++) {
-    cafeterias.push(cafs[i]["Name"]);
+CafeteriaWidget.prototype.showBackView = function() {
+  if (window.widget) {
+    widget.prepareForTransition("ToBack");
   }
   
-  $('#cafeteriaChooser').popup().setOptions(cafeterias);
+  $(FRONT_VIEW_SELECTOR).hide();
+  $(BACK_VIEW_SELECTOR).show();
+
+  if (window.widget) {
+    setTimeout('widget.performTransition();', 0);
+    // TODO: this is a hack to get scroll bars to the scroll area
+    setTimeout('$(INFO_SCROLL_AREA_SELECTOR).popup().refresh()', 0);
+  }
+}
+
+CafeteriaWidget.prototype.showFront = function() {
+  this.frontViewController.viewWillAppear();
+  this.backViewController.viewWillDisappear();
+  this.showFrontView();
+}
+
+CafeteriaWidget.prototype.showFrontView = function() {
+  if (window.widget) {
+    widget.prepareForTransition("ToFront");
+  }
+  
+  $(FRONT_VIEW_SELECTOR).show();
+  $(BACK_VIEW_SELECTOR).hide();
+  
+
+  if (window.widget) {
+    setTimeout('widget.performTransition();', 0);
+    setTimeout('WIDGET.getFrontViewController().viewDidAppear();', 600);
+  }
 }
 
 CafeteriaWidget.prototype.show = function() {
@@ -81,6 +103,14 @@ CafeteriaWidget.prototype.show = function() {
   
   // inform the view controllers
   this.frontViewController.viewDidAppear();
+}
+
+CafeteriaWidget.prototype.hide = function() {
+  // nothing to do
+}
+
+CafeteriaWidget.prototype.sync = function() {
+  // TODO: implement sync
 }
 
 CafeteriaWidget.prototype.remove = function() {
@@ -121,10 +151,7 @@ CafeteriaWidget.prototype.changedCafeteria = function(oldCafeteria, newCafeteria
     PREF.savePref(PREF_CAFETERIA, id);
     
     // change selected item
-    // TODO: backviewController
-    $('#cafeteriaChooser').popup().setSelectedIndex(id);
-    // this.backViewController.cafeteriaChanged(oldCafeteria, newCafeteria);
-    
+    this.backViewController.cafeteriaChanged(oldCafeteria, newCafeteria);
     this.frontViewController.changedCafeteria(oldCafeteria, newCafeteria);
   }
 }
@@ -149,4 +176,8 @@ CafeteriaWidget.prototype.getMenuUpdater = function() {
 
 CafeteriaWidget.prototype.getFrontViewController = function() {
   return this.frontViewController;
+}
+
+CafeteriaWidget.prototype.getBackViewController = function() {
+  return this.backViewController;
 }

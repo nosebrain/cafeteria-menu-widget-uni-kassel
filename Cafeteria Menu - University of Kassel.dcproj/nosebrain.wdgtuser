@@ -4,35 +4,13 @@
 <dict>
 	<key>Breakpoints</key>
 	<dict>
-		<key>widget.wdgt/js/CafeteriaParser.js:26</key>
-		<string>-CafeteriaParser</string>
-		<key>widget.wdgt/js/CafeteriaParser.js:27</key>
-		<string>-CafeteriaParser</string>
-		<key>widget.wdgt/js/CafeteriaWidget.js:76</key>
-		<string>-show</string>
-		<key>widget.wdgt/js/MenuUpdater.js:58</key>
-		<string>-checkForUpdate</string>
-		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:116</key>
-		<string>-changedState</string>
-		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:52</key>
-		<string>-dayChanged</string>
-		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:55</key>
-		<string>-dayChanged</string>
-		<key>widget.wdgt/js/frameworks/jquery-widget-plugins/jquery-popup.js:9</key>
-		<string>-</string>
-		<key>widget.wdgt/js/utils/ElementUtils.js:2</key>
-		<string></string>
-		<key>widget.wdgt/js/utils/WidgetUtils.js:2</key>
-		<string>-</string>
-		<key>widget.wdgt/main.js:116</key>
-		<string>-changeCafeteria</string>
-		<key>widget.wdgt/main.js:36</key>
-		<string>-show</string>
-		<key>widget.wdgt/main.js:37</key>
-		<string>-show</string>
+		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:169</key>
+		<string>-resizeTo</string>
+		<key>widget.wdgt/main.js:63</key>
+		<string>-showFront</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{963, 391}</string>
+	<string>{526, 338}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -356,17 +334,10 @@
 			</array>
 		</array>
 		<key>Objects view last selections</key>
-		<array>
-			<array>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>3</integer>
-			</array>
-		</array>
+		<array/>
 		<key>Visible StackLayout Views</key>
 		<array>
-			<string>back</string>
+			<string>front</string>
 		</array>
 	</dict>
 </dict>

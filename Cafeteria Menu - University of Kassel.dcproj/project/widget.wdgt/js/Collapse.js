@@ -23,7 +23,7 @@
  * @author Daniel Zoller<nosebrain@gmx.net>
  */
 
-function toogle(event) {
+function toggle(event) {
   if ($('#front').attr('class') == 'expanded') {
     WIDGET.getFrontViewController().collapse();
   } else {
