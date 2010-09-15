@@ -159,7 +159,8 @@ CafeteriaWidget.prototype.updateMenu = function(menu) {
 CafeteriaWidget.prototype.changedCafeteria = function(oldCafeteria, newCafeteria) {
   if (newCafeteria) {
     // update data
-    this.menuUpdater.update();
+    this.menuUpdater.resetNextUpdate(); 
+    this.menuUpdater.checkForUpdate();
     
     var id = newCafeteria.getId();
   

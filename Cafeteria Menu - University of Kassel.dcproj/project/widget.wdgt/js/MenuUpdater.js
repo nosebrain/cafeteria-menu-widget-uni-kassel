@@ -35,13 +35,13 @@ function MenuUpdater() {
 MenuUpdater.prototype.setNextUpdate = function(date) {
   this.nextUpdate = date;
   
-  // save it TODO: Property change listener
+  // save it
   PREF.savePref(PREF_UPDATE, date.getTime());
 }
 
 MenuUpdater.prototype.getNextUpdate = function() {
   if (!this.nextUpdate) {
-    // load from pref TODO: move to cafeteria load method
+    // load from pref
     updateTime = PREF.getPref(PREF_UPDATE);
     if (updateTime) {
       this.nextUpdate = new Date(updateTime);
@@ -49,6 +49,11 @@ MenuUpdater.prototype.getNextUpdate = function() {
   }
   
   return this.nextUpdate;
+}
+
+MenuUpdater.prototype.resetNextUpdate = function() {
+  PREF.savePref(PREF_UPDATE, null); // reset last update
+  this.nextUpdate = null;
 }
 
 MenuUpdater.prototype.checkForUpdate = function() {
@@ -75,7 +80,7 @@ MenuUpdater.prototype.updateNeccessary = function() {
   var update = this.getNextUpdate();
   
   if (!update || now >= update) {
-    alert("Autoupdate " + update);
+    alert("Autoupdate " + update);    
     return true;
   }
   
@@ -97,30 +102,30 @@ MenuUpdater.prototype.gotInformation = function(result) {
 }
 
 MenuUpdater.prototype.gotWeek = function(start, end) {
-  var dateStr = end.split(/\./); 
-  // var dateStart = start.split(/\./); // TODO: first day of the week
-  
-  var year = dateStr[2];
-  var month = dateStr[1] - 1;
+  var dateStr = end.split(/\./);
+  var year = myParseInt(dateStr[2]);
+  var month = myParseInt(dateStr[1]) - 1;
   var day = myParseInt(dateStr[0]) + 1;  // 2 <=> friday => saturday
   
   var date = new Date(year, month, day, 14, 0, 0);
-  
   var now = new Date();
-  
-  if (now >= date) {
-    date.setHours(now.getHours());
-  }
   
   var nextUpdate = this.getNextUpdate();	
   
-  if (nextUpdate && this.manUpdate) {
-    alert("add 120 minutes");
-    // TODO: add 120 minutes
+  if (nextUpdate && (nextUpdate.getDay() != 1) && !this.manUpdate) {    
+    var newDate = new Date();
+    newDate.setTime(nextUpdate.getTime() + 120 * 60 * 1000);
+    
+    if (nextUpdate.getDay() != 1) {
+      date = newDate;
+    }    
   }
   
-  // save it
-  this.setNextUpdate(date);
+  if (!nextUpdate || (date > nextUpdate)) {
+    alert('old: ' + nextUpdate + '\n new: ' + date);
+    // save it
+    this.setNextUpdate(date);
+  }  
   
   // inform front view controller
   this.widget.getFrontViewController().showWeek(start, end);
