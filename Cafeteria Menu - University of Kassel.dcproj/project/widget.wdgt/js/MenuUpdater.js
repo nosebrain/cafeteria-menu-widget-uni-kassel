@@ -32,13 +32,6 @@ var STATE_FAILED = "Error while parsing informations";
 function MenuUpdater() {
 }
 
-MenuUpdater.prototype.checkForUpdate = function() {
-  if (this.updateNeccessary()) {
-    var parser = new CafeteriaParser(this.widget.getCafeteria(), this);
-    parser.parse();
-  }
-}
-
 MenuUpdater.prototype.setNextUpdate = function(date) {
   this.nextUpdate = date;
   
@@ -56,6 +49,23 @@ MenuUpdater.prototype.getNextUpdate = function() {
   }
   
   return this.nextUpdate;
+}
+
+MenuUpdater.prototype.checkForUpdate = function() {
+  if (this.updateNeccessary()) {
+    this.manUpdate = false;
+    this.update();
+  }
+}
+
+MenuUpdater.prototype.updateMan = function() {
+  this.manUpdate = true;
+  this.update();
+}
+
+MenuUpdater.prototype.update = function() {
+  var parser = new CafeteriaParser(this.widget.getCafeteria(), this);
+  parser.parse();
 }
 
 MenuUpdater.prototype.updateNeccessary = function() {
@@ -82,8 +92,9 @@ MenuUpdater.prototype.startedParsing = function(response) {
 
 MenuUpdater.prototype.gotInformation = function(result) {
   PREF.savePref(PREF_INFO, result, true);
-  // TODO: backViewController 
-  ElementUtils.getScrollArea(ELEMENT_ID_INFO_SCROLL_AREA).setContent(result);
+  
+  // TODO: backViewController
+  $('#information').scrollArea().setContent(result);
 }
 
 MenuUpdater.prototype.gotWeek = function(start, end) {
@@ -92,7 +103,7 @@ MenuUpdater.prototype.gotWeek = function(start, end) {
   
   var year = dateStr[2];
   var month = dateStr[1] - 1;
-  var day = myParseInt(dateStr[0]) + 2;  // 2 <=> friday => sunday TODO: saturday
+  var day = myParseInt(dateStr[0]) + 1;  // 2 <=> friday => saturday
   
   var date = new Date(year, month, day, 14, 0, 0);
   
@@ -104,7 +115,7 @@ MenuUpdater.prototype.gotWeek = function(start, end) {
   
   var nextUpdate = this.getNextUpdate();	
   
-  if (nextUpdate) {
+  if (nextUpdate && this.manUpdate) {
     alert("add 120 minutes");
     // TODO: add 120 minutes
   }
@@ -113,9 +124,7 @@ MenuUpdater.prototype.gotWeek = function(start, end) {
   this.setNextUpdate(date);
   
   // inform front view controller
-  
-  // update week
-  ElementUtils.replaceInnerHTML(ELEMENT_ID_WEEK, start + "-" + end);
+  this.frontViewController.showWeek(start, end);
 }
 
 MenuUpdater.prototype.finishedParsing = function(result) {

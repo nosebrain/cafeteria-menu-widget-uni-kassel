@@ -43,6 +43,11 @@ CafeteriaMenuViewController.prototype.switchedWeekday = function() {
   this.widget.setDay(day);
 }
 
+CafeteriaMenuViewController.prototype.showWeek = function(start, end) {
+  // update week
+  $('#week').html(start + '-' + end);
+}
+
 CafeteriaMenuViewController.prototype.dayChanged = function(oldDay, newDay) {
   // set popup
   $(WEEK_DAY_CHOOSER_SELECTOR).popup().setSelectedIndex(newDay);
@@ -111,8 +116,16 @@ CafeteriaMenuViewController.prototype.changedState = function(oldState, newState
   $("#info").html(message);
 }
 
-CafeteriaMenuViewController.prototype.viewWillAppear = function() {
+CafeteriaMenuViewController.prototype.viewDidLoad = function() {
+  // restore size and collapse state
+  this.resizeToWithAnimation(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT), this.restoreCollapse);
+  
+  
   alert("viewWillAppear"); // TODO: viewDidLoad
+}
+
+CafeteriaMenuViewController.prototype.restoreCollapse = function() {
+  alert('restore collapse');
 }
 
 CafeteriaMenuViewController.prototype.viewDidAppear = function() {  
@@ -133,6 +146,81 @@ CafeteriaMenuViewController.prototype.viewDidAppear = function() {
   day = Math.min(day, 4);
   
   this.widget.setDay(day);
+}
+
+CafeteriaMenuViewController.prototype.resize = function(w, h) {
+  // calcs for scroll area
+  var divWidth = w - window.innerWidth;
+  var divHeight = h - window.innerHeight;
+
+  var scrollArea = $('#scrollArea').scrollArea();
+  var scrollAreaWidth = scrollArea.viewWidth + divWidth + 18; // 18 = scrollbar width FIXME: how to get the value
+  var scrollAreaHeight = scrollArea.viewHeight + divHeight;
+  
+  scrollArea.resize(scrollAreaWidth, scrollAreaHeight);
+
+  this.resizeTo(w, h);
+}
+
+CafeteriaMenuViewController.prototype.resizeTo = function(w, h) {
+  $('#front').width(w).height(h);
+	if (window.widget) {
+		window.resizeTo(w, h);
+	}
+}
+
+CafeteriaMenuViewController.prototype.resizeToWithAnimation = function(w, h, callback) {
+  $('#front').animate({ 
+    width: w,
+    height: h
+  }, {
+    query: false,
+    duration: 500,
+    step: function(now, fx) {
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+      if (fx.prop == 'width') {
+        width = now;
+      } else {
+        height = now;
+      }
+      
+      window.resizeTo(width, height);
+    }, 
+    complete: function() {
+      if (callback) {
+        callback();
+      }
+    }
+  });
+}
+
+CafeteriaMenuViewController.prototype.collapse = function() {
+  this.collapse_resize(80, 80, 1);
+}
+
+CafeteriaMenuViewController.prototype.expand = function() {
+  this.collapse_resize(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT), 0);
+}
+
+CafeteriaMenuViewController.prototype.collapse_resize = function(w, h, collapse) {
+  this.resizeToWithAnimation(w, h, null);
+  var g_collapse = collapse;
+  $('#scrollArea, #weekdayChooser, #week, #info, #cafeteria-name, #resize, #updateImg, #state').animate({
+    opacity: !collapse // XXX: not using 'toggle' cause #updateImg showed asyncron
+  }, {
+    query: false,
+    duration: 500,
+    easing: 'swing',
+    complete: function() {
+      var className = "collapsed";
+      if (!g_collapse) {
+        className = "expanded";
+      }
+    
+      $('#front').removeClass().addClass(className);
+    }
+  });
 }
 
 CafeteriaMenuViewController.prototype.setWidget = function(widget) {
