@@ -24,7 +24,7 @@
  */
 
 function toggle(event) {
-  if ($('#front').attr('class') == 'expanded') {
+  if ($(FRONT_VIEW_SELECTOR).attr('class') == EXPANDED_CLASS_NAME) {
     WIDGET.getFrontViewController().collapse();
   } else {
     WIDGET.getFrontViewController().expand();

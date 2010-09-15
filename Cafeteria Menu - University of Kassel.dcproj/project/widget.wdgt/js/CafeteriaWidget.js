@@ -27,21 +27,25 @@ var FRONT_VIEW_SELECTOR = '#front';
 var BACK_VIEW_SELECTOR = '#back';
 
 function CafeteriaWidget() {
+  // updater for the widget
   this.updater = new WidgetUpdater();
-  this.cafeteria = null;
   
+  // reader for accessing data saved in info.plist
   this.reader = new InfoPlistReader();
   
+  // init view controllers
   this.frontViewController = new CafeteriaMenuViewController();
   this.frontViewController.setWidget(this);
-  
   
   this.backViewController = new BackViewController();
   this.backViewController.setWidget(this);
   
+  // init updater for menu
   this.menuUpdater = new MenuUpdater();
   this.menuUpdater.setWidget(this);
-  this.menuUpdater.setFrontViewController(this.frontViewController); // TODO
+  
+  // frags for assync show
+  this.showingBack = false;
 }
 
 CafeteriaWidget.prototype.init = function() {
@@ -54,8 +58,13 @@ CafeteriaWidget.prototype.init = function() {
 }
 
 CafeteriaWidget.prototype.showBack = function() {
+  if (this.showingBack) {
+    return;
+  }
+  
   this.frontViewController.viewWillDisappear(); // resizes the front view and calles showBackView when finished
   this.backViewController.viewWillAppear();
+  this.showingBack = true;
 }
 
 CafeteriaWidget.prototype.showBackView = function() {
@@ -70,12 +79,14 @@ CafeteriaWidget.prototype.showBackView = function() {
     setTimeout('widget.performTransition();', 0);
     // TODO: this is a hack to get scroll bars to the scroll area
     setTimeout('$(INFO_SCROLL_AREA_SELECTOR).popup().refresh()', 0);
+    
+    WIDGET.setShowingBack(false);
   }
 }
 
 CafeteriaWidget.prototype.showFront = function() {
-  this.frontViewController.viewWillAppear();
   this.backViewController.viewWillDisappear();
+  // frontViewWillAppear
   this.showFrontView();
 }
 
@@ -90,7 +101,7 @@ CafeteriaWidget.prototype.showFrontView = function() {
 
   if (window.widget) {
     setTimeout('widget.performTransition();', 0);
-    setTimeout('WIDGET.getFrontViewController().viewDidAppear();', 600);
+    setTimeout('WIDGET.getFrontViewController().viewDidAppear();', 800);
   }
 }
 
@@ -102,7 +113,7 @@ CafeteriaWidget.prototype.show = function() {
   this.menuUpdater.checkForUpdate();
   
   // inform the view controllers
-  this.frontViewController.viewDidAppear();
+  this.frontViewController.viewWillAppear();
 }
 
 CafeteriaWidget.prototype.hide = function() {
@@ -180,4 +191,8 @@ CafeteriaWidget.prototype.getFrontViewController = function() {
 
 CafeteriaWidget.prototype.getBackViewController = function() {
   return this.backViewController;
+}
+
+CafeteriaWidget.prototype.setShowingBack = function(value) {
+  this.showingBack = value;
 }

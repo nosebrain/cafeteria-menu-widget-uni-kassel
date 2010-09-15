@@ -4,13 +4,13 @@
 <dict>
 	<key>Breakpoints</key>
 	<dict>
-		<key>widget.wdgt/js/controller/CafeteriaMenuViewController.js:169</key>
-		<string>-resizeTo</string>
-		<key>widget.wdgt/main.js:63</key>
-		<string>-showFront</string>
+		<key>widget.wdgt/js/CafeteriaWidget.js:61</key>
+		<string>showBack</string>
+		<key>widget.wdgt/js/CafeteriaWidget.js:75</key>
+		<string>showBackView</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{526, 338}</string>
+	<string>{637, 173}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -82,7 +82,7 @@
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>68 43 1345 835 0 0 1440 878 </string>
+	<string>109 43 1345 835 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>

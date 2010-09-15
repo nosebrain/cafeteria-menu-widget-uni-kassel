@@ -23,6 +23,7 @@ tr {
     width: 13px;
     height: 13px;
     left: 23px;
+    top: 251px;
 }
 
 #back {
@@ -109,9 +110,9 @@ tr {
     font-size: 8pt;
     right: 142px;
     width: 177px;
-    left: 43px;
-    top: 253px;
-    bottom: 16px;
+    left: 42px;
+    top: 250px;
+    bottom: 19px;
     height: auto;
 }
 

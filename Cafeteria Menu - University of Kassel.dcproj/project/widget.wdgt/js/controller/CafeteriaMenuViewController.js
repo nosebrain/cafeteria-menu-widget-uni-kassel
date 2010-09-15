@@ -22,11 +22,17 @@
  *
  * @author Daniel Zoller<nosebrain@gmx.net>
  */
+ 
+var WEEK_DAY_CHOOSER_SELECTOR = '#weekdayChooser';
+var MENU_AREA_SELECTOR = '#scrollArea';
+var CAFETERIA_LABEL_SELECTOR = '#cafeteria-name';
+var INFO_LABEL_SELECTOR = '#state';
+var WEEK_LABEL_SELECTOR = '#week';
+var INFO_BUTTON_SELECTOR = '#info';
+var RESIZE_SELECTOR = '#resize';
 
-var WEEK_DAY_CHOOSER_SELECTOR = "#weekdayChooser";
-var MENU_AREA_SELECTOR = "#scrollArea";
-var CAFETERIA_LABEL_SELECTOR = "#cafeteria-name";
-
+var COLLAPSED_CLASS_NAME = 'collapsed';
+var EXPANDED_CLASS_NAME = 'expanded';
 
 // TODO: rename to FrontViewController
 function CafeteriaMenuViewController() {
@@ -45,7 +51,7 @@ CafeteriaMenuViewController.prototype.switchedWeekday = function() {
 
 CafeteriaMenuViewController.prototype.showWeek = function(start, end) {
   // update week
-  $('#week').html(start + '-' + end);
+  $(WEEK_LABEL_SELECTOR).html(start + '-' + end);
 }
 
 CafeteriaMenuViewController.prototype.dayChanged = function(oldDay, newDay) {
@@ -113,7 +119,7 @@ CafeteriaMenuViewController.prototype.getViewForFood = function(food) {
 CafeteriaMenuViewController.prototype.changedState = function(oldState, newState) {
   // display state
   var message = dashcode.getLocalizedString(newState);
-  $("#info").html(message);
+  $(INFO_LABEL_SELECTOR).html(message);
 }
 
 CafeteriaMenuViewController.prototype.viewDidLoad = function() {
@@ -122,10 +128,10 @@ CafeteriaMenuViewController.prototype.viewDidLoad = function() {
 }
 
 CafeteriaMenuViewController.prototype.restoreCollapse = function() {
-  alert('restore collapse'); // TODO: implement me
+  alert('TODO: restore collapse'); // TODO: implement me
 }
 
-CafeteriaMenuViewController.prototype.viewDidAppear = function() {  
+CafeteriaMenuViewController.prototype.viewWillAppear = function() {  
   // autoset the day
   var now = new Date();
   var day = now.getDay();
@@ -147,7 +153,7 @@ CafeteriaMenuViewController.prototype.viewWillDisappear = function() {
   this.resizeToWithAnimation(WIDGET.getReader().get("Width"), WIDGET.getReader().get("Height"), this.widget.showBackView);
 }
 
-CafeteriaMenuViewController.prototype.viewWillAppear = function() {
+CafeteriaMenuViewController.prototype.viewDidAppear = function() {
   this.resizeToWithAnimation(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT), null);
 }
 
@@ -156,7 +162,7 @@ CafeteriaMenuViewController.prototype.resize = function(w, h) {
   var divWidth = w - window.innerWidth;
   var divHeight = h - window.innerHeight;
 
-  var scrollArea = $('#scrollArea').scrollArea();
+  var scrollArea = $(MENU_AREA_SELECTOR).scrollArea();
   var scrollAreaWidth = scrollArea.viewWidth + divWidth + 18; // 18 = scrollbar width FIXME: how to get the value
   var scrollAreaHeight = scrollArea.viewHeight + divHeight;
   
@@ -166,14 +172,14 @@ CafeteriaMenuViewController.prototype.resize = function(w, h) {
 }
 
 CafeteriaMenuViewController.prototype.resizeTo = function(w, h) {
-  $('#front').width(w).height(h);
+  $(FRONT_VIEW_SELECTOR).width(w).height(h);
 	if (window.widget) {
 		window.resizeTo(w, h);
 	}
 }
 
 CafeteriaMenuViewController.prototype.resizeToWithAnimation = function(w, h, callback) {
-  $('#front').animate({ 
+  $(FRONT_VIEW_SELECTOR).animate({ 
     width: w,
     height: h
   }, {
@@ -209,19 +215,19 @@ CafeteriaMenuViewController.prototype.expand = function() {
 CafeteriaMenuViewController.prototype.collapse_resize = function(w, h, collapse) {
   this.resizeToWithAnimation(w, h, null);
   var g_collapse = collapse;
-  $('#scrollArea, #weekdayChooser, #week, #info, #cafeteria-name, #resize, #updateImg, #state').animate({
+  $(MENU_AREA_SELECTOR + ', ' + WEEK_DAY_CHOOSER_SELECTOR + ', ' + WEEK_LABEL_SELECTOR + ', ' + INFO_BUTTON_SELECTOR + ', ' + CAFETERIA_LABEL_SELECTOR + ', ' + RESIZE_SELECTOR + ', ' + UPDATE_DIV_SELECTOR + ', ' + INFO_LABEL_SELECTOR).animate({
     opacity: !collapse // XXX: not using 'toggle' cause #updateImg showed asyncron
   }, {
     query: false,
     duration: 500,
     easing: 'swing',
     complete: function() {
-      var className = "collapsed";
+      var className = COLLAPSED_CLASS_NAME;
       if (!g_collapse) {
-        className = "expanded";
+        className = EXPANDED_CLASS_NAME;
       }
     
-      $('#front').removeClass().addClass(className);
+      $(FRONT_VIEW_SELECTOR).removeClass().addClass(className);
     }
   });
 }
