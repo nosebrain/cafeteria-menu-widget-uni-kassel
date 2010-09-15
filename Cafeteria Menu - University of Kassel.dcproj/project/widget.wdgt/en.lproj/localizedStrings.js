@@ -9,7 +9,7 @@ var localizedStrings = {
     "Done": "Done",
     "Error while parsing informations": "Error while parsing informations",
     "FRIDAY": "FRIDAY",
-    "Loading data ...": " ",
+    "Loading data ...": "Loading data ...",
     "MONDAY": "MONDAY",
     "Parsing data ...": "Parsing data ...",
     "Parsing menus ...": "Parsing menus ...",
@@ -23,6 +23,7 @@ var localizedStrings = {
     "Update data manually": "Update data manually",
     "WEDNESDAY": "WEDNESDAY"
 };
+
 
 
 

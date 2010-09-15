@@ -93,8 +93,7 @@ MenuUpdater.prototype.startedParsing = function(response) {
 MenuUpdater.prototype.gotInformation = function(result) {
   PREF.savePref(PREF_INFO, result, true);
   
-  // TODO: backViewController
-  $('#information').scrollArea().setContent(result);
+  this.widget.getBackViewController().gotInformation(result);
 }
 
 MenuUpdater.prototype.gotWeek = function(start, end) {
@@ -124,7 +123,7 @@ MenuUpdater.prototype.gotWeek = function(start, end) {
   this.setNextUpdate(date);
   
   // inform front view controller
-  this.frontViewController.showWeek(start, end);
+  this.widget.getFrontViewController().showWeek(start, end);
 }
 
 MenuUpdater.prototype.finishedParsing = function(result) {
@@ -142,17 +141,9 @@ MenuUpdater.prototype.setCurrentState = function(state) {
   var oldState = this.currentState;
   this.currentState = state;
   
-  this.frontViewController.changedState(oldState, state);
+  this.widget.getFrontViewController().changedState(oldState, state);
 }
 
 MenuUpdater.prototype.setWidget = function(widget) {
   this.widget = widget;
-}
-
-MenuUpdater.prototype.setFrontViewController = function(frontViewController) {
-  this.frontViewController = frontViewController;
-}
-
-MenuUpdater.prototype.setBackViewController = function(backViewController) {
-  this.backViewController = backViewController;
 }
