@@ -126,6 +126,10 @@ MenuUpdater.prototype.gotWeek = function(start, end) {
   this.widget.getFrontViewController().showWeek(start, end);
 }
 
+MenuUpdater.prototype.gotMenu = function(menu) {
+  this.widget.updateMenu(menu);
+}
+
 MenuUpdater.prototype.finishedParsing = function(result) {
   // change state
   this.setCurrentState(STATE_OK);

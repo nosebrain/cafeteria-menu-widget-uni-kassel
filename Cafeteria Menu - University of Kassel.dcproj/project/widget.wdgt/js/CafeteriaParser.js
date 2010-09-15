@@ -21,6 +21,7 @@
  *
  * @author Daniel Zoller<nosebrain@gmx.net>
  */
+
 var SEARCH_EXPRESSIONS = {
   table : /<table cellpadding="4" cellspacing="0" width="899">.*<\/table><img/,
   food : /<tr><td class="gelb" cellpadding="0" bgcolor="#fadc00" height="50" valign="middle" width="125px">/, 
@@ -37,8 +38,8 @@ function CafeteriaParser(cafeteria, listener) {
   this.cafeteria = cafeteria;
   this.request = null;
   this.listener = listener;
+  this.active = false;
 }
-
 
 CafeteriaParser.prototype.parseResult = function(response) {
   try {
@@ -64,8 +65,10 @@ CafeteriaParser.prototype.parseResult = function(response) {
   } catch (e) {
     this.listener.parsingFailed(e);
   }
+  
+  // ready
+  this.active = false;
 }
-
 
 CafeteriaParser.prototype.parseMenu = function(foodSource) {
   var menuO = new Menu();
@@ -118,16 +121,15 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
     }
   }
   
-  // got menu 
+  // got menu
+  this.listener.gotMenu(menuO);
 }
-
 
 CafeteriaParser.prototype.parseWeek = function(weekSource) {
   var actWeek = weekSource.match(SEARCH_EXPRESSIONS.week);
   
   this.listener.gotWeek(actWeek[1], actWeek[3]);
 }
-
 
 CafeteriaParser.prototype.parseInfo = function(infoSource) {
   var info = infoSource.match(SEARCH_EXPRESSIONS.info);
@@ -138,30 +140,26 @@ CafeteriaParser.prototype.parseInfo = function(infoSource) {
   this.listener.gotInformation(info);
 }
 
-
 CafeteriaParser.prototype.parse = function() {
   // stop other request
-  if (this.request) {
-    this.request.abort();
+  if (this.active) {
+    return;
   }
   
-  // TODO: jQuery
-  this.request = new XMLHttpRequest(); // TODO: Exception
-  
-  
   var self = this;
-  this.request.onreadystatechange = function() {
-    if (this.readyState == 4) {
-      if (this.status == 200) {
-        self.parseResult(this.responseText);
-      } else {
-        alert(this.status); // TODO
-      }
-    }
-  };
+  $.ajax({
+   url: this.cafeteria.getURL(),
+   success: function(data) {
+    self.parseResult(data);
+   },
+   error: this.handleError
+  });
   
-  this.request.open("GET", this.cafeteria.getURL(), true);
-  this.request.send(null);
-  
-  this.listener.startedDownload();
+  this.listener.startedDownload();  
+}
+
+CafeteriaParser.prototype.handleError = function(request, textStatus, errorThrown) {
+  // log error
+  alert(textStatus + ' ' + errorThrown);
+  this.active = false;
 }

@@ -26,7 +26,9 @@
 function toggle(event) {
   if ($(FRONT_VIEW_SELECTOR).attr('class') == EXPANDED_CLASS_NAME) {
     WIDGET.getFrontViewController().collapse();
+    PREF.savePref(PREF_COLLAPSED, 1);
   } else {
     WIDGET.getFrontViewController().expand();
+    PREF.savePref(PREF_COLLAPSED, 0);
   }
 }
