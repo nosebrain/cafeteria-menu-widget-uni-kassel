@@ -46,3 +46,7 @@ Food.prototype.setDescription = function(description) {
 Food.prototype.getDescription = function() {
   return this.description;
 }
+
+Food.prototype.isMeatless = function() {
+  return false; // TODO: get (...) split with , and look if it contains an "f"
+}
