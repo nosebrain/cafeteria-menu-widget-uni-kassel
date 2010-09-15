@@ -21,9 +21,10 @@
     <!-- extensions -->
     <script type="text/javascript" src="js/utils/ScrollAreaExtension.js" charset="utf-8"></script>
     <!-- controller files -->
+    <script type="text/javascript" src="js/controller/BackViewController.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/controller/CafeteriaMenuViewController.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/MenuUpdater.js" charset="utf-8"></script>
-       <!-- helper files -->
+    <!-- helper files -->
     <script type="text/javascript" src="js/WidgetUpdater.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/Helper.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/Constants.js" charset="utf-8"></script>
@@ -60,7 +61,7 @@
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="week" apple-group="text"></div>
         <img src="Images/update.png" id="updateImg" style="display: none; " onclick="downloadLatestVersion(event)" apple-part="com.apple.Dashcode.part.image">
         <img id="resize" src="/System/Library/WidgetResources/resize.png" onmousedown="mouseDown(event);">
-        <div apple-part="com.apple.Dashcode.part.imageLayout" id="image" apple-group="image" onclick="toogle(event)"><img class="apple-hidden" src="Images/fork-and-knife.png" id="inner_image" apple-group="image"></div>
+        <div apple-part="com.apple.Dashcode.part.imageLayout" id="image" apple-group="image" onclick="toggle(event)"><img class="apple-hidden" src="Images/fork-and-knife.png" id="inner_image" apple-group="image"></div>
     </div>
     <div id="back">
         <img id="backImg" src="Parts/Images/back.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.backimage" apple-style=" image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.1500,0.1500,0.1500; image-border-width: 3; shadow-include-shadow: 1; shadow-blur: 9.00; shadow-offset: -1.00,-6.00; shadow-color: 0.0000,0.0000,0.0000,0.3333;">
