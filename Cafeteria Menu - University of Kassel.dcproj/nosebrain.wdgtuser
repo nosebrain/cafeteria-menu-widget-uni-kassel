@@ -4,13 +4,23 @@
 <dict>
 	<key>Breakpoints</key>
 	<dict>
+		<key>widget.wdgt/js/CafeteriaWidget.js:58</key>
+		<string>-init</string>
 		<key>widget.wdgt/js/controller/BackViewController.js:62</key>
 		<string>-changeCafeteria</string>
 		<key>widget.wdgt/js/controller/FrontViewController.js:141</key>
 		<string>-refreshMenu</string>
+		<key>widget.wdgt/js/recommender/PreProcessor.js:12</key>
+		<string>-loadStopWordList</string>
+		<key>widget.wdgt/js/recommender/PreProcessor.js:15</key>
+		<string>-loadStopWordList</string>
+		<key>widget.wdgt/js/recommender/PreProcessor.js:18</key>
+		<string>isStopWord</string>
+		<key>widget.wdgt/js/recommender/PreProcessor.js:36</key>
+		<string>-proceedData</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{619, 279}</string>
+	<string>{937, 297}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -26,7 +36,7 @@
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>5</integer>
+	<integer>0</integer>
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
@@ -334,11 +344,7 @@
 			</array>
 		</array>
 		<key>Objects view last selections</key>
-		<array>
-			<array>
-				<integer>5</integer>
-			</array>
-		</array>
+		<array/>
 		<key>Visible StackLayout Views</key>
 		<array>
 			<string>front</string>
