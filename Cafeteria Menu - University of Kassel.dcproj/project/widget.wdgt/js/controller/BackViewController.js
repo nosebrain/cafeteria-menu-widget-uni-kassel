@@ -50,7 +50,7 @@ BackViewController.prototype.viewDidLoad = function() {
 
 BackViewController.prototype.viewWillAppear = function() {
   $(CAFETERIA_CHOOSER_SELECTOR).popup().setSelectedIndex(PREF.getPref(PREF_CAFETERIA));
-  $(CAFETERIA_CHOOSER_SELECTOR).popup().setSelectedIndex(PREF.getPref(PREF_PRICE));
+  $(PRICE_CHOOSER_SELECTOR).popup().setSelectedIndex(PREF.getPref(PREF_PRICE));
 }
 
 BackViewController.prototype.viewWillDisappear = function() {

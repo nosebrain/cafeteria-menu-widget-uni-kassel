@@ -128,10 +128,16 @@ FrontViewController.prototype.viewDidLoad = function() {
 }
 
 FrontViewController.prototype.restoreCollapse = function() {
-  alert('TODO: restore collapse'); // TODO: implement me
+  if (PREF.getPref(PREF_COLLAPSED)) {
+    this.collapse();
+  }
 }
 
 FrontViewController.prototype.viewWillAppear = function() {  
+  this.refreshMenu();
+}
+
+FrontViewController.prototype.refreshMenu = function() {
   // autoset the day
   var now = new Date();
   var day = now.getDay();

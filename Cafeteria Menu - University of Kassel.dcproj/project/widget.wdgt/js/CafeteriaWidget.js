@@ -86,7 +86,7 @@ CafeteriaWidget.prototype.showBackView = function() {
 
 CafeteriaWidget.prototype.showFront = function() {
   this.backViewController.viewWillDisappear();
-  // frontViewWillAppear
+  this.frontViewController.viewWillAppear();
   this.showFrontView();
 }
 
@@ -145,16 +145,21 @@ CafeteriaWidget.prototype.getCafeteria = function(cafeteria) {
 
 CafeteriaWidget.prototype.setCafeteria = function(cafeteria) {
   var old = this.cafeteria;
-
   this.cafeteria = cafeteria;
   
   this.changedCafeteria(old, cafeteria);
 }
 
+CafeteriaWidget.prototype.updateMenu = function(menu) {
+  this.cafeteria.setMenu(menu);
+  
+  this.frontViewController.refreshMenu();
+}
+
 CafeteriaWidget.prototype.changedCafeteria = function(oldCafeteria, newCafeteria) {
   if (newCafeteria) {
     // update data
-    this.menuUpdater.checkForUpdate();
+    this.menuUpdater.update();
     
     var id = newCafeteria.getId();
   

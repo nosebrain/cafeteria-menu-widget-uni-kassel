@@ -41,7 +41,6 @@ function Pref() {
   this.initPrefs();
 }
 
-
 Pref.prototype.initPrefs = function() {
   for (var i = 0; i < PREFS.length; i++) {
     if (!this.getPref(PREFS[i])) { // no pref present …
@@ -57,11 +56,9 @@ Pref.prototype.initPrefs = function() {
   }
 }
 
-
 Pref.prototype.savePref = function(key, value) {
   this.savePref(key, value, false);
 }
-
 
 Pref.prototype.savePref = function(key, value, system) {
   if (!system) {
@@ -71,11 +68,9 @@ Pref.prototype.savePref = function(key, value, system) {
   widget.setPreferenceForKey(value, key);
 }
 
-
 Pref.prototype.getPref = function(key) {
   return this.getPref(key, false);
 }
-
 
 Pref.prototype.getPref = function(key, system) {
   if (!system) {

@@ -37,16 +37,13 @@ Menu.prototype.getWeek = function() {
   return this.week;
 }
 
-
 Menu.prototype.setWeek = function(week) {
   this.week = week;
 }
 
-
 Menu.prototype.getDays = function() {
   return this.days;
 }
-
 
 Menu.prototype.getDay = function(day) {
   return this.days[day];

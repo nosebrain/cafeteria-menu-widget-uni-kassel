@@ -30,7 +30,6 @@ function CafeteriaFactory() {
   this.baseURL = reader.get("CafeteriaBaseAddress");
 }
 
-
 CafeteriaFactory.prototype.getCafeteriaById = function(id) {
   var cafeteriaInfo = this.cafeteriaData[id];
   
