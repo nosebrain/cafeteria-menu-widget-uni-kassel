@@ -149,11 +149,11 @@ tr {
 
 #bgContent {
     left: 23px !important;
-    top: 23px !important;
     bottom: 23px;
-    height: auto;
+    top: 23px !important;
     right: 19px !important;
     width: auto;
+    height: auto;
 }
 
 #image {

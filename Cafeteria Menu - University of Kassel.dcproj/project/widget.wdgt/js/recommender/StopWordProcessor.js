@@ -18,8 +18,8 @@ StopWordProcessor.prototype.isStopWord = function(word) {
   return word == null || word in this.words;
 }
 
-StopWordProcessor.prototype.processWord = function(word) {
-  if (word == null || this.isStopWord) {
+StopWordProcessor.prototype.process = function(word) {
+  if (word == null || this.isStopWord(word)) {
     return null;
   }
   

@@ -97,7 +97,7 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
         
         if (price) {
           var food = new Food();
-          food.setDescription(description);
+          food.setDescription($.trim(description));
         
           for (var x = 0; x < price.length; x++) {
             food.setPrice(x, price[x]);

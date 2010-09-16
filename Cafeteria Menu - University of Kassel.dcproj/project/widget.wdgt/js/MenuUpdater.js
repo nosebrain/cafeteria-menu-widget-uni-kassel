@@ -29,6 +29,8 @@ var STATE_PARSING = "Parsing data ...";
 var STATE_OK = "";
 var STATE_FAILED = "Error while parsing informations";
 
+var UPDATE_INTERVAL = 120 * 60 * 1000;
+
 function MenuUpdater() {
 }
 
@@ -114,7 +116,7 @@ MenuUpdater.prototype.gotWeek = function(start, end) {
   
   if (nextUpdate && (nextUpdate.getDay() != 1) && !this.manUpdate) {    
     var newDate = new Date();
-    newDate.setTime(nextUpdate.getTime() + 120 * 60 * 1000);
+    newDate.setTime(nextUpdate.getTime() + UPDATE_INTERVAL);
     
     if (nextUpdate.getDay() != 1) {
       date = newDate;
