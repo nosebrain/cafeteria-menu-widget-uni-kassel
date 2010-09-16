@@ -25,6 +25,7 @@
 
 function Food() {
   this.price = new Array();
+  this.recommended = false;
 }
 
 Food.prototype.setPrice = function(index, price) {
@@ -49,4 +50,12 @@ Food.prototype.getDescription = function() {
 
 Food.prototype.isMeatless = function() {
   return false; // TODO: get (...) split with , and look if it contains an "f"
+}
+
+Food.prototype.isRecommended = function() {
+  return this.recommended;
+}
+
+Food.prototype.setRecommended = function(recommended) {
+  this.recommended = recommended;
 }

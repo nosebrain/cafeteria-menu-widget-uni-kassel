@@ -68,7 +68,11 @@ FrontViewController.prototype.dayChanged = function(oldDay, newDay) {
   
   if (day.isHoliday()) {
     content = day.getDescription();
-  } else {    
+  } else {
+    // get recommendation for the day
+    var recommender = new MenuRecommender();
+    recommender.recommendFood(day.getFoods());
+  
     // get menu for new day
     content = this.getViewForDay(day);
   }  
@@ -83,12 +87,13 @@ FrontViewController.prototype.getViewForDay = function(day) {
   var foods = day.getFoods();
   
   for (var i = 0; i < foods.length; i++) {
+    var food = foods[i];
     result += "<tr";
     if (i % 2 == 1) {
       result += " class='alt'";
     } 
     result += ">";
-    result += this.getViewForFood(foods[i]);
+    result += this.getViewForFood(food);
     result += "</tr>";
   }
   
@@ -99,11 +104,16 @@ FrontViewController.prototype.getViewForDay = function(day) {
 
 FrontViewController.prototype.getViewForFood = function(food) {
   var result = "<td>";
+  if (food.isRecommended()) {
+    result += '<img src="Images/star.png" height="12" width="12" /> ';
+  }
   result += food.getDescription();
-  result += "</td>";
+  result += "<br /><small>( ";
+  result += "like | dislike)</small></td>";
+  
   var priceId = PREF.getPref(PREF_PRICE);
-
   var price = food.getPrice(priceId);
+  
   result += "<td class = \"price\">";
   
   if (price) {
