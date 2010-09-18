@@ -3,8 +3,9 @@
 function MenuRecommender() {
   this.preprocessors = new Array();
   
-  this.preprocessors.push(new SpecialPhraseProcessor());
+  this.preprocessors.push(new SpecialPhraseProcessor()); // removes '(s)' or '(f, sa)'
   this.preprocessors.push(new StopWordProcessor()); // removes stop words like "auf", "an"
+  this.preprocessors.push(new NormalizerProcessor()); // 
 }
 
 MenuRecommender.prototype.recommendFood = function(foods) {
