@@ -157,3 +157,8 @@
     height: 23px;
     background-position: 0% 0%;
 }
+
+.foodMenu {
+  font-family: 'Helvetica Neue';
+  font-size: 8pt;
+}
