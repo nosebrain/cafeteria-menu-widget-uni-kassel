@@ -4,43 +4,15 @@
 <dict>
 	<key>Breakpoints</key>
 	<dict>
-		<key>widget.wdgt/js/CafeteriaWidget.js:58</key>
-		<string>-init</string>
-		<key>widget.wdgt/js/MenuRecommender.js:15</key>
-		<string>-recommendFood</string>
-		<key>widget.wdgt/js/MenuRecommender.js:22</key>
-		<string>-recommendFood</string>
-		<key>widget.wdgt/js/MenuRecommender.js:47</key>
-		<string>-getTerms</string>
-		<key>widget.wdgt/js/MenuRecommender.js:48</key>
-		<string>-getTerms</string>
-		<key>widget.wdgt/js/MenuRecommender.js:51</key>
-		<string>-getTerms</string>
-		<key>widget.wdgt/js/MenuRecommender.js:53</key>
-		<string>-getTerms</string>
-		<key>widget.wdgt/js/controller/BackViewController.js:62</key>
-		<string>-changeCafeteria</string>
-		<key>widget.wdgt/js/controller/FrontViewController.js:151</key>
-		<string>-refreshMenu</string>
-		<key>widget.wdgt/js/recommender/PreProcessor.js:12</key>
-		<string>-loadStopWordList</string>
-		<key>widget.wdgt/js/recommender/PreProcessor.js:15</key>
-		<string>-loadStopWordList</string>
-		<key>widget.wdgt/js/recommender/PreProcessor.js:18</key>
-		<string>isStopWord</string>
-		<key>widget.wdgt/js/recommender/PreProcessor.js:36</key>
-		<string>-proceedData</string>
-		<key>widget.wdgt/js/recommender/SpecialPhraseProcessor.js:6</key>
-		<string>-process</string>
-		<key>widget.wdgt/js/recommender/SpecialPhraseProcessor.js:7</key>
-		<string>-process</string>
+		<key>widget.wdgt/js/MenuRecommender.js:162</key>
+		<string>updateLikeDislike</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{577, 373}</string>
+	<string>{745, 460}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
-		<integer>8</integer>
+		<integer>24</integer>
 		<key>SplitViewConfig</key>
 		<integer>3</integer>
 		<key>_indexOfCollapsedView</key>
@@ -88,6 +60,8 @@
 		<true/>
 		<key>SavePath</key>
 		<string>/Users/nosebrain/Desktop</string>
+		<key>WidgetCompatibilityTag</key>
+		<integer>1</integer>
 		<key>enableSimulation</key>
 		<true/>
 		<key>simulatedHost</key>
@@ -364,18 +338,17 @@
 				<integer>11</integer>
 				<integer>0</integer>
 			</array>
-		</array>
-		<key>Objects view last selections</key>
-		<array>
 			<array>
 				<integer>0</integer>
-				<integer>0</integer>
-				<integer>17</integer>
+				<integer>1</integer>
+				<integer>4</integer>
 			</array>
 		</array>
+		<key>Objects view last selections</key>
+		<array/>
 		<key>Visible StackLayout Views</key>
 		<array>
-			<string>front</string>
+			<string>back</string>
 		</array>
 	</dict>
 </dict>

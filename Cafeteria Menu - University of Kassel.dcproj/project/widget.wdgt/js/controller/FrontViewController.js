@@ -36,7 +36,7 @@ var EXPANDED_CLASS_NAME = 'expanded';
 
 
 function FrontViewController() {
-
+  this.foodRecommender = new MenuRecommender();
 }
 
 FrontViewController.prototype.changedCafeteria = function(oldCafeteria, newCafeteria) {
@@ -67,63 +67,83 @@ FrontViewController.prototype.dayChanged = function(oldDay, newDay) {
   var content = "";
   
   if (day.isHoliday()) {
-    content = day.getDescription();
+    // content = day.getDescription();
   } else {
     // get recommendation for the day
-    var recommender = new MenuRecommender();
-    recommender.recommendFood(day.getFoods());
+    this.foodRecommender.recommendFood(day.getFoods());
   
     // get menu for new day
     content = this.getViewForDay(day);
+    $('#content').children().remove();
+    $('#content').append(content);
+    
+    // set new content
+    $(MENU_AREA_SELECTOR).scrollArea().refresh();
   }  
-  
-  // set new content
-  $(MENU_AREA_SELECTOR).scrollArea().setContent(content);
 }
 
 FrontViewController.prototype.getViewForDay = function(day) {
-  var result = "<table>";
-  
+  var result = $('<table></table>');
   var foods = day.getFoods();
   
   for (var i = 0; i < foods.length; i++) {
     var food = foods[i];
-    result += "<tr";
+    var tr = $('<tr></tr>');
     if (i % 2 == 1) {
-      result += " class='alt'";
-    } 
-    result += ">";
-    result += this.getViewForFood(food);
-    result += "</tr>";
+      tr.addClass('alt');
+    }
+    
+    tr.append(this.getViewForFood(food));
+    tr.append(this.getViewForFoodPrice(food));
+    result.append(tr);
   }
-  
-  result += "</table>";
-  
   return result;
 }
 
-FrontViewController.prototype.getViewForFood = function(food) {
-  var result = "<td>";
-  if (food.isRecommended()) {
-    result += '<img src="Images/star.png" height="12" width="12" /> ';
-  }
-  result += food.getDescription();
-  result += "<br /><small>( ";
-  result += "like | dislike)</small></td>";
-  
+FrontViewController.prototype.getViewForFoodPrice = function(food) {
   var priceId = PREF.getPref(PREF_PRICE);
   var price = food.getPrice(priceId);
   
-  result += "<td class = \"price\">";
+  var priceTd = $('<td></td>').addClass('price');
   
   if (price) {
-    result += price;
-    result += "€";
+    priceTd.append(price);
+    priceTd.append('€');
   }
   
-  result += "</td>";
+  return priceTd;
+}
+
+FrontViewController.prototype.getViewForFood = function(food) {
+  var foodElement = $('<td></td>');
+  if (food.isRecommended()) {
+    foodElement.append('<img src="Images/star.png" height="12" width="12" /> ');
+  }
   
-  return result;
+  var foodS = $('<span></span>').addClass('food');
+  foodS.append(food.getDescription());
+  foodElement.append($(foodS));
+  foodElement.append('<br />');
+  
+  var menuS = $('<span></span>').addClass('foodMenu');
+  menuS.append('( ')
+    
+  var self = this;
+  var likeLink = $('<a></a>').append('like').click(function() { // TODO: i18n
+    self.getFoodRecommender().likeFood(food);
+  });
+  
+  var dislikeLink = $('<a></a>').append('dislike').click(function() { // TODO: i18n
+    self.getFoodRecommender().dislikeFood(food);
+  });
+  
+  menuS.append(likeLink);
+  menuS.append(' | ');
+  menuS.append(dislikeLink);
+  menuS.append(' ) ');
+  
+  foodElement.append(menuS);
+  return foodElement;
 }
 
 FrontViewController.prototype.changedState = function(oldState, newState) {
@@ -157,7 +177,7 @@ FrontViewController.prototype.refreshMenu = function() {
     day--;
   }
   
-  // TODO: what with weekends?
+  // TODO: what to do with weekends?
   
   day = Math.max(day, 0);
   day = Math.min(day, 4);
@@ -232,11 +252,10 @@ FrontViewController.prototype.collapse_resize = function(w, h, collapse) {
   this.resizeToWithAnimation(w, h, null);
   var g_collapse = collapse;
   $(MENU_AREA_SELECTOR + ', ' + WEEK_DAY_CHOOSER_SELECTOR + ', ' + WEEK_LABEL_SELECTOR + ', ' + INFO_BUTTON_SELECTOR + ', ' + CAFETERIA_LABEL_SELECTOR + ', ' + RESIZE_SELECTOR + ', ' + UPDATE_DIV_SELECTOR + ', ' + INFO_LABEL_SELECTOR).animate({
-    opacity: !collapse // XXX: not using 'toggle' cause #updateImg showed asyncron
+    opacity: !collapse // XXX: not using 'toggle' cause #updateImg shown asyncron
   }, {
     query: false,
     duration: 500,
-    easing: 'swing',
     complete: function() {
       var className = COLLAPSED_CLASS_NAME;
       if (!g_collapse) {
@@ -250,4 +269,8 @@ FrontViewController.prototype.collapse_resize = function(w, h, collapse) {
 
 FrontViewController.prototype.setWidget = function(widget) {
   this.widget = widget;
+}
+
+FrontViewController.prototype.getFoodRecommender = function() {
+  return this.foodRecommender;
 }

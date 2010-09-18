@@ -8,7 +8,7 @@ function MenuRecommender() {
 }
 
 MenuRecommender.prototype.recommendFood = function(foods) {
-  // loop through all menus
+  // loop through all foods
   var minAngle = 100;
   var angles = new Array();
   for (var i = 0; i < foods.length; i++) {
@@ -17,10 +17,11 @@ MenuRecommender.prototype.recommendFood = function(foods) {
     var terms = this.getTerms(food);
     
     // get angle
-    var angle = Math.acos(this.getCosSimCalcLength(terms, this.getUserLikeDislikes()));
+    var angle = Math.acos(this.getCosSim(terms, this.getUserLikeDislikes(), this.getTermLength(terms), this.getUserLikeDislikesLength()));
     angles.push(angle);
   }
   
+  // get the minValue
   var minValue = 100;
   for (var i = 0; i < angles.length; i++) {
     if (angles[i] < minValue) {
@@ -28,31 +29,39 @@ MenuRecommender.prototype.recommendFood = function(foods) {
     }
   }
   
-  var indeces = new Array();
+  // 2. get all indices with minValue
+  var indices = new Array();
   for (var i = 0; i < angles.length; i++) {
+    alert(i + ' = ' + angles[i]);
     if (angles[i] == minValue) {
-      indeces.push(i);
+      indices.push(i);
     }
   }
   
-  // only recommend if there are not all foods recommended
-  if (indeces.length < (foods.length - 1)) {
+  // only recommend if there are not all foods with the same angle
+  if (indices.length < (foods.length - 1)) {
     for (var i = 0; i < foods.length; i++) {
-      foods[i].setRecommended($.inArray(i, indeces) >= 0);
+      foods[i].setRecommended($.inArray(i, indices) >= 0);
     }
+  } else {
+    alert('nothing to recommend ' + indices.length);
   }
 }
 
+MenuRecommender.prototype.getNormTerms = function(term) {
+  for (var j = 0; j < this.preprocessors.length; j++) {
+     term = this.preprocessors[j].process(term);
+  }
+  
+  return term;
+}
+
 MenuRecommender.prototype.getTerms = function(text) {
-  var allTerms = text.split(" ");
+  var allTerms = text.split(' ');
   var terms = {};
   
   for (var i = 0; i < allTerms.length; i++) {
-    var currentTerm = allTerms[i];
-    
-    for (var j = 0; j < this.preprocessors.length; j++) {
-      currentTerm = this.preprocessors[j].process(currentTerm);
-    }
+    var currentTerm = this.getNormTerms(allTerms[i]);
     
     if (currentTerm) {
       if (currentTerm in terms) {
@@ -67,34 +76,30 @@ MenuRecommender.prototype.getTerms = function(text) {
 }
 
 MenuRecommender.prototype.getUserLikeDislikes = function() {
-  // TODO: 
-  var dummy = {};
-  
-  dummy['Reispfanne'] = 4;
-  dummy['Bauernfrühstück'] = 2;
-  dummy['Spinat'] = -5;
-  dummy['Steak'] = 5;
-  dummy['Sahne'] = 2;
-  dummy['Fischfilet'] = 4;
-  dummy['Bratwurst'] = 90;
-  
-  return dummy;
+  return PREF.getDicPref('likeDislike', true);
 }
 
-MenuRecommender.prototype.getCosSimCalcLength = function(doc1, doc2) {
-	var lengthDoc1 = 0;
-	for (var word in doc1) {
-		var wordCount = doc1[word];
-		lengthDoc1 += wordCount * wordCount;
-	}
-	
-	var lengthDoc2 = 0;
-	for (var word in doc2) {
-		var wordCount = doc2[word];
-		lengthDoc2 += wordCount * wordCount;
-	}
-	// alert(lengthDoc1 + " " + lengthDoc2);
-	return this.getCosSim(doc1, doc2, lengthDoc1, lengthDoc2);
+MenuRecommender.prototype.getUserLikeDislikesLength = function() {
+  return PREF.getPref('likeDislikeLength', true);
+}
+
+MenuRecommender.prototype.setUserLikeDislikes = function(dict) {
+  PREF.saveDicPref('likeDislike', true);
+}
+
+MenuRecommender.prototype.setUserLikeDislikesLength = function(length) {
+  PREF.savePref('likeDislikeLength', true);
+}
+
+MenuRecommender.prototype.getTermLength = function(terms) {
+  var length = 0;
+  
+  for (var term in terms) {
+    var termCount = terms[term];
+    length += termCount * termCount;
+  }
+  
+  return length;
 }
 
 MenuRecommender.prototype.getCosSim = function(doc1, doc2, quadLengthDoc1, quadLengthDoc2) {
@@ -113,7 +118,7 @@ MenuRecommender.prototype.getCosSim = function(doc1, doc2, quadLengthDoc1, quadL
 	var scalarproduct = 0;
 	
 	for (var word in itDoc) {
-	   	var wordCountInItDoc = itDoc[word];
+    var wordCountInItDoc = itDoc[word];
 		var wordCountInOtherDoc = otherDoc[word];
 		if (wordCountInOtherDoc) {
 			scalarproduct += wordCountInItDoc *  wordCountInOtherDoc;
@@ -124,9 +129,43 @@ MenuRecommender.prototype.getCosSim = function(doc1, doc2, quadLengthDoc1, quadL
 }
 
 MenuRecommender.prototype.dislikeFood = function(food) {
-  // TODO
+  if (!food) {
+    alert('WARNING: food null');
+    return;
+  }
+  
+  this.updateLikeDislike(food, -1);
+}
+
+MenuRecommender.prototype.updateLikeDislike = function(food, updateValue) {
+  var string = $.trim(food.getDescription());
+  var newTerms = this.getTerms(string);
+  
+  var currentTerms = this.getUserLikeDislikes();
+  var currentTermsLength = this.getUserLikeDislikesLength();
+  
+  for (var newTerm in newTerms) {
+    var oldValue = 0;
+    if (newTerm in currentTerms) {
+      oldValue = parseInt(currentTerms[newTerm]);
+    }
+    
+    var newValue = oldValue + updateValue;
+    currentTerms[newTerm] = newValue;
+    
+    currentTermsLength = currentTermsLength + 2 * updateValue * oldValue + updateValue * updateValue;
+  }
+  
+  // save values
+  this.setUserLikeDislikes(currentTerms);
+  this.setUserLikeDislikesLength(currentTermsLength);
 }
 
 MenuRecommender.prototype.likeFood = function(food) {
-  // TODO
+  if (!food) {
+    alert('WARNING: food null');
+    return;
+  }
+  
+  this.updateLikeDislike(food, 1);
 }

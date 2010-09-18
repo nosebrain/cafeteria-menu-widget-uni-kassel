@@ -56,6 +56,43 @@ Pref.prototype.initPrefs = function() {
   }
 }
 
+Pref.prototype.saveDicPref = function(key, dic) {
+  this.saveDicPref(key, dic, false);
+}
+
+Pref.prototype.saveDicPref = function(key, dic, system) {
+  var value = '';
+  for (var a in dic) {
+    value += a; // TODO: constant
+    value += '=';
+    value += dic[a];
+    value += '|'; // TODO: constant
+  }
+  
+  this.savePref(key, value, system);
+}
+
+Pref.prototype.getDicPref = function(key) {
+  this.getDicPref(key, false);
+}
+
+Pref.prototype.getDicPref = function(key, system) {
+  var stringValue = this.getPref(key, system);
+  
+  var value = {};
+  
+  var keyValues = stringValue.split('|'); // TODO: constant
+  
+  for (var i = 0; i < (keyValues.length - 1); i++) { // -1 cause last value is an empty string
+    var keyValue = keyValues[i].split('='); // TODO: constant
+    if (keyValue.length == 2) {
+      value[keyValue[0]] = keyValue[1];
+    }
+  }
+  
+  return value;
+}
+
 Pref.prototype.savePref = function(key, value) {
   this.savePref(key, value, false);
 }
