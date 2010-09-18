@@ -85,7 +85,7 @@ MenuRecommender.prototype.getUserLikeDislikesLength = function() {
 }
 
 MenuRecommender.prototype.setUserLikeDislikes = function(dict) {
-  PREF.saveDicPref('likeDislike', true);
+  PREF.saveDicPref('likeDislike', dict, true);
 }
 
 MenuRecommender.prototype.setUserLikeDislikesLength = function(length) {
