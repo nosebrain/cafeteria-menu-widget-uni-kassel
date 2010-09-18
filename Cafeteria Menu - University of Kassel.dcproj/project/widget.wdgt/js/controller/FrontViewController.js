@@ -36,7 +36,7 @@ var EXPANDED_CLASS_NAME = 'expanded';
 
 
 function FrontViewController() {
-  this.foodRecommender = new MenuRecommender();
+  this.foodRecommender = new FoodRecommender();
 }
 
 FrontViewController.prototype.changedCafeteria = function(oldCafeteria, newCafeteria) {

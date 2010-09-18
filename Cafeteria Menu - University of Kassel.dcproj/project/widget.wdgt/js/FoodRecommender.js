@@ -1,14 +1,14 @@
 
 // TODO: rename to FoodRecommender
-function MenuRecommender() {
+function FoodRecommender() {
   this.preprocessors = new Array();
   
   this.preprocessors.push(new SpecialPhraseProcessor()); // removes '(s)' or '(f, sa)'
   this.preprocessors.push(new StopWordProcessor()); // removes stop words like "auf", "an"
-  this.preprocessors.push(new NormalizerProcessor()); // 
+  this.preprocessors.push(new NormalizerProcessor()); // normalize the words
 }
 
-MenuRecommender.prototype.recommendFood = function(foods) {
+FoodRecommender.prototype.recommendFood = function(foods) {
   // loop through all foods
   var minAngle = 100;
   var angles = new Array();
@@ -33,7 +33,7 @@ MenuRecommender.prototype.recommendFood = function(foods) {
   // 2. get all indices with minValue
   var indices = new Array();
   for (var i = 0; i < angles.length; i++) {
-    alert(i + ' = ' + angles[i]);
+    alert(i + ' = ' + angles[i] + '°');
     if (angles[i] == minValue) {
       indices.push(i);
     }
@@ -49,7 +49,7 @@ MenuRecommender.prototype.recommendFood = function(foods) {
   }
 }
 
-MenuRecommender.prototype.getNormTerms = function(term) {
+FoodRecommender.prototype.getNormTerms = function(term) {
   for (var j = 0; j < this.preprocessors.length; j++) {
      term = this.preprocessors[j].process(term);
   }
@@ -57,7 +57,7 @@ MenuRecommender.prototype.getNormTerms = function(term) {
   return term;
 }
 
-MenuRecommender.prototype.getTerms = function(text) {
+FoodRecommender.prototype.getTerms = function(text) {
   var allTerms = text.split(' ');
   var terms = {};
   
@@ -76,23 +76,23 @@ MenuRecommender.prototype.getTerms = function(text) {
   return terms;
 }
 
-MenuRecommender.prototype.getUserLikeDislikes = function() {
+FoodRecommender.prototype.getUserLikeDislikes = function() {
   return PREF.getDicPref('likeDislike', true);
 }
 
-MenuRecommender.prototype.getUserLikeDislikesLength = function() {
+FoodRecommender.prototype.getUserLikeDislikesLength = function() {
   return PREF.getPref('likeDislikeLength', true);
 }
 
-MenuRecommender.prototype.setUserLikeDislikes = function(dict) {
+FoodRecommender.prototype.setUserLikeDislikes = function(dict) {
   PREF.saveDicPref('likeDislike', dict, true);
 }
 
-MenuRecommender.prototype.setUserLikeDislikesLength = function(length) {
-  PREF.savePref('likeDislikeLength', true);
+FoodRecommender.prototype.setUserLikeDislikesLength = function(length) {
+  PREF.savePref('likeDislikeLength', length, true);
 }
 
-MenuRecommender.prototype.getTermLength = function(terms) {
+FoodRecommender.prototype.getTermLength = function(terms) {
   var length = 0;
   
   for (var term in terms) {
@@ -103,7 +103,7 @@ MenuRecommender.prototype.getTermLength = function(terms) {
   return length;
 }
 
-MenuRecommender.prototype.getCosSim = function(doc1, doc2, quadLengthDoc1, quadLengthDoc2) {
+FoodRecommender.prototype.getCosSim = function(doc1, doc2, quadLengthDoc1, quadLengthDoc2) {
 	if (doc1 == null || doc2 == null) {
 		return 1; 
 	}
@@ -129,7 +129,7 @@ MenuRecommender.prototype.getCosSim = function(doc1, doc2, quadLengthDoc1, quadL
 	return scalarproduct / Math.sqrt(quadLengthDoc1 * quadLengthDoc2);
 }
 
-MenuRecommender.prototype.dislikeFood = function(food) {
+FoodRecommender.prototype.dislikeFood = function(food) {
   if (!food) {
     alert('WARNING: food null');
     return;
@@ -138,7 +138,7 @@ MenuRecommender.prototype.dislikeFood = function(food) {
   this.updateLikeDislike(food, -1);
 }
 
-MenuRecommender.prototype.updateLikeDislike = function(food, updateValue) {
+FoodRecommender.prototype.updateLikeDislike = function(food, updateValue) {
   var string = $.trim(food.getDescription());
   var newTerms = this.getTerms(string);
   
@@ -162,7 +162,7 @@ MenuRecommender.prototype.updateLikeDislike = function(food, updateValue) {
   this.setUserLikeDislikesLength(currentTermsLength);
 }
 
-MenuRecommender.prototype.likeFood = function(food) {
+FoodRecommender.prototype.likeFood = function(food) {
   if (!food) {
     alert('WARNING: food null');
     return;

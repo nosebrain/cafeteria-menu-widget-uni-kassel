@@ -35,16 +35,17 @@ var PREF_WIDTH = "myWidth";
 var PREF_HEIGHT = "myHeight";
 
 // all pref keys (info not added because saved for all instances of this widget)
-var PREFS = new Array(PREF_CAFETERIA, PREF_UPDATE, PREF_PRICE, PREF_COLLAPSED);
+var PREFS = new Array(PREF_CAFETERIA, PREF_UPDATE, PREF_PRICE, PREF_COLLAPSED, PREF_WIDTH, PREF_HEIGHT);
+var INIT_PREFS = new Array(PREF_CAFETERIA, PREF_UPDATE, PREF_PRICE, PREF_COLLAPSED);
 
 function Pref() {
   this.initPrefs();
 }
 
 Pref.prototype.initPrefs = function() {
-  for (var i = 0; i < PREFS.length; i++) {
-    if (!this.getPref(PREFS[i])) { // no pref present …
-      this.savePref(PREFS[i], 0); // … init it with 0
+  for (var i = 0; i < INIT_PREFS.length; i++) {
+    if (!this.getPref(INIT_PREFS[i])) { // no pref present …
+      this.savePref(INIT_PREFS[i], 0); // … init it with 0
     }
   }
   
