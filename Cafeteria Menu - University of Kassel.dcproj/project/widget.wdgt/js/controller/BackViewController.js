@@ -38,14 +38,27 @@ BackViewController.prototype.setWidget = function(widget) {
 
 BackViewController.prototype.viewDidLoad = function() {
   // init cafeteria popup with the data in the info plist file
-  var cafs = this.widget.getReader().get("Cafeterias");
+  var cafs = this.widget.getReader().get('Cafeterias');
   
   var cafeterias = new Array();
   for (i = 0; i < cafs.length; i++) {
-    cafeterias.push(cafs[i]["Name"]);
+    cafeterias.push(cafs[i]['Name']);
   }
   
   $(CAFETERIA_CHOOSER_SELECTOR).popup().setOptions(cafeterias);
+  
+  /*
+   * bind all gui elements
+   */
+  
+  $(CAFETERIA_CHOOSER_SELECTOR).change(function() {
+    alert('changed');
+    // TODO
+  });
+  
+  $(PRICE_CHOOSER_SELECTOR).change(function() {
+    // TODO
+  });
 }
 
 BackViewController.prototype.viewWillAppear = function() {

@@ -49,7 +49,7 @@ Food.prototype.getDescription = function() {
 }
 
 Food.prototype.isMeatless = function() {
-  return false; // TODO: get (...) split with , and look if it contains an "f"
+  return this.description != null && (this.description.indexOf('(f)') > 0); // TODO: get all (...) split with , and look if it contains an "f"
 }
 
 Food.prototype.isRecommended = function() {

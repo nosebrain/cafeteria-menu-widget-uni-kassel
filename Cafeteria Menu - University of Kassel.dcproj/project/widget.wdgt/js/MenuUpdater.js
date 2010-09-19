@@ -24,10 +24,10 @@
  */
 
 // states
-var STATE_LOADING = "Loading data ...";
-var STATE_PARSING = "Parsing data ...";
-var STATE_OK = "";
-var STATE_FAILED = "Error while parsing informations";
+var STATE_LOADING = 'Loading data ...';
+var STATE_PARSING = 'Parsing data ...';
+var STATE_OK = '';
+var STATE_FAILED = 'Error while parsing informations';
 
 var UPDATE_INTERVAL = 120 * 60 * 1000;
 
@@ -144,7 +144,7 @@ MenuUpdater.prototype.finishedParsing = function(result) {
 
 MenuUpdater.prototype.parsingFailed = function(error) {
   // change state
-  alert("exception while " + this.currentState + ": " + error);
+  alert('exception while ' + this.currentState + ': ' + error);
   this.setCurrentState(STATE_FAILED);
 }
 

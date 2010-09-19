@@ -1,5 +1,28 @@
+/**
+ * Cafeteria Widget - University of Kassel
+ *
+ *
+ * Copyright 2009 - 2010, Daniel Zoller
+ *                        http://nosebrain.de
+ *
+ * This widget is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This widget is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this widget; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA 
+ *
+ *
+ * @author Daniel Zoller<nosebrain@gmx.net>
+ */
 
-// TODO: rename to FoodRecommender
 function FoodRecommender() {
   this.preprocessors = new Array();
   
@@ -9,6 +32,11 @@ function FoodRecommender() {
 }
 
 FoodRecommender.prototype.recommendFood = function(foods) {
+  // clear old recommendations
+  for (var i = 0; i < foods.length; i++) {
+    foods[i].setRecommended(false);
+  }
+
   // loop through all foods
   var minAngle = 100;
   var angles = new Array();
@@ -40,11 +68,12 @@ FoodRecommender.prototype.recommendFood = function(foods) {
   }
   
   // only recommend if there are not all foods with the same angle
-  if (indices.length < (foods.length - 1)) {
+  if (indices.length / foods.length <= 0.5) {
     for (var i = 0; i < foods.length; i++) {
       foods[i].setRecommended($.inArray(i, indices) >= 0);
     }
   } else {
+    
     alert('nothing to recommend ' + indices.length);
   }
 }
@@ -77,19 +106,19 @@ FoodRecommender.prototype.getTerms = function(text) {
 }
 
 FoodRecommender.prototype.getUserLikeDislikes = function() {
-  return PREF.getDicPref('likeDislike', true);
+  return PREF.getDicPref(PREF_LIKE_DISLIKE, true);
 }
 
 FoodRecommender.prototype.getUserLikeDislikesLength = function() {
-  return PREF.getPref('likeDislikeLength', true);
+  return PREF.getPref(PREF_LIKE_DISLIKE_LENGTH, true);
 }
 
 FoodRecommender.prototype.setUserLikeDislikes = function(dict) {
-  PREF.saveDicPref('likeDislike', dict, true);
+  PREF.saveDicPref(PREF_LIKE_DISLIKE, dict, true);
 }
 
 FoodRecommender.prototype.setUserLikeDislikesLength = function(length) {
-  PREF.savePref('likeDislikeLength', length, true);
+  PREF.savePref(PREF_LIKE_DISLIKE_LENGTH, length, true);
 }
 
 FoodRecommender.prototype.getTermLength = function(terms) {

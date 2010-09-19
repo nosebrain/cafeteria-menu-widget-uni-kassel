@@ -92,7 +92,7 @@ CafeteriaWidget.prototype.showFront = function() {
 
 CafeteriaWidget.prototype.showFrontView = function() {
   if (window.widget) {
-    widget.prepareForTransition("ToFront");
+    widget.prepareForTransition('ToFront');
   }
   
   $(FRONT_VIEW_SELECTOR).show();
