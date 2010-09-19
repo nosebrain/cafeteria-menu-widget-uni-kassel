@@ -95,7 +95,27 @@ FrontViewController.prototype.getViewForDay = function(day) {
     
     tr.append(this.getViewForFood(food));
     tr.append(this.getViewForFoodPrice(food));
+    
     result.append(tr);
+    
+    var tr2 = $('<tr></tr>');
+    
+    var menuS = $('<td></td>').addClass('foodMenu');
+    
+    var self = this;
+    var likeLink = $('<a></a>').append('<img src="Images/like.png" height="15" width="15" />').click(function() { // TODO: i18n
+      self.getFoodRecommender().likeFood(food);
+    });
+  
+    var dislikeLink = $('<a></a>').append('<img src="Images/dislike.png" height="15" width="15" />').click(function() { // TODO: i18n
+      self.getFoodRecommender().dislikeFood(food);
+    });
+  
+    menuS.append(likeLink);
+    menuS.append(dislikeLink);
+    tr2.append(menuS);
+    
+    result.append(tr2);
   }
   return result;
 }
@@ -115,7 +135,7 @@ FrontViewController.prototype.getViewForFoodPrice = function(food) {
 }
 
 FrontViewController.prototype.getViewForFood = function(food) {
-  var foodElement = $('<td></td>');
+  var foodElement = $('<td rowspan="2"></td>');
   if (food.isRecommended()) {
     foodElement.append('<img src="Images/star.png" height="12" width="12" /> ');
   }
@@ -123,26 +143,7 @@ FrontViewController.prototype.getViewForFood = function(food) {
   var foodS = $('<span></span>').addClass('food');
   foodS.append(food.getDescription());
   foodElement.append($(foodS));
-  foodElement.append('<br />');
   
-  var menuS = $('<span></span>').addClass('foodMenu');
-  menuS.append('( ')
-    
-  var self = this;
-  var likeLink = $('<a></a>').append('like').click(function() { // TODO: i18n
-    self.getFoodRecommender().likeFood(food);
-  });
-  
-  var dislikeLink = $('<a></a>').append('dislike').click(function() { // TODO: i18n
-    self.getFoodRecommender().dislikeFood(food);
-  });
-  
-  menuS.append(likeLink);
-  menuS.append(' | ');
-  menuS.append(dislikeLink);
-  menuS.append(' ) ');
-  
-  foodElement.append(menuS);
   return foodElement;
 }
 
@@ -155,6 +156,14 @@ FrontViewController.prototype.changedState = function(oldState, newState) {
 FrontViewController.prototype.viewDidLoad = function() {
   // restore size and collapse state
   this.resizeToWithAnimation(PREF.getPref(PREF_WIDTH), PREF.getPref(PREF_HEIGHT), this.restoreCollapse);
+  
+  /*
+   * bind gui elements
+   */
+  // TODO:
+  // weekdaychooser
+  // cafeteria label
+  // collapse expand
 }
 
 FrontViewController.prototype.restoreCollapse = function() {

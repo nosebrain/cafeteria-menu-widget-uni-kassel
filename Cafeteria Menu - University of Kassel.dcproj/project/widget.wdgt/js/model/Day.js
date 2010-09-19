@@ -26,7 +26,7 @@
 function Day() {
   this.foods = new Array();
   this.holiday = false;
-  this.description = "";
+  this.description = '';
 }
 
 Day.prototype.addToFood = function(food) {

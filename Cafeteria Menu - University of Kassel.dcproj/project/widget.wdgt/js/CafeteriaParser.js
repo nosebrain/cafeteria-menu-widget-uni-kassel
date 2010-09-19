@@ -45,10 +45,10 @@ CafeteriaParser.prototype.parseResult = function(response) {
   try {
     this.listener.startedParsing(response);
     // clear new lines and 
-    var lines = response.split("\n");
-    response = lines.join(" ");
-    lines = response.split("\r");
-    response = lines.join(" ");
+    var lines = response.split('\n'); // TODO: replace(/\n/g, ' '); ?
+    response = lines.join(' ');
+    lines = response.split('\r');
+    response = lines.join(' ');
   
     var foodTable = response.match(SEARCH_EXPRESSIONS.table);
 
@@ -88,10 +88,11 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
       // get description
       var clearMenu = menu[j].split(/<\/tr>/);
       menu[j] = clearMenu[0];
-            
-      var description = removeHTMLCode(menu[j]).replace(/- /, " ");
+       
+      var rawDescription = menu[j];
+      var description = removeHTMLCode(rawDescription).replace(/- /, ' ');
       
-      if (description != " ") {      
+      if ($.trim(description) != '') {      
         // get price
         var price = prices[j].match(SEARCH_EXPRESSIONS.price);
         
@@ -106,10 +107,10 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
           // add it to day
           menuO.getDay(j).addToFood(food);
         } else {
-          alert("price not found for " + description);
+          alert('price not found for ' + description);
           // maybe it's a holiday
-          if (description.search(SEARCH_EXPRESSIONS.holiday) != -1) {
-            alert("holiday");
+          if (rawDescription.search(SEARCH_EXPRESSIONS.holiday) != -1) {
+            alert('holiday');
             var day = menuO.getDay(j);
             day.setHoliday(true);
             day.setDescription(removeHTMLCode(day.getDescription()) + description);
@@ -132,25 +133,27 @@ CafeteriaParser.prototype.parseWeek = function(weekSource) {
 CafeteriaParser.prototype.parseInfo = function(infoSource) {
   var info = infoSource.match(SEARCH_EXPRESSIONS.info);
   
-  info = info[1].replace(/, /g, "<br />");
-  info = info.replace(/Wir verwenden /, "<br /><br />");
+  info = info[1].replace(/, /g, '<br />');
+  info = info.replace(/Wir verwenden /, '<br /><br />');
   
   this.listener.gotInformation(info);
 }
 
 CafeteriaParser.prototype.parse = function() {
-  // stop other request
+  // other request running?
   if (this.active) {
     return;
   }
   
   var self = this;
   $.ajax({
-   url: this.cafeteria.getURL(),
-   success: function(data) {
-    self.parseResult(data);
-   },
-   error: this.handleError
+    url: this.cafeteria.getURL(),
+    success: function(data) {
+      self.parseResult(data);
+    },
+    error: function(request, textStatus, errorThrown) {
+      self.handleError(request, textStatus, errorThrown);
+    }
   });
   
   this.listener.startedDownload();  

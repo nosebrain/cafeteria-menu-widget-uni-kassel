@@ -24,7 +24,7 @@
  */
 
 function removeHTMLCode(text) {
-   var tmp = document.createElement("DIV");
+   var tmp = document.createElement('div');
    tmp.innerHTML = text;
    return tmp.textContent || tmp.innerText;
 }
@@ -32,7 +32,7 @@ function removeHTMLCode(text) {
 function myParseInt(string) {
   // remove leading 0's
   var count = 0;
-  while(string.substr(count,1) == "0") {
+  while(string.substr(count, 1) == '0') {
     count++;
   }
   
