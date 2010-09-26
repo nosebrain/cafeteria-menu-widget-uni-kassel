@@ -23,7 +23,8 @@
  * @author Daniel Zoller<nosebrain@gmx.net>
  */
 
-function Day() {
+function Day(index) {
+  this.index = index;
   this.foods = new Array();
   this.holiday = false;
   this.description = '';
@@ -51,4 +52,8 @@ Day.prototype.setDescription = function(description) {
 
 Day.prototype.getDescription = function() {
   return this.description;
+}
+
+Day.prototype.getIndex = function() {
+  return this.index;
 }

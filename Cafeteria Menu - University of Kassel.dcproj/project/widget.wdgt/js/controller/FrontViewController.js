@@ -46,7 +46,7 @@ FrontViewController.prototype.changedCafeteria = function(oldCafeteria, newCafet
 
 FrontViewController.prototype.switchedWeekday = function() {
   var day = $(WEEK_DAY_CHOOSER_SELECTOR).popup().getSelectedIndex();
-  this.widget.setDay(day);
+  this.widget.setDayByIndex(day);
 }
 
 FrontViewController.prototype.showWeek = function(start, end) {
@@ -54,15 +54,14 @@ FrontViewController.prototype.showWeek = function(start, end) {
   $(WEEK_LABEL_SELECTOR).html(start + '-' + end);
 }
 
-FrontViewController.prototype.dayChanged = function(oldDay, newDay) {
-  // set popup
-  $(WEEK_DAY_CHOOSER_SELECTOR).popup().setSelectedIndex(newDay);
-  
-  var day = this.widget.getCafeteria().getMenu().getDay(newDay);
-  
+FrontViewController.prototype.dayChanged = function(oldDay, day) {  
   if (!day) {
-    alert("no day " + newDay);
+    alert("no day " + day);
+    return;
   }
+  
+  // set popup
+  $(WEEK_DAY_CHOOSER_SELECTOR).popup().setSelectedIndex(day.getIndex());
   
   var content = "";
   
@@ -103,12 +102,16 @@ FrontViewController.prototype.getViewForDay = function(day) {
     var menuS = $('<td></td>').addClass('foodMenu');
     
     var self = this;
-    var likeLink = $('<a></a>').append('<img src="Images/like.png" height="15" width="15" />').click(function() { // TODO: i18n
-      self.getFoodRecommender().likeFood(food);
+    var likeLink = $('<a></a>').append('<img src="Images/like.png" height="15" width="15" />').attr("food", i).click(function() {
+      var foodId = myParseInt($(this).attr("food"));
+      var likeFood = self.widget.getDay().getFoods()[foodId];
+      self.getFoodRecommender().likeFood(likeFood);
     });
   
     var dislikeLink = $('<a></a>').append('<img src="Images/dislike.png" height="15" width="15" />').click(function() { // TODO: i18n
-      self.getFoodRecommender().dislikeFood(food);
+      var foodId = myParseInt($(this).attr("food"));
+      var likeFood = self.widget.getDay().getFoods()[foodId];
+      self.getFoodRecommender().dislikeFood(likeFood);
     });
   
     menuS.append(likeLink);
@@ -191,7 +194,7 @@ FrontViewController.prototype.refreshMenu = function() {
   day = Math.max(day, 0);
   day = Math.min(day, 4);
   
-  this.widget.setDay(day);
+  this.widget.setDayByIndex(day);
 }
 
 FrontViewController.prototype.viewWillDisappear = function() {

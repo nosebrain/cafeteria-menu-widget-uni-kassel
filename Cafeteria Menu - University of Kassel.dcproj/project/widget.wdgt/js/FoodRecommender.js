@@ -110,7 +110,8 @@ FoodRecommender.prototype.getUserLikeDislikes = function() {
 }
 
 FoodRecommender.prototype.getUserLikeDislikesLength = function() {
-  return PREF.getPref(PREF_LIKE_DISLIKE_LENGTH, true);
+  var length = PREF.getPref(PREF_LIKE_DISLIKE_LENGTH, true);
+  return !length ? 0 : length;
 }
 
 FoodRecommender.prototype.setUserLikeDislikes = function(dict) {
