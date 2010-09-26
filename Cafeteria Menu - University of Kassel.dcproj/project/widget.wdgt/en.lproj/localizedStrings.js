@@ -9,6 +9,7 @@ var localizedStrings = {
     "Done": "Done",
     "Error while parsing informations": "Error while parsing informations",
     "FRIDAY": "FRIDAY",
+    "Guest": "Guest",
     "Loading data ...": "Loading data ...",
     "MONDAY": "MONDAY",
     "Parsing data ...": "Parsing data ...",
@@ -17,12 +18,14 @@ var localizedStrings = {
     "Ready!": "\"Ready!\"",
     "Show price for": "Show price for",
     "source url has changed!": "source url has changed!",
+    "Staff": "Staff",
+    "Student": "Student",
     "THURSDAY": "THURSDAY",
-    "title": "Cafeteria menu",
     "TUESDAY": "TUESDAY",
     "Update data manually": "Update data manually",
     "WEDNESDAY": "WEDNESDAY"
 };
+
 
 
 
