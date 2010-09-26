@@ -107,14 +107,14 @@ MenuUpdater.prototype.gotWeek = function(start, end) {
   var dateStr = end.split(/\./);
   var year = myParseInt(dateStr[2]);
   var month = myParseInt(dateStr[1]) - 1;
-  var day = myParseInt(dateStr[0]) + 1;  // 2 <=> friday => saturday
+  var day = myParseInt(dateStr[0]) + 1;  // end=friday; +1=saturday
   
-  var date = new Date(year, month, day, 14, 0, 0);
+  var date = new Date(year, month, day, 14, 0, 0); // at 14:00
   var now = new Date();
   
   var nextUpdate = this.getNextUpdate();	
   
-  if (nextUpdate && (nextUpdate.getDay() != 1) && !this.manUpdate) {    
+  if (nextUpdate && (nextUpdate < date) && (nextUpdate.getDay() != 1) && !this.manUpdate) {    
     var newDate = new Date();
     newDate.setTime(nextUpdate.getTime() + UPDATE_INTERVAL);
     

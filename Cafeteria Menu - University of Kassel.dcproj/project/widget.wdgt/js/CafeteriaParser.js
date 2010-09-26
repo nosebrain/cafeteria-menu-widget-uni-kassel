@@ -35,8 +35,7 @@ var SEARCH_EXPRESSIONS = {
 };
 
 function CafeteriaParser(cafeteria, listener) {
-  this.cafeteria = cafeteria;
-  this.request = null;
+  this.cafeteria = cafeteria; // set only url for the request
   this.listener = listener;
   this.active = false;
 }
