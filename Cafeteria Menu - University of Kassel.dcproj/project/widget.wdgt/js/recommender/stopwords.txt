@@ -5,8 +5,11 @@ und
 klein
 kleine
 groß
+großer
+großem
 kleiner
 kleinem
 auf
 dip
 sauce
+abgeschmeckt

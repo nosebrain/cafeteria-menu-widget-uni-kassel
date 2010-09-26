@@ -27,7 +27,7 @@ function Menu() {
   this.days = new Array();
   
   for (var i = 0; i < 5; i++) {
-    this.days.push(new Day());
+    this.days.push(new Day(i));
   }
   
   this.week = null;

@@ -88,6 +88,10 @@ Pref.prototype.getDicPref = function(key, system) {
   
   var value = {};
   
+  if (!stringValue) {
+    return value;
+  }
+  
   var keyValues = stringValue.split(DICT_PREF_SEP);
   
   for (var i = 0; i < (keyValues.length - 1); i++) { // -1 cause last value is an empty string

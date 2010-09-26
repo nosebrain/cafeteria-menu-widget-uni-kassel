@@ -180,12 +180,20 @@ CafeteriaWidget.prototype.setCafeteriaById = function(id) {
   this.setCafeteria(caf);  
 }
 
+CafeteriaWidget.prototype.setDayByIndex = function(index) {  
+  this.setDay(this.cafeteria.getMenu().getDay(index));
+}
+
 CafeteriaWidget.prototype.setDay = function(day) {
   var old = this.day;
-  
   this.day = day;
+  
   this.frontViewController.dayChanged(old, day);
 }
+
+CafeteriaWidget.prototype.getDay = function() {
+  return this.day;
+} 
 
 CafeteriaWidget.prototype.getMenuUpdater = function() {
   return this.menuUpdater;
