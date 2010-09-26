@@ -108,7 +108,7 @@ FrontViewController.prototype.getViewForDay = function(day) {
       self.getFoodRecommender().likeFood(likeFood);
     });
   
-    var dislikeLink = $('<a></a>').append('<img src="Images/dislike.png" height="15" width="15" />').click(function() { // TODO: i18n
+    var dislikeLink = $('<a></a>').append('<img src="Images/dislike.png" height="15" width="15" />').attr("food", i).click(function() { // TODO: i18n
       var foodId = myParseInt($(this).attr("food"));
       var likeFood = self.widget.getDay().getFoods()[foodId];
       self.getFoodRecommender().dislikeFood(likeFood);
