@@ -38,6 +38,10 @@ function myParseInt(string) {
   
   string = string.substring(count, string.length);
   
+  if (string.length == 0) {
+    return 0;
+  }
+  
   // than call parse int
   return parseInt(string);
 }

@@ -89,7 +89,7 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
       menu[j] = clearMenu[0];
        
       var rawDescription = menu[j];
-      var description = removeHTMLCode(rawDescription).replace(/- /, ' ');
+      var description = removeHTMLCode(rawDescription.replace(/<br \/>/, ' ')).replace(/- /, ' ');
       
       if ($.trim(description) != '') {      
         // get price
