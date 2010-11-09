@@ -45,3 +45,7 @@ function myParseInt(string) {
   // than call parse int
   return parseInt(string);
 }
+
+function getDeg(rad) {
+  return rad / Math.PI * 180;
+}

@@ -23,17 +23,10 @@
  * @author Daniel Zoller<nosebrain@gmx.net>
  */
 
-function SpecialPhraseProcessor() {
+function PorterStemmerProcessor() {
   
 }
 
-SpecialPhraseProcessor.prototype.process = function(word) {
-  if (word == null || (word.indexOf("(") >= 0)) {
-    return null;
-  }
-  
-  word = word.replace(/,/g, '');
-  word = word.replace(/"/g, '');
-  word = word.replace(/:/g, '');
-  return word;
+PorterStemmerProcessor.prototype.process = function(word) {
+  return word == null ? null : stemmer(word);
 }

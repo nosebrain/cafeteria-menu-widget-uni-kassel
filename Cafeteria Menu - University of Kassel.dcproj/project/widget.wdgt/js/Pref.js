@@ -63,6 +63,8 @@ Pref.prototype.initPrefs = function() {
   }
 }
 
+// TODO: extract this methods
+
 Pref.prototype.saveDicPref = function(key, dic) {
   this.saveDicPref(key, dic, false);
 }

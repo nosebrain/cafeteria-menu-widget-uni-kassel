@@ -27,8 +27,9 @@ function FoodRecommender() {
   this.preprocessors = new Array();
   
   this.preprocessors.push(new SpecialPhraseProcessor()); // removes '(s)' or '(f, sa)'
+  this.preprocessors.push(new NormalizerProcessor()); // normalize the words (lower case)
   this.preprocessors.push(new StopWordProcessor()); // removes stop words like "auf", "an"
-  this.preprocessors.push(new NormalizerProcessor()); // normalize the words
+  this.preprocessors.push(new PorterStemmerProcessor()); // guess ;)
 }
 
 FoodRecommender.prototype.recommendFood = function(foods) {
@@ -38,7 +39,7 @@ FoodRecommender.prototype.recommendFood = function(foods) {
   }
 
   // loop through all foods
-  var minAngle = 100;
+ 
   var angles = new Array();
   for (var i = 0; i < foods.length; i++) {
     var food = $.trim(foods[i].getDescription());
@@ -46,23 +47,24 @@ FoodRecommender.prototype.recommendFood = function(foods) {
     var terms = this.getTerms(food);
     
     // get angle
-    var angle = Math.acos(this.getCosSim(terms, this.getUserLikeDislikes(), this.getTermLength(terms), this.getUserLikeDislikesLength()));
+    var cos = this.getCosSim(terms, this.getUserLikeDislikes(), this.getTermLength(terms), this.getUserLikeDislikesLength());
+    var angle = Math.acos(cos);
     angles.push(angle);
   }
   
   // get the minValue
-  var minValue = 100;
+  var minAngle = Math.PI / 2; // <=> acos(0) 0 <=> no term exists in both docs
   for (var i = 0; i < angles.length; i++) {
-    if (angles[i] < minValue) {
-      minValue = angles[i];
+    if (angles[i] < minAngle) {
+      minAngle = angles[i];
     }
   }
   
   // 2. get all indices with minValue
   var indices = new Array();
   for (var i = 0; i < angles.length; i++) {
-    alert(i + ' = ' + angles[i] + '°');
-    if (angles[i] == minValue) {
+    alert(i + ' = ' + getDeg(angles[i]) + '°');
+    if (angles[i] == minAngle) {
       indices.push(i);
     }
   }
@@ -106,7 +108,10 @@ FoodRecommender.prototype.getTerms = function(text) {
 }
 
 FoodRecommender.prototype.getUserLikeDislikes = function() {
-  return PREF.getDicPref(PREF_LIKE_DISLIKE, true);
+  if (!this.likeDislike) {
+    this.likeDislike = PREF.getDicPref(PREF_LIKE_DISLIKE, true);
+  }
+  return this.likeDislike;
 }
 
 FoodRecommender.prototype.getUserLikeDislikesLength = function() {
@@ -115,6 +120,7 @@ FoodRecommender.prototype.getUserLikeDislikesLength = function() {
 }
 
 FoodRecommender.prototype.setUserLikeDislikes = function(dict) {
+  this.likeDislike = dict;
   PREF.saveDicPref(PREF_LIKE_DISLIKE, dict, true);
 }
 
@@ -147,7 +153,6 @@ FoodRecommender.prototype.getCosSim = function(doc1, doc2, quadLengthDoc1, quadL
 	}
 	
 	var scalarproduct = 0;
-	
 	for (var word in itDoc) {
     var wordCountInItDoc = itDoc[word];
 		var wordCountInOtherDoc = otherDoc[word];

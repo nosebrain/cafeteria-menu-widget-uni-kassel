@@ -105,22 +105,23 @@ MenuUpdater.prototype.gotInformation = function(result) {
 
 MenuUpdater.prototype.gotWeek = function(start, end) {
   var dateStr = end.split(/\./);
+  alert('start:' + start + ' end: ' + end);
   var year = myParseInt(dateStr[2]);
   var month = myParseInt(dateStr[1]) - 1;
   var day = myParseInt(dateStr[0]) + 1;  // end=friday; +1=saturday
   
   var date = new Date(year, month, day, 14, 0, 0); // at 14:00
-  var now = new Date();
+  alert('date: ' + date);
   
-  var nextUpdate = this.getNextUpdate();	
+  var nextUpdate = this.getNextUpdate();
   
-  if (nextUpdate && (nextUpdate < date) && (nextUpdate.getDay() != 1) && !this.manUpdate) {    
+  if (nextUpdate && nextUpdate < date) {
+    alert('found new week: ' + date);
+    this.setNextUpdate(date); // got new week
+  } else if (nextUpdate && (nextUpdate.getDay() != 1) && !this.manUpdate) {    
     var newDate = new Date();
     newDate.setTime(nextUpdate.getTime() + UPDATE_INTERVAL);
-    
-    if (nextUpdate.getDay() != 1) {
-      date = newDate;
-    }    
+    date = newDate;
   }
   
   if (!nextUpdate || (date > nextUpdate)) {
@@ -140,6 +141,7 @@ MenuUpdater.prototype.gotMenu = function(menu) {
 MenuUpdater.prototype.finishedParsing = function(result) {
   // change state
   this.setCurrentState(STATE_OK);
+  this.manUpdate = false;
 }
 
 MenuUpdater.prototype.parsingFailed = function(error) {
