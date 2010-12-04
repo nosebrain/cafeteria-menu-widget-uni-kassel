@@ -163,6 +163,10 @@
   font-size: 8pt;
 }
 
+.recommendingIndicator {
+  padding-right: 3px;
+}
+
 td.foodMenu {
   min-width: 30px;
 }

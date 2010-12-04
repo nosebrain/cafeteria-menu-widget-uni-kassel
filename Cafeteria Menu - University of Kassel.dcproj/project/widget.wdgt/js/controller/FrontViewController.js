@@ -30,13 +30,20 @@ var INFO_LABEL_SELECTOR = '#state';
 var WEEK_LABEL_SELECTOR = '#week';
 var INFO_BUTTON_SELECTOR = '#info';
 var RESIZE_SELECTOR = '#resize';
+var INFO_BOX_SELECTOR = '#stateBox';
 
 var COLLAPSED_CLASS_NAME = 'collapsed';
 var EXPANDED_CLASS_NAME = 'expanded';
 
+var FOOD_INDEX_ATTRIBUTE = 'data-food';
+var RECOMMENED_IDENTICATOR_BASE = 'recommendFood';
+
+var STATE_RECOMMENDING = 'recommending food';
+
 
 function FrontViewController() {
   this.foodRecommender = new FoodRecommender();
+  this.foodRecommender.setViewController(this);
 }
 
 FrontViewController.prototype.changedCafeteria = function(oldCafeteria, newCafeteria) {
@@ -70,6 +77,7 @@ FrontViewController.prototype.dayChanged = function(oldDay, day) {
   } else {
     // get recommendation for the day
     this.foodRecommender.recommendFood(day.getFoods());
+    this.changedState('', STATE_RECOMMENDING);
   
     // get menu for new day
     content = this.getViewForDay(day);
@@ -92,7 +100,7 @@ FrontViewController.prototype.getViewForDay = function(day) {
       tr.addClass('alt');
     }
     
-    tr.append(this.getViewForFood(food));
+    tr.append(this.getViewForFood(food, i));
     tr.append(this.getViewForFoodPrice(food));
     
     result.append(tr);
@@ -102,16 +110,19 @@ FrontViewController.prototype.getViewForDay = function(day) {
     var menuS = $('<td></td>').addClass('foodMenu');
     
     var self = this;
-    var likeLink = $('<a></a>').append('<img src="Images/like.png" height="15" width="15" />').attr("food", i).click(function() {
-      var foodId = myParseInt($(this).attr("food"));
+    
+    var likeLink = $('<img src="Images/like.png" height="15" width="15" />').attr(FOOD_INDEX_ATTRIBUTE, i).click(function() {
+      var foodId = myParseInt($(this).attr(FOOD_INDEX_ATTRIBUTE));
       var likeFood = self.widget.getDay().getFoods()[foodId];
       self.getFoodRecommender().likeFood(likeFood);
+      self.showMessage('updated!'); // TODO: i18n
     });
   
-    var dislikeLink = $('<a></a>').append('<img src="Images/dislike.png" height="15" width="15" />').attr("food", i).click(function() { // TODO: i18n
-      var foodId = myParseInt($(this).attr("food"));
+    var dislikeLink = $('<a></a>').append('<img src="Images/dislike.png" height="15" width="15" />').attr(FOOD_INDEX_ATTRIBUTE, i).click(function() {
+      var foodId = myParseInt($(this).attr(FOOD_INDEX_ATTRIBUTE));
       var likeFood = self.widget.getDay().getFoods()[foodId];
       self.getFoodRecommender().dislikeFood(likeFood);
+      self.showMessage('updated!');
     });
   
     menuS.append(likeLink);
@@ -121,6 +132,15 @@ FrontViewController.prototype.getViewForDay = function(day) {
     result.append(tr2);
   }
   return result;
+}
+
+FrontViewController.prototype.showMessage = function(messageKey) {
+  // display state
+  var message = dashcode.getLocalizedString(messageKey);
+  alert(message);
+  $(INFO_LABEL_SELECTOR).html(message);
+  
+  setTimeout('$(INFO_LABEL_SELECTOR).html("");', 1000);
 }
 
 FrontViewController.prototype.getViewForFoodPrice = function(food) {
@@ -137,11 +157,23 @@ FrontViewController.prototype.getViewForFoodPrice = function(food) {
   return priceTd;
 }
 
-FrontViewController.prototype.getViewForFood = function(food) {
-  var foodElement = $('<td rowspan="2"></td>');
-  if (food.isRecommended()) {
-    foodElement.append('<img src="Images/star.png" height="12" width="12" /> ');
+FrontViewController.prototype.recommendedFood = function(foods) {
+  for (var i = 0; i < foods.length; i++) {
+    if (foods[i].isRecommended()) {
+      $('#' + RECOMMENED_IDENTICATOR_BASE + i).show();
+    }
   }
+  
+  this.changedState(STATE_RECOMMENDING, '');
+}
+
+FrontViewController.prototype.getViewForFood = function(food, index) {
+  var foodElement = $('<td rowspan="2"></td>');
+  
+  var star = $('<img src="Images/star.png" height="12" width="12" class="recommendingIndicator" /> ');
+  star.attr('id', RECOMMENED_IDENTICATOR_BASE + index);
+  foodElement.append(star);
+  star.hide();
   
   var foodS = $('<span></span>').addClass('food');
   foodS.append(food.getDescription());
@@ -153,7 +185,14 @@ FrontViewController.prototype.getViewForFood = function(food) {
 FrontViewController.prototype.changedState = function(oldState, newState) {
   // display state
   var message = dashcode.getLocalizedString(newState);
+  alert(message);
   $(INFO_LABEL_SELECTOR).html(message);
+  
+  if (newState == '') {
+    $(INFO_BOX_SELECTOR).hide();
+  } else {
+    $(INFO_BOX_SELECTOR).show();
+  }
 }
 
 FrontViewController.prototype.viewDidLoad = function() {
