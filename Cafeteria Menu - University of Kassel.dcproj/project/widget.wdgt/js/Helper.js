@@ -35,6 +35,10 @@ var HTMLCodes = new Array(
   new HTMLCodeReplacer(/<\/td>/g, ""),
   new HTMLCodeReplacer(/&nbsp;/g, " "),
   new HTMLCodeReplacer(/<br \/>/g, " "),
+  new HTMLCodeReplacer(/<strong>/g, " "),
+  new HTMLCodeReplacer(/<\/strong>/g, " "),
+  new HTMLCodeReplacer(/<em>/g, " "),
+  new HTMLCodeReplacer(/<\/em>/g, " "),
   new HTMLCodeReplacer(/<\/span>/g, " "),
   new HTMLCodeReplacer(/<span class="detail">/g, ""),
   new HTMLCodeReplacer(/  /, " ")

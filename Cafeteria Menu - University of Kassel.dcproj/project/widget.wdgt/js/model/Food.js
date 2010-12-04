@@ -47,6 +47,10 @@ Food.prototype.getDescription = function() {
   return this.description;
 }
 
+Food.prototype.getAllPrices = function() {
+  return this.price;
+}
+
 Food.prototype.printPrice = function() {
   var priceId = PREF.getPref(PREF_PRICE);
 
