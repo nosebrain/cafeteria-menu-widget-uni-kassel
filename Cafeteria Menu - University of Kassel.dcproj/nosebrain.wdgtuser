@@ -4,6 +4,10 @@
 <dict>
 	<key>Breakpoints</key>
 	<dict>
+		<key>widget.wdgt/js/CafeteriaParser.js:121</key>
+		<string>parseMenu</string>
+		<key>widget.wdgt/js/CafeteriaParser.js:124</key>
+		<string>-parseMenu</string>
 		<key>widget.wdgt/js/CafeteriaParser.js:3</key>
 		<string>-</string>
 		<key>widget.wdgt/js/CafeteriaParser.js:84</key>
@@ -16,7 +20,7 @@
 		<string>-</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{651, 342}</string>
+	<string>{665, 414}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -32,7 +36,7 @@
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
@@ -295,12 +299,14 @@
 		<key>Objects view last selections</key>
 		<array>
 			<array>
-				<integer>2</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>10</integer>
 			</array>
 		</array>
 		<key>Visible StackLayout Views</key>
 		<array>
-			<string>back</string>
+			<string>front</string>
 		</array>
 	</dict>
 </dict>

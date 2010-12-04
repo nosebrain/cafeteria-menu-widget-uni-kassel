@@ -60,8 +60,8 @@ CafeteriaWidgetListener.prototype.dayChanged = function(oldDay, newDay) {
   var content = "";
   
   if (day.isHoliday()) {
-    content = day.getDescription();
-  } else {    
+    content = day.getInfo();
+  } else {   
     // get menu for new day
     content = day.getMenuAsString();
   }

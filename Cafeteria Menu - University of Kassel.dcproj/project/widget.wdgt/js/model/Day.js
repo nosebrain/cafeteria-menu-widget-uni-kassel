@@ -26,11 +26,18 @@
 function Day() {
   this.food = new Array();
   this.holiday = false;
-  this.description = "";
+  this.info = "";
 }
 
-Day.prototype.addToFood = function(food) {
+Day.prototype.addToFoods = function(food) {
   this.food.push(food);
+}
+
+Day.prototype.removeFromFoods = function(food) {
+  var pos = this.food.indexOf(food);
+  if (pos >= 0) {
+    this.food.splice(pos, 1);
+  }
 }
 
 Day.prototype.setHoliday = function(holiday) {
@@ -41,16 +48,27 @@ Day.prototype.isHoliday = function() {
   return this.holiday;
 }
 
-Day.prototype.setDescription = function(description) {
-  this.description = description;
+Day.prototype.setInfo = function(info) {
+  this.info = info;
 }
 
-Day.prototype.getDescription = function() {
-  return this.description;
+Day.prototype.getInfo = function() {
+  return this.info;
+}
+
+Day.prototype.getFoods = function() {
+  return this.food;
 }
 
 Day.prototype.getMenuAsString = function() {
   var result = "<table>";
+  
+  if (this.info != '') {
+    result += '<tr><td colspan="2" class="contentInfo">';
+    result += this.info;
+    alert(this.info);
+    result += '</td></tr>';
+  }
   
   for (var i = 0; i < this.food.length; i++) {
     result += "<tr";
