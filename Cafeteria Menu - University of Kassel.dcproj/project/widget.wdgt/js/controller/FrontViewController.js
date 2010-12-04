@@ -70,27 +70,37 @@ FrontViewController.prototype.dayChanged = function(oldDay, day) {
   // set popup
   $(WEEK_DAY_CHOOSER_SELECTOR).popup().setSelectedIndex(day.getIndex());
   
-  var content = "";
+  $('#content').children().remove();
   
-  if (day.isHoliday()) {
-    // content = day.getDescription();
-  } else {
-    // get recommendation for the day
-    this.foodRecommender.recommendFood(day.getFoods());
-    this.changedState('', STATE_RECOMMENDING);
+  // get recommendation for the day
+  this.foodRecommender.recommendFood(day.getFoods());
+  this.changedState('', STATE_RECOMMENDING);
   
-    // get menu for new day
-    content = this.getViewForDay(day);
-    $('#content').children().remove();
-    $('#content').append(content);
+  // get menu for new day
+  var content = this.getViewForDay(day);
+  
+ 
+  $('#content').append(content);
     
-    // set new content
-    $(MENU_AREA_SELECTOR).scrollArea().refresh();
-  }  
+  // set new content
+  $(MENU_AREA_SELECTOR).scrollArea().refresh();
 }
 
 FrontViewController.prototype.getViewForDay = function(day) {
   var result = $('<table></table>');
+  
+  var dayInfo = day.getInfo();
+  
+  if (dayInfo != '') {
+    var container = $('<tr></tr>');
+    var td = $('<td></td>').attr('colspan', 2).addClass('contentInfo');
+    container.append(td);
+    
+    td.append(dayInfo);
+    result.append(container);
+  }
+  
+  
   var foods = day.getFoods();
   
   for (var i = 0; i < foods.length; i++) {

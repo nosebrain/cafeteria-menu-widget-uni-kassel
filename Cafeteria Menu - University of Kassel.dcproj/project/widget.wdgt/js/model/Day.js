@@ -27,11 +27,18 @@ function Day(index) {
   this.index = index;
   this.foods = new Array();
   this.holiday = false;
-  this.description = '';
+  this.info = '';
 }
 
-Day.prototype.addToFood = function(food) {
+Day.prototype.addToFoods = function(food) {
   this.foods.push(food);
+}
+
+Day.prototype.removeFromFoods = function(food) {
+  var pos = this.foods.indexOf(food);
+  if (pos >= 0) {
+    this.foods.splice(pos, 1);
+  }
 }
 
 Day.prototype.getFoods = function() {
@@ -46,12 +53,12 @@ Day.prototype.isHoliday = function() {
   return this.holiday;
 }
 
-Day.prototype.setDescription = function(description) {
-  this.description = description;
+Day.prototype.setInfo = function(info) {
+  this.info = info;
 }
 
-Day.prototype.getDescription = function() {
-  return this.description;
+Day.prototype.getInfo = function() {
+  return this.info;
 }
 
 Day.prototype.getIndex = function() {

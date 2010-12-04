@@ -71,7 +71,7 @@ CafeteriaParser.prototype.parseResult = function(response) {
 
 CafeteriaParser.prototype.parseMenu = function(foodSource) {
   var menuO = new Menu();
-
+  var specialDay = new Array();
   for (var i = 0; i < foodSource.length; i++) {
     var priceFoodSplit = foodSource[i].split(SEARCH_EXPRESSIONS.priceFoodSplit);
   
@@ -94,7 +94,7 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
       if ($.trim(description) != '') {      
         // get price
         var price = prices[j].match(SEARCH_EXPRESSIONS.price);
-        
+        var day = menuO.getDay(j);
         if (price) {
           var food = new Food();
           food.setDescription($.trim(description));
@@ -104,20 +104,47 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
           }
           
           // add it to day
-          menuO.getDay(j).addToFood(food);
+          day.addToFoods(food);
         } else {
           alert('price not found for ' + description);
-          // maybe it's a holiday
-          if (rawDescription.search(SEARCH_EXPRESSIONS.holiday) != -1) {
+          
+          if (day.getFoods().length > 0) {
+            var info = day.getFoods()[0];
+            // there was allready a food all others must also be a food
+            var food = new Food();
+            food.setDescription($.trim(description));
+            
+            var infoPrice = info.getAllPrices();
+            for (var x = 0; x < infoPrice.length; x++) {
+              food.setPrice(x, infoPrice[x]);
+            }
+            
+            // XXX: a set would be great
+            var pos = specialDay.indexOf(j);
+            if (pos == -1) specialDay.push(j);
+                      
+            // add it to day
+            day.addToFoods(food);
+          } else if (rawDescription.search(SEARCH_EXPRESSIONS.holiday) != -1) {
+            // maybe it's a holiday
             alert('holiday');
-            var day = menuO.getDay(j);
+
             day.setHoliday(true);
-            day.setDescription(removeHTMLCode(day.getDescription()) + description);
+            day.setInfo(removeHTMLCode(day.getInfo()) + description);
           }
         }        
       }
     }
   }
+  
+  for (var i = 0; i < specialDay.length; i++) {
+    var special = menuO.getDay(specialDay[i]);
+    var infoContainer = special.getFoods()[0];
+    var info = infoContainer.getDescription();
+    special.setInfo(info);
+    special.removeFromFoods(infoContainer);
+  }
+  
   
   // got menu
   this.listener.gotMenu(menuO);
