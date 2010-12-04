@@ -17,9 +17,8 @@
     <script type="text/javascript" src="js/frameworks/jquery-widget-plugins/jquery-popup.js" charset="utf-8"></script>
     <!-- infoPlistReader -->
     <script type="text/javascript" src="js/frameworks/infoPlistReader/InfoPlistReader.js" charset="utf-8"></script>
-    
     <!-- porter stemmer (food recommendations) -->
-     <script type="text/javascript" src="js/frameworks/porterstemmer/PorterStemmer.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/frameworks/porterstemmer/PorterStemmer.js" charset="utf-8"></script>
     <!-- pref reader / writer -->
     <script type="text/javascript" src="js/Pref.js" charset="utf-8"></script>
     <!-- extensions -->
@@ -66,12 +65,12 @@
         <div apple-part="com.apple.Dashcode.part.roundedpopupbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 3; image-button-type: 1; image-opacity: 1.00; image-top-color: 0.929347826,0.844396254,0.0917088582,1; image-bottom-color: 0.793478251,0.741562963,0.160287961,1; image-radius: 3,3,3,3; image-border: 1; image-border-color: 0.529399991,0.529399991,0.529399991,1; image-border-width: 1; shine-on: 0; shine-strength: 0.27; shine-alpha-level: 0.42; shine-height: 0.50; glass-arc-height: -0.12; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 0;" id="weekdayChooser"></div>
         <div apple-part="com.apple.Dashcode.part.scrollarea" id="scrollArea" apple-group="scrollArea">
             <div id="content" class="content" apple-group="scrollArea" style="position: absolute; left: 0px; top: 0px; right: 18px; bottom: 0px; overflow-x: hidden; overflow-y: hidden; "></div></div>
-        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="state"></div>
-        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="cafeteria-name" apple-group="text" onclick="openMenuInBrowser(event)"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="cafeteria-name" apple-group="text" onclick="openMenuInBrowser(event)" apple-style="part-height-dependent: true;"></div>
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="week" apple-group="text"></div>
         <img src="Images/update.png" id="updateImg" style="display: none; " onclick="downloadLatestVersion(event)" apple-part="com.apple.Dashcode.part.image">
         <img id="resize" src="/System/Library/WidgetResources/resize.png" onmousedown="mouseDown(event);">
         <div apple-part="com.apple.Dashcode.part.imageLayout" id="image" apple-group="image" onclick="toggle(event)"><img class="apple-hidden" src="Images/fork-and-knife.png" id="inner_image" apple-group="image"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="state"></div>
     </div>
     <div id="back">
         <img id="backImg" src="Parts/Images/back.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.backimage" apple-style=" image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.1500,0.1500,0.1500; image-border-width: 3; shadow-include-shadow: 1; shadow-blur: 9.00; shadow-offset: -1.00,-6.00; shadow-color: 0.0000,0.0000,0.0000,0.3333;">

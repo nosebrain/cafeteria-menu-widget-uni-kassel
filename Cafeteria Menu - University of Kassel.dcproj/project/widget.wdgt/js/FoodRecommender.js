@@ -32,7 +32,18 @@ function FoodRecommender() {
   this.preprocessors.push(new PorterStemmerProcessor()); // guess ;)
 }
 
-FoodRecommender.prototype.recommendFood = function(foods) {
+FoodRecommender.prototype.recommendFood = function(sfoods) {
+  var foods = sfoods;
+  var self = this;
+  $.ajax({
+    url: STOP_WORD_LIST_PATH,
+    success: function(data) {
+      self.recommendFoodInternal(foods);
+    }
+  });
+}
+
+FoodRecommender.prototype.recommendFoodInternal = function(foods) {
   // clear old recommendations
   for (var i = 0; i < foods.length; i++) {
     foods[i].setRecommended(false);
@@ -43,7 +54,6 @@ FoodRecommender.prototype.recommendFood = function(foods) {
   var angles = new Array();
   for (var i = 0; i < foods.length; i++) {
     var food = $.trim(foods[i].getDescription());
-    
     var terms = this.getTerms(food);
     
     // get angle
@@ -75,9 +85,10 @@ FoodRecommender.prototype.recommendFood = function(foods) {
       foods[i].setRecommended($.inArray(i, indices) >= 0);
     }
   } else {
-    
     alert('nothing to recommend ' + indices.length);
   }
+  
+  this.controller.recommendedFood(foods);
 }
 
 FoodRecommender.prototype.getNormTerms = function(term) {
@@ -195,6 +206,10 @@ FoodRecommender.prototype.updateLikeDislike = function(food, updateValue) {
   // save values
   this.setUserLikeDislikes(currentTerms);
   this.setUserLikeDislikesLength(currentTermsLength);
+}
+
+FoodRecommender.prototype.setViewController = function(controller) {
+  this.controller = controller;
 }
 
 FoodRecommender.prototype.likeFood = function(food) {

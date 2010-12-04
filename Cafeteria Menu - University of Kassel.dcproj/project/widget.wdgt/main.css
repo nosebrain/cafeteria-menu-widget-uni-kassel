@@ -57,10 +57,9 @@ tr {
     text-align: left;
     top: 23px;
     left: 26px;
-    min-height: 18px;
     width: 157px;
+    height: 17px;
     margin-right: auto;
-    bottom: 242px;
     height: auto;
 }
 
@@ -77,11 +76,10 @@ tr {
     font-size: 8pt;
     position: absolute;
     left: 23px;
-    right: 23px;
     top: 63px;
     margin-top: 0px;
-    bottom: 198px;
-    height: auto;
+    height: 24px;
+    right: 23px;
     width: auto;
 }
 
@@ -92,10 +90,10 @@ tr {
     -khtml-margin-top-collapse: separate;
     -khtml-margin-bottom-collapse: separate;
     position: relative;
-    margin-left: 23px;
     width: 213px;
     height: 152px;
-    margin-top: 91px;
+    margin-left: 23px;
+    margin-top: 92px;
 }
 
 #state {
@@ -107,11 +105,12 @@ tr {
     font-family: 'Helvetica Neue';
     font-size: 8pt;
     right: 142px;
-    width: 177px;
-    left: 42px;
-    top: 250px;
+    left: 47px;
+    min-height: 12px;
+    width: 169px;
     bottom: 19px;
     height: auto;
+    text-align: left;
 }
 
 #week {
