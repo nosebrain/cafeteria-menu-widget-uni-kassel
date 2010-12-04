@@ -170,3 +170,7 @@
 td.foodMenu {
   min-width: 30px;
 }
+
+.contentInfo {
+  color: rgb(176, 11, 7);
+}

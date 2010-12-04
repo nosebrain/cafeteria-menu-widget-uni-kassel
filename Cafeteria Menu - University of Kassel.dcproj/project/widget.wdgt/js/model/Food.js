@@ -40,6 +40,10 @@ Food.prototype.getPrice = function(index) {
   return this.price[index];
 }
 
+Food.prototype.getAllPrices = function() {
+  return this.price;
+}
+
 Food.prototype.setDescription = function(description) {
   this.description = description;
 }
