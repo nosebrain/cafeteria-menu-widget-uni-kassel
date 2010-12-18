@@ -89,7 +89,9 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
       menu[j] = clearMenu[0];
        
       var rawDescription = menu[j];
-      var description = removeHTMLCode(rawDescription.replace(/<br \/>/g, ' ')).replace(/- /, ' ');
+      var description = removeHTMLCode(rawDescription.replace(/<br \/>/g, ' '));
+      description = description.replace(/- /g, ' ');
+      description = description.replace(/- /g, ' ');
       
       if ($.trim(description) != '') {      
         // get price
@@ -106,7 +108,7 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
           // add it to day
           day.addToFoods(food);
         } else {
-          alert('price not found for ' + description);
+          alert('price not found for "' + description + '"');
           
           if (day.getFoods().length > 0) {
             var info = day.getFoods()[0];
@@ -121,8 +123,10 @@ CafeteriaParser.prototype.parseMenu = function(foodSource) {
             
             // XXX: a set would be great
             var pos = specialDay.indexOf(j);
-            if (pos == -1) specialDay.push(j);
-                      
+            if (pos == -1) {
+              specialDay.push(j);
+            }
+            
             // add it to day
             day.addToFoods(food);
           } else if (rawDescription.search(SEARCH_EXPRESSIONS.holiday) != -1) {
