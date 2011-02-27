@@ -23,14 +23,14 @@
  */
 
 var SEARCH_EXPRESSIONS = {
-  table : /<table cellpadding="4" cellspacing="0" width="899">.*<\/table><img/,
-  food : /<tr><td class="gelb" cellpadding="0" bgcolor="#fadc00" height="50" valign="middle" width="125px">/, 
-  foodSplit : /<td class="weiss" height="50" valign="top" width="150px">/,
+  table : /<table cellpadding="4" cellspacing="0" width="899">.*<\/html>/,
+  food : /<td class="gelb" cellpadding="0" valign="middle" width="125px" height="50" bgcolor="#fadc00">/,
   priceFoodSplit : /<\/tr><tr>/,
-  priceSplit : /<td class="preis" height="10" valign="top" width="150px">/, 
+  foodSplit : /<td class="weiss" valign="top" width="150px" height="50">/,
+  priceSplit : /<td class="preis" valign="top" width="150px" height="10">/, 
   price : /[0-9],[0-9]{2}/g,
   week : /Speiseplan vom&nbsp;([0-9]{2}.[0-9]{2}). (.*|-|bis) ([0-9]{2}.[0-9]{2}.[0-9]{4})/,
-  info : /<td class="gelbunten" colspan="7" bgcolor="#fadc00" valign="top" width="875px"><font face="Arial" size="1">(.*)<\/font><\/td>/,
+  info : /<td class="gelbunten" colspan="7" valign="top" width="875px" bgcolor="#fadc00">(.*)<\/td>/,
   holiday : /<span class="important">/
 };
 
@@ -48,7 +48,8 @@ CafeteriaParser.prototype.parseResult = function(response) {
     response = lines.join(' ');
     lines = response.split('\r');
     response = lines.join(' ');
-  
+    response = response.replace(/>\s+</g, '><');
+    
     var foodTable = response.match(SEARCH_EXPRESSIONS.table);
 
     var foodStr = foodTable[0].split(SEARCH_EXPRESSIONS.food);
