@@ -4,13 +4,15 @@
 <dict>
 	<key>Breakpoints</key>
 	<dict>
-		<key>widget.wdgt/js/CafeteriaParser.js:121</key>
+		<key>widget.wdgt/js/CafeteriaParser.js:122</key>
 		<string>parseMenu</string>
-		<key>widget.wdgt/js/CafeteriaParser.js:124</key>
+		<key>widget.wdgt/js/CafeteriaParser.js:125</key>
 		<string>-parseMenu</string>
 		<key>widget.wdgt/js/CafeteriaParser.js:3</key>
 		<string>-</string>
-		<key>widget.wdgt/js/CafeteriaParser.js:84</key>
+		<key>widget.wdgt/js/CafeteriaParser.js:49</key>
+		<string>-parseResult</string>
+		<key>widget.wdgt/js/CafeteriaParser.js:85</key>
 		<string>-parseMenu</string>
 		<key>widget.wdgt/js/CafeteriaWidget.js:110</key>
 		<string>-resize</string>
@@ -18,9 +20,19 @@
 		<string>-toogle</string>
 		<key>widget.wdgt/js/Collapse.js:33</key>
 		<string>-</string>
+		<key>widget.wdgt/js/ServiceCafeteriaParser.js:110</key>
+		<string>-parse</string>
+		<key>widget.wdgt/js/ServiceCafeteriaParser.js:39</key>
+		<string>-parseResult</string>
+		<key>widget.wdgt/js/ServiceCafeteriaParser.js:68</key>
+		<string>-parseMenu</string>
+		<key>widget.wdgt/js/ServiceCafeteriaParser.js:75</key>
+		<string>-parseMenu</string>
+		<key>widget.wdgt/js/ServiceCafeteriaParser.js:83</key>
+		<string>-parseWeek</string>
 	</dict>
 	<key>CYLastWindowPosition</key>
-	<string>{665, 414}</string>
+	<string>{671, 177}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -36,7 +48,7 @@
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>0</integer>
+	<integer>5</integer>
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
@@ -72,6 +84,8 @@
 		<true/>
 		<key>SavePath</key>
 		<string>/Users/nosebrain/Desktop</string>
+		<key>WidgetCompatibilityTag</key>
+		<integer>1</integer>
 		<key>enableSimulation</key>
 		<true/>
 		<key>simulatedHost</key>
@@ -92,7 +106,7 @@
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>71 43 1345 835 0 0 1440 878 </string>
+	<string>77 43 1345 835 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -103,8 +117,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {246, 279}}</string>
-			<string>{{0, 289}, {246, 504}}</string>
+			<string>{{0, 0}, {246, 150}}</string>
+			<string>{{0, 160}, {246, 633}}</string>
 		</array>
 	</dict>
 	<key>Objects view expanded items</key>
@@ -233,14 +247,6 @@
 			</array>
 			<array>
 				<integer>0</integer>
-				<integer>1</integer>
-			</array>
-			<array>
-				<integer>0</integer>
-				<integer>0</integer>
-			</array>
-			<array>
-				<integer>0</integer>
 				<integer>0</integer>
 				<integer>13</integer>
 			</array>
@@ -276,16 +282,6 @@
 			</array>
 			<array>
 				<integer>0</integer>
-				<integer>0</integer>
-				<integer>11</integer>
-			</array>
-			<array>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-			</array>
-			<array>
-				<integer>0</integer>
 				<integer>1</integer>
 				<integer>1</integer>
 				<integer>0</integer>
@@ -295,13 +291,24 @@
 				<integer>1</integer>
 				<integer>2</integer>
 			</array>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+			</array>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
 		</array>
 		<key>Objects view last selections</key>
 		<array>
 			<array>
-				<integer>0</integer>
-				<integer>0</integer>
-				<integer>10</integer>
+				<integer>5</integer>
 			</array>
 		</array>
 		<key>Visible StackLayout Views</key>

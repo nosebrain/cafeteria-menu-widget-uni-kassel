@@ -13,9 +13,9 @@
 	<key>CFBundleName</key>
 	<string>Versuch</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.2.2</string>
+	<string>2.0.3</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.2.2</string>
+	<string>2.0.3</string>
 	<key>CafeteriaBaseAddress</key>
 	<string>http://www.studentenwerk-kassel.de/</string>
 	<key>Cafeterias</key>

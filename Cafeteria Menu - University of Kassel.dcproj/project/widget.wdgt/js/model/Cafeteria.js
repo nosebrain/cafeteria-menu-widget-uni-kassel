@@ -26,7 +26,7 @@
 function Cafeteria(id) {
   this.id = id;
   this.nextUpdate = null;
-  this.parser = new CafeteriaParser(this);
+  this.parser = new ServiceCafeteriaParser(this);
 }
 
 Cafeteria.prototype.getId = function() {
