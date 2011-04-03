@@ -2,7 +2,7 @@
  * Cafeteria Widget - University of Kassel
  *
  *
- * Copyright 2009 - 2010, Daniel Zoller
+ * Copyright 2009 - 2011, Daniel Zoller
  *                        http://nosebrain.de
  *
  * This widget is free software; you can redistribute it and/or modify it under

@@ -39,6 +39,7 @@ CafeteriaParser.prototype.parseResult = function(response) {
     response = lines.join(" ");
     lines = response.split("\r");
     response = lines.join(" ");
+    response = response.replace(/>\s+</g, '><');
   
     var foodTable = response.match(SEARCH_EXPRESSIONS.table);
 
