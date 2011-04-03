@@ -50,6 +50,18 @@
 			<key>Name</key>
 			<string>Witzenhausen</string>
 		</dict>
+    <dict>
+			<key>Address</key>
+			<string>?id=144</string>
+			<key>Name</key>
+			<string>Bistro K-10</string>
+		</dict>
+    <dict>
+			<key>Address</key>
+			<string>?id=146</string>
+			<key>Name</key>
+			<string>TorCafé</string>
+		</dict>
 	</array>
 	<key>CloseBoxInsetX</key>
 	<integer>15</integer>
