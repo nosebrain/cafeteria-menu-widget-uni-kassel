@@ -1,0 +1,4 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteRule ^([0-6])\/([0-9]{1,2})\.json(.*)$ index.php?week=$2&id=$1 [L]
+</IfModule>
