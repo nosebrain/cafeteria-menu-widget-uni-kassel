@@ -2,7 +2,7 @@
  * Cafeteria Widget - University of Kassel
  *
  *
- * Copyright 2009 - 2010, Daniel Zoller
+ * Copyright 2009 - 2011, Daniel Zoller
  *                        http://nosebrain.de
  *
  * This widget is free software; you can redistribute it and/or modify it under
@@ -24,10 +24,10 @@
 
 var SEARCH_EXPRESSIONS = {
   table : /<table cellpadding="4" cellspacing="0" width="899">.*<\/html>/,
-  food : /<td class="gelb" cellpadding="0" valign="middle" width="125px" height="50" bgcolor="#fadc00">/,
+  food : /<td class="gelb" cellpadding="0" valign="middle" width="125px" bgcolor="#fadc00">/, 
+  foodSplit : /<td class="weiss " valign="top" width="150px" height="[0-9]*">/,
   priceFoodSplit : /<\/tr><tr>/,
-  foodSplit : /<td class="weiss" valign="top" width="150px" height="50">/,
-  priceSplit : /<td class="preis" valign="top" width="150px" height="10">/, 
+  priceSplit : /<td class="preis " valign="top" width="150px" height="10">/, 
   price : /[0-9],[0-9]{2}/g,
   week : /Speiseplan vom&nbsp;([0-9]{2}.[0-9]{2}). (.*|-|bis) ([0-9]{2}.[0-9]{2}.[0-9]{4})/,
   info : /<td class="gelbunten" colspan="7" valign="top" width="875px" bgcolor="#fadc00">(.*)<\/td>/,
@@ -35,7 +35,7 @@ var SEARCH_EXPRESSIONS = {
 };
 
 function CafeteriaParser(cafeteria, listener) {
-  this.cafeteria = cafeteria; // set only url for the request
+  this.cafeteria = cafeteria; // TODO: set only url for the request
   this.listener = listener;
   this.active = false;
 }
