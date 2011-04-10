@@ -29,12 +29,14 @@ var STATE_PARSING = 'Parsing data ...';
 var STATE_OK = '';
 var STATE_FAILED = 'Error while parsing informations';
 
-var UPDATE_INTERVAL = 120 * 60 * 1000;
+var UPDATE_INTERVAL = 120 * 60 * 1000; // 2 hours
+var START_HOUR = 14;
 
 function MenuUpdater() {
 }
 
 MenuUpdater.prototype.setNextUpdate = function(date) {
+  alert('old: ' + this.getNextUpdate() + '\n new: ' + date);
   this.nextUpdate = date;
   
   // save it
@@ -71,7 +73,8 @@ MenuUpdater.prototype.updateMan = function() {
 }
 
 MenuUpdater.prototype.update = function() {
-  var parser = new CafeteriaParser(this.widget.getCafeteria(), this);
+//  var parser = new CafeteriaParser(this.widget.getCafeteria(), this);
+  var parser = new ServiceCafeteriaParser(this.widget.getCafeteria(), this);
   parser.parse();
 }
 
@@ -110,28 +113,53 @@ MenuUpdater.prototype.gotWeek = function(start, end) {
   var month = myParseInt(dateStr[1]) - 1;
   var day = myParseInt(dateStr[0]) + 1;  // end=friday; +1=saturday
   
-  var date = new Date(year, month, day, 14, 0, 0); // at 14:00
+  var date = new Date(year, month, day, START_HOUR, 0, 0); // at 14:00
   alert('date: ' + date);
   
   var nextUpdate = this.getNextUpdate();
   
-  if (nextUpdate && nextUpdate < date) {
+  if (nextUpdate == null || nextUpdate < date) {
     alert('found new week: ' + date);
     this.setNextUpdate(date); // got new week
-  } else if (nextUpdate && (nextUpdate.getDay() != 1) && !this.manUpdate) {    
+  } 
+  
+  // TODO: remove
+  /*
+  else if (nextUpdate && (nextUpdate.getDay() != 1) && !this.manUpdate) {    
     var newDate = new Date();
     newDate.setTime(nextUpdate.getTime() + UPDATE_INTERVAL);
     date = newDate;
   }
   
   if (!nextUpdate || (date > nextUpdate)) {
-    alert('old: ' + nextUpdate + '\n new: ' + date);
     // save it
     this.setNextUpdate(date);
-  }  
+  }*/
   
   // inform front view controller
   this.widget.getFrontViewController().showWeek(start, end);
+}
+
+MenuUpdater.prototype.noNewMenuAvailable = function() {
+  // menu not available try UPDATE_INTERVAL seconds later
+  if (!this.manUpdate) {
+    this.extendUpdateTime();
+  }
+}
+
+MenuUpdater.prototype.extendUpdateTime = function() {
+  var nextUpdate = this.getNextUpdate();
+  if (nextUpdate == null) {
+    nextUpdate = new Date();
+  }
+  
+  var newDate = new Date();
+  newDate.setTime(nextUpdate.getTime() + UPDATE_INTERVAL);
+  
+  // set only if not monday and newDate
+  if (newDate > nextUpdate && newDate.getDay() < 1) {
+    this.setNextUpdate(newDate);
+  }
 }
 
 MenuUpdater.prototype.gotMenu = function(menu) {
